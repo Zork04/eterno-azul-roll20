@@ -11,8 +11,94 @@
   background: #dcecf3;
 }
 
-.sheet-ea-shell { width: 764px; margin: 0 auto; }
-.sheet-tab-radio { position: absolute; left: -9999px; }
+.sheet-ea-shell {
+  width: 764px;
+  margin: 0 auto;
+}
+
+.sheet-tab-radio {
+  position: absolute;
+  left: -9999px;
+}
+
+.sheet-adjust-toggle {
+  position: absolute;
+  left: -9999px;
+}
+
+.sheet-adjust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 764px;
+  min-height: 32px;
+  margin: 0 auto 6px;
+  padding: 5px 9px;
+  border: 1px solid #91adbc;
+  border-radius: 4px;
+  color: #174e70;
+  background: rgba(244,249,250,.96);
+  font: 12px/1.2 Arial, sans-serif;
+}
+
+.sheet-adjust-bar label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sheet-adjust-switch {
+  position: relative;
+  width: 31px;
+  height: 17px;
+  border: 1px solid #718795;
+  border-radius: 12px;
+  background: #cbd7dd;
+}
+
+.sheet-adjust-switch::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
+.sheet-adjust-active {
+  display: none;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #fff;
+  background: #b33170;
+  font-size: 10px;
+}
+
+.sheet-adjust-legend {
+  color: #5b6c76;
+  font-size: 10px;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-adjust-bar .sheet-adjust-switch {
+  border-color: #176b9d;
+  background: #176b9d;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-adjust-bar .sheet-adjust-switch::after {
+  left: 16px;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-adjust-bar .sheet-adjust-active {
+  display: inline-block;
+}
+
 .sheet-tab-bar {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr;
@@ -20,6 +106,7 @@
   width: 764px;
   margin: 0 auto 8px;
 }
+
 .sheet-tab-bar label {
   margin: 0;
   padding: 9px 7px 7px;
@@ -32,10 +119,18 @@
   font-size: 15px;
   cursor: pointer;
 }
-.sheet-page { display: none; width: 764px; }
+
+.sheet-page {
+  display: none;
+  width: 764px;
+}
+
 .sheet-tab-pj:checked ~ .sheet-page-pj,
 .sheet-tab-ship:checked ~ .sheet-page-ship,
-.sheet-tab-npc:checked ~ .sheet-page-npc { display: block; }
+.sheet-tab-npc:checked ~ .sheet-page-npc {
+  display: block;
+}
+
 .sheet-tab-pj:checked ~ .sheet-tab-bar .sheet-tab-label-pj,
 .sheet-tab-ship:checked ~ .sheet-tab-bar .sheet-tab-label-ship,
 .sheet-tab-npc:checked ~ .sheet-tab-bar .sheet-tab-label-npc {
@@ -43,92 +138,354 @@
   background: #176b9d;
 }
 
+
+/* PERSONAJE JUGADOR --------------------------------------------------- */
+
 .sheet-ea {
   --ea-blue: #176b9d;
   --ea-green: #718e38;
   --ea-ink: #172737;
+
   position: relative;
   width: 764px;
   height: 1043px;
   margin: 0 auto;
+
   color: var(--ea-ink);
   font-family: Georgia, "Times New Roman", serif;
+
   background-color: #eef6f8;
   background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/ea-ficha-pj.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+
   overflow: hidden;
 }
 
-.sheet-ea * { box-sizing: border-box; }
-.sheet-ea input, .sheet-ea select, .sheet-ea textarea, .sheet-ea button {
+.sheet-ea * {
+  box-sizing: border-box;
+}
+
+.sheet-ea input,
+.sheet-ea select,
+.sheet-ea textarea,
+.sheet-ea button {
   font: inherit;
   color: #064f87;
 }
-.sheet-ea input[type="text"], .sheet-ea input[type="number"], .sheet-ea select, .sheet-ea textarea {
+
+.sheet-ea input[type="text"],
+.sheet-ea input[type="number"],
+.sheet-ea select,
+.sheet-ea textarea {
   margin: 0;
-  border: 0;
-  border-bottom: 1px solid rgba(20,35,45,.48);
+  border: 0 !important;
   border-radius: 0;
-  background: rgba(255,255,255,.16);
+  background: transparent !important;
   box-shadow: none;
   line-height: 1.15;
 }
-.sheet-ea textarea { resize: none; }
-.sheet-ea h2, .sheet-ea h3 {
+
+.sheet-ea textarea {
+  resize: none;
+}
+
+.sheet-ea h2,
+.sheet-ea h3 {
   margin: 0;
   text-align: center;
   color: #101820;
   font-family: Georgia, "Times New Roman", serif;
   letter-spacing: .08em;
 }
-.sheet-ea h2 { font-size: 17px; line-height: 24px; }
-.sheet-ea h3 { font-size: 12px; line-height: 17px; margin-top: 4px; }
-.sheet-ea h2::before, .sheet-ea h2::after { content: " — "; }
-.sheet-ea p { margin: 0; font-size: 9px; text-align: center; font-style: italic; }
-.sheet-ea h2, .sheet-ea h3, .sheet-ea p { visibility: hidden; }
-.sheet-ea input::placeholder, .sheet-ea textarea::placeholder { color: transparent; }
-.sheet-panel { position: absolute; padding: 8px 12px; }
 
-.sheet-identidad { display: none; }
+.sheet-ea h2 {
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.sheet-ea h3 {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.sheet-ea h2::before,
+.sheet-ea h2::after {
+  content: " — ";
+}
+
+.sheet-ea p {
+  margin: 0;
+  font-size: 9px;
+  text-align: center;
+  font-style: italic;
+}
+
+.sheet-ea h2,
+.sheet-ea h3,
+.sheet-ea p {
+  visibility: hidden;
+}
+
+.sheet-ea input::placeholder,
+.sheet-ea textarea::placeholder {
+  color: transparent;
+}
+
+.sheet-panel {
+  position: absolute;
+  padding: 8px 12px;
+}
+
+
+/* IDENTIDAD ----------------------------------------------------------- */
+
+.sheet-identidad {
+  display: none;
+}
+
 .sheet-nombre {
-  width: 100%; height: 80px; border: 0 !important; background: transparent !important;
-  text-align: center; font-family: "Trade Winds", Georgia, serif !important; font-size: 62px !important; color: #ee6545 !important;
+  width: 100%;
+  height: 80px;
+  border: 0 !important;
+  color: #ee6545 !important;
+  background: transparent !important;
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif !important;
+  font-size: 62px !important;
 }
-.sheet-lema { width: 75%; height: 52px; text-align: center; font-style: italic; background: transparent !important; border: 0 !important; }
 
-.sheet-rasgos { left: 18px; top: 9px; width: 357px; height: 111px; padding: 5px 16px; }
-.sheet-rasgos label { display: inline-block; width: 48%; margin: 0; font-size: 0; }
-.sheet-rasgos input { width: 100%; height: 20px; }
-.sheet-rasgos textarea { width: 100%; height: 27px; font-size: 9px; }
+.sheet-lema {
+  width: 75%;
+  height: 52px;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: center;
+  font-style: italic;
+}
 
-.sheet-acciones { left: 18px; top: 128px; width: 357px; height: 180px; padding: 5px 16px; }
-.sheet-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px 13px; padding-top: 3px; }
-.sheet-action-row { display: grid; grid-template-columns: 1fr 62px; align-items: center; height: 25px; }
+
+/* RASGOS -------------------------------------------------------------- */
+
+.sheet-rasgos {
+  left: 18px;
+  top: 9px;
+  width: 357px;
+  height: 111px;
+  padding: 0;
+}
+
+.sheet-rasgos .sheet-help-hotspot {
+  position: absolute;
+  top: 38px;
+  z-index: 2;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  color: transparent;
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: help;
+}
+
+.sheet-rasgos .sheet-help-hotspot:hover,
+.sheet-rasgos .sheet-help-hotspot:focus {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.sheet-help-origen {
+  left: 16px;
+  width: 80px;
+}
+
+.sheet-help-arquetipo {
+  left: 191px;
+  width: 92px;
+}
+
+.sheet-rasgos .sheet-rasgo-input {
+  position: absolute;
+  top: 70px;
+  height: 27px;
+  min-height: 27px;
+  max-height: 27px;
+  margin: 0;
+  padding: 0 3px;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.sheet-rasgo-origen {
+  left: 18px;
+  width: 148px !important;
+}
+
+.sheet-rasgo-arquetipo {
+  left: 192px;
+  width: 148px !important;
+}
+
+
+/* ACCIONES ------------------------------------------------------------ */
+
+.sheet-acciones {
+  left: 18px;
+  top: 128px;
+  width: 357px;
+  height: 180px;
+  padding: 0;
+}
+
+.sheet-action-grid {
+  position: absolute;
+  inset: 0;
+}
+
+.sheet-action-row {
+  position: absolute;
+  height: 20px;
+  margin: 0;
+}
+
+.sheet-action-row:nth-child(1),
+.sheet-action-row:nth-child(2) {
+  top: 53px;
+}
+
+.sheet-action-row:nth-child(3),
+.sheet-action-row:nth-child(4) {
+  top: 77px;
+}
+
+.sheet-action-row:nth-child(5),
+.sheet-action-row:nth-child(6) {
+  top: 101px;
+}
+
+.sheet-action-row:nth-child(7),
+.sheet-action-row:nth-child(8) {
+  top: 125px;
+}
+
+.sheet-action-row:nth-child(9),
+.sheet-action-row:nth-child(10) {
+  top: 149px;
+}
+
+.sheet-action-row:nth-child(odd) {
+  left: 17px;
+  width: 157px;
+}
+
+.sheet-action-row:nth-child(even) {
+  left: 195px;
+  width: 157px;
+}
+
 .sheet-action-row button[type="action"] {
-  width: 100%; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none;
-  text-align: left; font-weight: 700; font-size: 12px; color: transparent; cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 20px;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left;
+  font-size: 0;
+  line-height: 20px;
+  cursor: help;
 }
-.sheet-action-row button[type="action"]::before { content: ""; }
-.sheet-action-row button[type="action"]:hover { color: transparent; background: rgba(23,107,157,.08); }
-.sheet-die-radios { display: grid; grid-template-columns: repeat(4, 14px); gap: 1px; width: 59px; }
+
+.sheet-action-row:nth-child(odd) button[type="action"] {
+  width: 79px;
+}
+
+.sheet-action-row:nth-child(even) button[type="action"] {
+  width: 67px;
+}
+
+.sheet-action-row button[type="action"]::before {
+  content: "";
+}
+
+.sheet-action-row button[type="action"]:hover,
+.sheet-action-row button[type="action"]:focus {
+  border: 0 !important;
+  color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.sheet-die-radios {
+  position: absolute;
+  top: 2px;
+  display: grid;
+  grid-template-columns: repeat(4, 15px);
+  gap: 5px;
+  width: 75px;
+  height: 15px;
+}
+
+.sheet-action-row:nth-child(odd) .sheet-die-radios {
+  left: 81px;
+}
+
+.sheet-action-row:nth-child(even) .sheet-die-radios {
+  left: 69px;
+}
+
 .sheet-die-radios input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   margin: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
 }
+
 .sheet-die-radios input[type="radio"]:checked {
   background:
-    linear-gradient(45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%),
-    linear-gradient(-45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%);
+    linear-gradient(
+      45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    );
 }
-.sheet-sign-radios { display: grid; grid-template-columns: repeat(3, 15px); gap: 3px; width: 51px; }
+
+
+/* SEÑAS --------------------------------------------------------------- */
+
+.sheet-sign-radios {
+  display: grid;
+  grid-template-columns: repeat(3, 15px);
+  gap: 5px;
+  width: 55px;
+  height: 15px;
+}
+
 .sheet-sign-radios input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
@@ -139,58 +496,784 @@
   background: transparent;
   cursor: pointer;
 }
+
 .sheet-sign-radios input[type="radio"]:checked {
   background:
-    linear-gradient(45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%),
-    linear-gradient(-45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%);
+    linear-gradient(
+      45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    );
 }
 
-.sheet-senas { left: 18px; top: 316px; width: 357px; height: 150px; padding: 4px 16px; }
-.sheet-list-row { display: flex; align-items: center; gap: 6px; min-height: 20px; }
-.sheet-list-row > input[type="text"] { flex: 1; min-width: 0; height: 20px; }
-.sheet-list-row select { width: 56px; height: 20px; padding: 0; }
-.sheet-list-row label { width: auto; margin: 0; font-size: 8px; display: flex; align-items: center; gap: 2px; }
+.sheet-senas {
+  left: 18px;
+  top: 316px;
+  width: 357px;
+  height: 150px;
+  padding: 0;
+}
 
-.sheet-aptitudes { left: 19px; top: 475px; width: 355px; height: 328px; padding: 5px 16px; }
-.sheet-help { line-height: 11px; }
-.sheet-aptitud { display: grid; grid-template-columns: 1fr 95px; grid-template-rows: 22px 61px; gap: 1px 5px; margin-top: 3px; }
-.sheet-aptitud input, .sheet-aptitud select { height: 21px; font-size: 10px; }
-.sheet-aptitud textarea { grid-column: 1 / 3; width: 100%; height: 60px; font-size: 10px; line-height: 13px; }
+.sheet-senas .sheet-help-hotspot,
+.sheet-aptitudes .sheet-help-hotspot,
+.sheet-vinculos .sheet-help-hotspot,
+.sheet-brios .sheet-help-hotspot,
+.sheet-defensa .sheet-help-hotspot,
+.sheet-aguante .sheet-help-hotspot,
+.sheet-pertrechos .sheet-help-hotspot {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 0;
+  cursor: help;
+}
 
-.sheet-vinculos { left: 18px; top: 812px; width: 357px; height: 131px; padding: 5px 16px; }
-.sheet-vinculos .sheet-list-row { height: 22px; }
-.sheet-brios { left: 18px; top: 950px; width: 357px; height: 68px; padding-top: 4px; }
-.sheet-pips { display: flex; justify-content: center; gap: 12px; padding-top: 10px; }
-.sheet-pips input { width: 19px; height: 19px; }
+.sheet-senas .sheet-help-hotspot:hover,
+.sheet-senas .sheet-help-hotspot:focus,
+.sheet-aptitudes .sheet-help-hotspot:hover,
+.sheet-aptitudes .sheet-help-hotspot:focus,
+.sheet-vinculos .sheet-help-hotspot:hover,
+.sheet-vinculos .sheet-help-hotspot:focus,
+.sheet-brios .sheet-help-hotspot:hover,
+.sheet-brios .sheet-help-hotspot:focus,
+.sheet-defensa .sheet-help-hotspot:hover,
+.sheet-defensa .sheet-help-hotspot:focus,
+.sheet-aguante .sheet-help-hotspot:hover,
+.sheet-aguante .sheet-help-hotspot:focus,
+.sheet-pertrechos .sheet-help-hotspot:hover,
+.sheet-pertrechos .sheet-help-hotspot:focus {
+  border: 0 !important;
+  color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 
-.sheet-pertrechos { left: 389px; top: 9px; width: 358px; height: 605px; padding: 5px 15px; }
-.sheet-gear-head, .sheet-gear { display: grid; grid-template-columns: 1fr 42px 42px; gap: 4px; align-items: center; }
-.sheet-gear-head { font-size: 8px; text-align: center; height: 14px; }
-.sheet-gear-head { visibility: hidden; }
-.sheet-gear { height: 20px; }
-.sheet-gear input { width: 100%; height: 19px; padding: 0 2px; font-size: 9px; }
-.sheet-equipo { display: flex; align-items: center; gap: 6px; height: 29px; font-size: 10px; }
-.sheet-equipo strong { flex: 1; visibility: hidden; }
-.sheet-equipo input { width: 16px; height: 16px; }
-.sheet-combat-row { display: grid; grid-template-columns: 1fr 57px 82px; gap: 4px; align-items: end; height: 35px; }
-.sheet-combat-row input { width: 100%; height: 21px; padding: 0 2px; font-size: 9px; }
-.sheet-combat-row label { margin: 0; font-size: 0; text-align: center; }
-.sheet-combat-row label input { font-size: 9px; }
+.sheet-help-senas {
+  left: 122px;
+  top: 5px;
+  width: 113px;
+  height: 23px;
+}
 
-.sheet-defensa { left: 389px; top: 622px; width: 175px; height: 140px; padding-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-.sheet-defensa h2, .sheet-aguante h2 { grid-column: 1 / 3; }
-.sheet-defensa label, .sheet-aguante label { margin: 0; font-size: 0; text-align: center; }
-.sheet-defensa input, .sheet-aguante input { display: block; width: 52px; height: 52px; margin: 5px auto 0; border: 1px solid #27333b; text-align: center; font-size: 23px; }
-.sheet-aguante { left: 570px; top: 622px; width: 177px; height: 140px; padding-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.sheet-senas .sheet-sena-name {
+  position: absolute;
+  left: 18px;
+  width: 255px !important;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 0;
+  padding: 0 3px;
+  font-size: 11px;
+  line-height: 14px;
+}
 
-.sheet-heridas { left: 389px; top: 770px; width: 358px; height: 121px; padding: 5px 16px; }
-.sheet-wound { display: grid; grid-template-columns: 17px 1fr 55px; gap: 4px; align-items: center; height: 23px; }
-.sheet-wound input[type="text"] { width: 100%; height: 20px; }
-.sheet-wound label { margin: 0; font-size: 0; text-align: center; }
-.sheet-wound label input { width: 100%; height: 18px; }
+.sheet-sena-name-1 {
+  top: 54px;
+}
 
-.sheet-magia { left: 389px; top: 899px; width: 358px; height: 121px; padding: 6px 16px; }
-.sheet-magia textarea { width: 100%; height: 83px; font-size: 10px; }
+.sheet-sena-name-2 {
+  top: 76px;
+}
+
+.sheet-sena-name-3 {
+  top: 98px;
+}
+
+.sheet-sena-name-4 {
+  top: 120px;
+}
+
+.sheet-senas .sheet-sena-dice {
+  position: absolute;
+  left: 284px;
+}
+
+.sheet-sena-dice-1 {
+  top: 55px;
+}
+
+.sheet-sena-dice-2 {
+  top: 77px;
+}
+
+.sheet-sena-dice-3 {
+  top: 98px;
+}
+
+.sheet-sena-dice-4 {
+  top: 120px;
+}
+
+.sheet-list-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+}
+
+.sheet-list-row > input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+}
+
+.sheet-list-row select {
+  width: 56px;
+  height: 20px;
+  padding: 0;
+}
+
+.sheet-list-row label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: auto;
+  margin: 0;
+  font-size: 8px;
+}
+
+
+/* APTITUDES ----------------------------------------------------------- */
+
+.sheet-aptitudes {
+  left: 19px;
+  top: 475px;
+  width: 355px;
+  height: 328px;
+  padding: 5px 16px;
+}
+
+.sheet-aptitudes .sheet-help-aptitudes {
+  position: absolute !important;
+  left: 96px !important;
+  top: 5px !important;
+  width: 163px;
+  height: 26px;
+}
+
+.sheet-help {
+  line-height: 11px;
+}
+
+.sheet-aptitude-list {
+  position: absolute;
+  left: 15px;
+  top: 37px;
+  width: 325px;
+  height: 284px;
+  padding: 5px 5px 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(252,250,245,.94);
+}
+
+.sheet-aptitude-list fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sheet-aptitud {
+  margin: 0 0 8px;
+  padding: 0 0 8px;
+  border-bottom: 1px solid rgba(23,107,157,.45);
+}
+
+.sheet-aptitud-heading {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 5px;
+  width: 100%;
+  margin: 0 0 3px;
+}
+
+.sheet-aptitud-heading select {
+  width: 72px;
+  height: 21px;
+  padding: 0 1px;
+  font-size: 9px;
+}
+
+.sheet-aptitud-heading input[type="text"] {
+  width: 100%;
+  height: 21px;
+  padding: 0 3px;
+  border-bottom: 1px solid rgba(23,39,55,.65) !important;
+  font-size: 11px;
+  line-height: 19px;
+}
+
+.sheet-aptitud textarea {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 39px;
+  max-height: none;
+  padding: 3px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: 1px solid rgba(23,107,157,.30) !important;
+  font-size: 10px;
+  line-height: 13px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  field-sizing: content;
+  resize: vertical;
+}
+
+@supports (field-sizing: content) {
+  .sheet-aptitud textarea {
+    resize: none;
+  }
+}
+
+.sheet-aptitudes .repcontrol {
+  margin: 4px 0 6px;
+}
+
+.sheet-aptitudes .repcontrol button {
+  border: 1px solid #176b9d;
+  color: #fff;
+  background: #176b9d;
+  text-shadow: none;
+  box-shadow: none;
+  font-size: 10px;
+}
+
+
+/* VÍNCULOS ------------------------------------------------------------ */
+
+.sheet-vinculos {
+  left: 18px;
+  top: 812px;
+  width: 357px;
+  height: 131px;
+  padding: 0;
+}
+
+.sheet-help-vinculos {
+  left: 98px;
+  top: 5px;
+  width: 161px;
+  height: 25px;
+}
+
+.sheet-vinculo-name {
+  position: absolute;
+  left: 18px;
+  width: 294px !important;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 0;
+  padding: 0 3px;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.sheet-vinculo-name-1 { top: 39px; }
+.sheet-vinculo-name-2 { top: 59px; }
+.sheet-vinculo-name-3 { top: 79px; }
+.sheet-vinculo-name-4 { top: 99px; }
+
+.sheet-vinculos input.sheet-vinculo-check[type="checkbox"] {
+  position: absolute;
+  left: 319px;
+  width: 16px;
+  height: 16px;
+}
+
+.sheet-vinculo-check-1 { top: 43px; }
+.sheet-vinculo-check-2 { top: 63px; }
+.sheet-vinculo-check-3 { top: 82px; }
+.sheet-vinculo-check-4 { top: 101px; }
+
+
+/* BRÍOS --------------------------------------------------------------- */
+
+.sheet-brios {
+  left: 18px;
+  top: 950px;
+  width: 357px;
+  height: 68px;
+  padding: 0;
+}
+
+.sheet-help-brios {
+  left: 117px;
+  top: 5px;
+  width: 123px;
+  height: 25px;
+}
+
+.sheet-pips {
+  position: absolute;
+  inset: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.sheet-pips input[type="checkbox"] {
+  position: absolute;
+  top: 35px;
+  width: 20px;
+  height: 20px;
+}
+
+.sheet-pips input[type="checkbox"]:nth-of-type(1) { left: 91px; }
+.sheet-pips input[type="checkbox"]:nth-of-type(2) { left: 122px; }
+.sheet-pips input[type="checkbox"]:nth-of-type(3) { left: 153px; }
+.sheet-pips input[type="checkbox"]:nth-of-type(4) { left: 184px; }
+.sheet-pips input[type="checkbox"]:nth-of-type(5) { left: 215px; }
+.sheet-pips input[type="checkbox"]:nth-of-type(6) { left: 247px; }
+
+
+/* PERTRECHOS ---------------------------------------------------------- */
+
+.sheet-pertrechos {
+  left: 389px;
+  top: 9px;
+  width: 358px;
+  height: 605px;
+  padding: 0;
+}
+
+.sheet-help-pertrechos {
+  left: 78px;
+  top: 7px;
+  width: 202px;
+  height: 27px;
+}
+
+.sheet-gear-head {
+  display: none;
+}
+
+.sheet-gear {
+  position: absolute;
+  left: 0;
+  width: 358px;
+  height: 20px;
+  margin: 0;
+}
+
+.sheet-gear-1 {
+  top: 43px;
+}
+
+.sheet-gear-2 {
+  top: 66px;
+}
+
+.sheet-gear-3 {
+  top: 88px;
+}
+
+.sheet-gear-4 {
+  top: 111px;
+}
+
+.sheet-gear-5 {
+  top: 133px;
+}
+
+.sheet-gear-6 {
+  top: 156px;
+}
+
+.sheet-gear-7 {
+  top: 178px;
+}
+
+.sheet-gear-8 {
+  top: 201px;
+}
+
+.sheet-gear-9 {
+  top: 223px;
+}
+
+.sheet-gear-10 {
+  top: 246px;
+}
+
+.sheet-gear input[type="text"] {
+  position: absolute;
+  left: 17px;
+  top: -4px;
+  width: 289px !important;
+  height: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  margin: 0;
+  padding: 0 3px;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.sheet-gear input.sheet-gear-name-left[type="text"] {
+  left: 17px;
+  width: 132px !important;
+}
+
+.sheet-gear input.sheet-gear-name-right[type="text"] {
+  left: 184px;
+  width: 122px !important;
+}
+
+.sheet-gear input[type="number"] {
+  position: absolute;
+  left: 315px;
+  top: -4px;
+  width: 21px !important;
+  min-width: 21px !important;
+  max-width: 21px !important;
+  height: 21px !important;
+  min-height: 21px !important;
+  max-height: 21px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center;
+  font-size: 9px;
+  line-height: 21px;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.sheet-gear input[type="number"]::-webkit-inner-spin-button,
+.sheet-gear input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.sheet-gear input.sheet-gear-uses-middle[type="number"] {
+  left: 156px;
+}
+
+.sheet-gear input.sheet-gear-uses-right[type="number"] {
+  left: 315px;
+}
+
+.sheet-equipo {
+  position: absolute;
+  left: 0;
+  top: 287px;
+  width: 358px;
+  height: 22px;
+  margin: 0;
+}
+
+.sheet-equipo strong {
+  display: none;
+}
+
+.sheet-help-equipo {
+  left: 16px;
+  top: 0;
+  width: 143px;
+  height: 22px;
+}
+
+.sheet-equipo input[type="checkbox"] {
+  position: absolute;
+  top: 1px;
+  width: 19px;
+  height: 19px;
+}
+
+.sheet-equipo input[type="checkbox"]:nth-of-type(1) {
+  left: 195px;
+}
+
+.sheet-equipo input[type="checkbox"]:nth-of-type(2) {
+  left: 225px;
+}
+
+.sheet-equipo input[type="checkbox"]:nth-of-type(3) {
+  left: 255px;
+}
+
+.sheet-equipo input[type="checkbox"]:nth-of-type(4) {
+  left: 285px;
+}
+
+.sheet-equipo input[type="checkbox"]:nth-of-type(5) {
+  left: 315px;
+}
+
+.sheet-pertrechos > .sheet-combat-row {
+  position: absolute;
+  left: 0;
+  width: 358px;
+  height: 18px;
+  margin: 0;
+}
+
+.sheet-combat-row input {
+  position: absolute;
+  top: 0;
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+  margin: 0;
+  padding: 0 3px;
+  font-size: 11px !important;
+  line-height: 16px !important;
+}
+
+.sheet-combat-row input[type="number"] {
+  padding: 0;
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.sheet-combat-row input[type="number"]::-webkit-inner-spin-button,
+.sheet-combat-row input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.sheet-weapon-row .sheet-combat-name { left: 19px; width: 183px !important; }
+.sheet-weapon-row .sheet-combat-value { left: 209px; width: 36px !important; }
+.sheet-weapon-row .sheet-combat-notes { left: 252px; width: 90px !important; }
+
+.sheet-weapon-row-1 { top: 346px; }
+.sheet-weapon-row-2 { top: 365px; }
+.sheet-weapon-row-3 { top: 385px; }
+.sheet-weapon-row-4 { top: 406px; }
+
+.sheet-armor-row .sheet-combat-name { left: 19px; width: 171px !important; }
+.sheet-armor-row .sheet-combat-value { left: 196px; width: 48px !important; }
+.sheet-armor-row .sheet-combat-notes { left: 252px; width: 90px !important; }
+
+.sheet-armor-row-1 { top: 464px; }
+.sheet-armor-row-2 { top: 483px; }
+.sheet-armor-row-3 { top: 501px; }
+
+
+/* CASILLAS ------------------------------------------------------------ */
+
+.sheet-ea input[type="checkbox"],
+.sheet-ea-ship input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.sheet-ea input[type="checkbox"]:checked,
+.sheet-ea-ship input[type="checkbox"]:checked {
+  background:
+    linear-gradient(
+      45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 43%,
+      #176b9d 44%,
+      #176b9d 56%,
+      transparent 57%
+    ) !important;
+}
+
+
+/* DEFENSA Y AGUANTE --------------------------------------------------- */
+
+.sheet-defensa {
+  left: 389px;
+  top: 559px;
+  width: 175px;
+  height: 140px;
+  padding: 0;
+}
+
+.sheet-defensa .sheet-help-defensa,
+.sheet-aguante .sheet-help-aguante {
+  position: absolute !important;
+  left: 17px !important;
+  top: 7px !important;
+  width: 141px;
+  height: 26px;
+}
+
+.sheet-defensa input.sheet-defense-value,
+.sheet-aguante input.sheet-endurance-value {
+  position: absolute !important;
+  top: 66px !important;
+  display: block;
+  width: 55px !important;
+  min-width: 55px !important;
+  max-width: 55px !important;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: center;
+  font-size: 23px;
+  line-height: 55px;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.sheet-defensa input[type="number"]::-webkit-inner-spin-button,
+.sheet-defensa input[type="number"]::-webkit-outer-spin-button,
+.sheet-aguante input[type="number"]::-webkit-inner-spin-button,
+.sheet-aguante input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.sheet-defensa .sheet-defense-total { left: 25px !important; }
+.sheet-defensa .sheet-defense-current { left: 94px !important; }
+
+.sheet-aguante {
+  left: 570px;
+  top: 559px;
+  width: 177px;
+  height: 140px;
+  padding: 0;
+}
+
+.sheet-aguante .sheet-endurance-total { left: 26px !important; }
+.sheet-aguante .sheet-endurance-damage { left: 98px !important; }
+
+
+/* HERIDAS ------------------------------------------------------------- */
+
+.sheet-heridas {
+  left: 389px;
+  top: 707px;
+  width: 358px;
+  height: 121px;
+  padding: 0;
+}
+
+.sheet-wound {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 358px;
+  height: 18px;
+  margin: 0;
+}
+
+.sheet-heridas .sheet-wound:nth-of-type(1) { top: 35px; }
+.sheet-heridas .sheet-wound:nth-of-type(2) { top: 56px; }
+.sheet-heridas .sheet-wound:nth-of-type(3) { top: 76px; }
+
+.sheet-wound > input[type="checkbox"] {
+  position: absolute;
+  left: 17px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.sheet-wound input[type="text"] {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  width: 239px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+  padding: 0 3px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.sheet-wound label {
+  position: absolute;
+  left: 286px;
+  top: 0;
+  display: block;
+  width: 54px;
+  height: 18px;
+  margin: 0;
+  font-size: 0;
+  text-align: center;
+}
+
+.sheet-wound label input {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  display: block;
+  width: 54px !important;
+  min-width: 54px !important;
+  max-width: 54px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  max-height: 18px !important;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 16px;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.sheet-wound label input::-webkit-inner-spin-button,
+.sheet-wound label input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+
+/* MAGIA --------------------------------------------------------------- */
+
+.sheet-magia {
+  left: 389px;
+  top: 835px;
+  width: 358px;
+  height: 185px;
+  padding: 6px 16px;
+}
+
+.sheet-magia textarea {
+  width: 100%;
+  height: 145px;
+  font-size: 10px;
+}
+
+
+/* PLANTILLA DE TIRADAS ------------------------------------------------ */
 
 .sheet-rolltemplate-eternoazul .sheet-ea-roll {
   position: relative;
@@ -208,6 +1291,7 @@
   font-family: Georgia, "Times New Roman", serif;
   box-shadow: 0 2px 7px rgba(0,0,0,.25);
 }
+
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-title {
   padding: 7px 9px 2px;
   color: #fff;
@@ -216,16 +1300,64 @@
   font-family: "Trade Winds", Georgia, serif;
   font-size: 19px;
 }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-action { padding: 6px 8px; text-align: center; color: #07598e; font-size: 17px; font-weight: 700; }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-risk { text-align: center; font-weight: 700; }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice { margin: 7px 9px; padding: 5px 7px; border: 1px solid #8eb1c4; background: rgba(255,255,255,.78); }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice > div { padding: 2px 0; }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-successes { margin: 8px 9px 3px; padding: 7px; text-align: center; color: #fff; background: rgba(113,142,56,.92); font-size: 18px; font-weight: 700; }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-result { padding: 6px 10px 3px; font-weight: 700; text-align: center; }
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-margin { padding: 2px 10px 9px; color: #07598e; text-align: center; font-style: italic; }
-.sheet-rolltemplate-eternoazul .inlinerollresult { border: 0 !important; background: transparent !important; padding: 0 2px; font-weight: 700; }
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-action {
+  padding: 6px 8px;
+  color: #07598e;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-risk {
+  text-align: center;
+  font-weight: 700;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice {
+  margin: 7px 9px;
+  padding: 5px 7px;
+  border: 1px solid #8eb1c4;
+  background: rgba(255,255,255,.78);
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice > div {
+  padding: 2px 0;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-successes {
+  margin: 8px 9px 3px;
+  padding: 7px;
+  color: #fff;
+  background: rgba(113,142,56,.92);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result {
+  padding: 6px 10px 3px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-margin {
+  padding: 2px 10px 9px;
+  color: #07598e;
+  text-align: center;
+  font-style: italic;
+}
+
+.sheet-rolltemplate-eternoazul .inlinerollresult {
+  padding: 0 2px;
+  border: 0 !important;
+  background: transparent !important;
+  font-weight: 700;
+}
+
 
 /* NAVÍO --------------------------------------------------------------- */
+
 .sheet-ea-ship {
   position: relative;
   width: 764px;
@@ -238,76 +1370,420 @@
   background-size: 100% 100%;
   overflow: hidden;
 }
-.sheet-ea-ship * { box-sizing: border-box; }
-.sheet-ea-ship input, .sheet-ea-ship textarea {
+
+.sheet-ea-ship * {
+  box-sizing: border-box;
+}
+
+.sheet-ea-ship input,
+.sheet-ea-ship textarea {
   margin: 0;
   padding: 1px 3px;
-  border: 0;
-  border-bottom: 1px solid rgba(80,76,69,.55);
+  border: 0 !important;
   border-radius: 0;
   color: #07598e;
-  background: rgba(255,255,255,.12);
+  background: transparent !important;
   box-shadow: none;
   font-family: Georgia, "Times New Roman", serif;
 }
-.sheet-ea-ship textarea { resize: none; }
-.sheet-ea-ship input::placeholder, .sheet-ea-ship textarea::placeholder { color: transparent; }
-.sheet-ship-values { position: absolute; inset: 0; }
-.sheet-ship-values input {
+
+.sheet-ea-ship textarea {
+  resize: none;
+}
+
+.sheet-ea-ship input::placeholder,
+.sheet-ea-ship textarea::placeholder {
+  color: transparent;
+}
+
+
+/* VALORES DEL NAVÍO --------------------------------------------------- */
+
+.sheet-ship-values {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sheet-ship-values .sheet-ship-value {
   position: absolute;
   top: 170px;
-  width: 40px;
-  height: 38px;
-  border: 0;
-  background: transparent;
+
+  width: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 36px;
+
+  pointer-events: auto;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
 }
-.sheet-ship-values input:nth-child(1) { left: 88px; }
-.sheet-ship-values input:nth-child(2) { left: 198px; }
-.sheet-ship-values input:nth-child(3) { left: 309px; }
-.sheet-ship-values input:nth-child(4) { left: 417px; }
-.sheet-ship-values input:nth-child(5) { left: 525px; }
-.sheet-ship-values input:nth-child(6) { left: 634px; }
-.sheet-ship-panel { position: absolute; }
-.sheet-ship-class { left: 35px; top: 235px; width: 385px; height: 192px; padding: 35px 20px 12px; }
-.sheet-ship-class input { width: 100%; height: 29px; text-align: center; font-weight: 700; text-transform: uppercase; }
-.sheet-ship-class textarea { width: 100%; height: 47px; margin-top: 4px; font-size: 10px; }
-.sheet-ship-seekers { left: 431px; top: 231px; width: 302px; height: 182px; padding: 48px 18px 10px; }
-.sheet-ship-seekers > div { display: grid; grid-template-columns: 20px 1fr; gap: 6px; height: 21px; align-items: center; }
-.sheet-ship-seekers input[type="checkbox"] { width: 17px; height: 17px; }
-.sheet-ship-seekers input[type="text"] { width: 100%; height: 20px; }
-.sheet-ship-upgrades { left: 35px; top: 439px; width: 385px; height: 165px; padding: 48px 21px 15px; }
-.sheet-ship-upgrades textarea { width: 100%; height: 100%; font-size: 11px; line-height: 14px; }
-.sheet-ship-crew { left: 431px; top: 419px; width: 302px; height: 180px; padding: 48px 18px 72px; }
-.sheet-ship-crew textarea { width: 100%; height: 58px; font-size: 11px; }
-.sheet-ship-faults { left: 35px; top: 617px; width: 385px; height: 205px; padding: 67px 18px 20px; }
-.sheet-ship-faults > div { display: grid; grid-template-columns: 23px 1fr 66px; gap: 7px; height: 29px; align-items: center; }
-.sheet-ship-faults input[type="checkbox"] { width: 19px; height: 19px; }
-.sheet-ship-faults input[type="text"] { width: 100%; height: 23px; }
-.sheet-ship-faults input[type="number"] { width: 62px; height: 23px; text-align: center; }
-.sheet-ship-cargo { left: 431px; top: 608px; width: 302px; height: 214px; padding: 47px 17px 79px; }
-.sheet-ship-cargo textarea { width: 100%; height: 88px; font-size: 11px; line-height: 25px; }
-.sheet-ship-armament { left: 35px; top: 833px; width: 697px; height: 195px; padding: 54px 19px 46px; }
-.sheet-ship-weapon, .sheet-ship-ammo { display: grid; grid-template-columns: 1fr 70px 215px; gap: 12px; height: 25px; align-items: center; }
-.sheet-ship-weapon input, .sheet-ship-ammo input { width: 100%; height: 22px; }
-.sheet-ship-ammo { margin-top: 24px; }
+
+.sheet-ship-values .sheet-ship-value::-webkit-inner-spin-button,
+.sheet-ship-values .sheet-ship-value::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.sheet-ship-value-maniobra {
+  left: 89px;
+}
+
+.sheet-ship-value-vela {
+  left: 198px;
+}
+
+.sheet-ship-value-potencia {
+  left: 308px;
+}
+
+.sheet-ship-value-bodega {
+  left: 417px;
+}
+
+.sheet-ship-value-casco-maximo {
+  left: 516px;
+}
+
+.sheet-ship-value-casco-actual {
+  left: 545px;
+}
+
+.sheet-ship-value-corazon-maximo {
+  left: 622px;
+}
+
+.sheet-ship-value-corazon-actual {
+  left: 651px;
+}
+
+
+/* PANELES DEL NAVÍO --------------------------------------------------- */
+
+.sheet-ship-panel {
+  position: absolute;
+}
+
+
+/* CLASE DE NAVÍO ------------------------------------------------------ */
+
+.sheet-ship-class {
+  left: 35px;
+  top: 235px;
+  width: 385px;
+  height: 192px;
+  padding: 35px 20px 12px;
+}
+
+.sheet-ship-class input {
+  width: 100%;
+  height: 29px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sheet-ship-class textarea {
+  width: 100%;
+  height: 115px;
+  margin-top: 12px;
+  font-size: 10px;
+}
+
+
+/* BUSCADORES ---------------------------------------------------------- */
+
+.sheet-ship-seekers {
+  left: 438px;
+  top: 226px;
+  width: 302px;
+  height: 182px;
+  padding: 48px 18px 10px;
+}
+
+.sheet-ship-seekers > div {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 6px;
+  height: 21px;
+  align-items: center;
+}
+
+.sheet-ship-seekers input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+}
+
+.sheet-ship-seekers input[type="text"] {
+  width: 100%;
+  height: 20px;
+}
+
+
+/* MEJORAS ------------------------------------------------------------- */
+
+.sheet-ship-upgrades {
+  left: 35px;
+  top: 423px;
+  width: 385px;
+  height: 220px;
+  padding: 48px 21px 15px;
+}
+
+.sheet-ship-upgrades textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+
+/* TRIPULACIÓN --------------------------------------------------------- */
+
+.sheet-ship-crew {
+  left: 431px;
+  top: 404px;
+  width: 302px;
+  height: 200px;
+  padding: 48px 18px 72px;
+}
+
+.sheet-ship-crew textarea {
+  width: 100%;
+  height: 130px;
+  font-size: 11px;
+}
+
+
+/* DESPERFECTOS -------------------------------------------------------- */
+
+.sheet-ship-faults {
+  left: 35px;
+  top: 673px;
+  width: 385px;
+  height: 168px;
+  padding: 49px 18px 12px;
+}
+
+.sheet-ship-faults > div {
+  display: grid;
+  grid-template-columns: 21px 1fr 66px;
+  gap: 7px;
+  height: 29px;
+  align-items: center;
+}
+
+.sheet-ship-faults input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+}
+
+.sheet-ship-faults input[type="text"] {
+  width: 100%;
+  height: 23px;
+}
+
+.sheet-ship-faults input[type="number"] {
+  width: 62px;
+  height: 23px;
+  text-align: center;
+}
+
+
+/* CARGA --------------------------------------------------------------- */
+
+.sheet-ship-cargo {
+  left: 431px;
+  top: 600px;
+  width: 302px;
+  height: 216px;
+  padding: 0;
+}
+
+.sheet-ship-cargo input {
+  position: absolute;
+  left: 17px;
+
+  width: 268px !important;
+  min-width: 0 !important;
+  max-width: 268px !important;
+
+  height: 19px !important;
+
+  margin: 0 !important;
+  padding: 0 3px !important;
+
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  font-size: 11px;
+  line-height: 19px;
+}
+
+.sheet-ship-cargo-municion-1 {
+  top: 49px;
+}
+
+.sheet-ship-cargo-municion-2 {
+  top: 69px;
+}
+
+.sheet-ship-cargo-viveres-1 {
+  top: 112px;
+}
+
+.sheet-ship-cargo-viveres-2 {
+  top: 132px;
+}
+
+.sheet-ship-cargo-viajeros-1 {
+  top: 174px;
+}
+
+.sheet-ship-cargo-viajeros-2 {
+  top: 194px;
+}
+
+
+/* ARMAMENTO ----------------------------------------------------------- */
+
+.sheet-ship-armament {
+  left: 35px;
+  top: 833px;
+  width: 697px;
+  height: 195px;
+  padding: 0;
+}
+
+.sheet-ship-weapon,
+.sheet-ship-ammo {
+  position: absolute;
+  left: 22px;
+
+  display: grid;
+
+  /*
+   * Nombre | separación | Daño/Cantidad | separación | Notas
+   */
+
+  grid-template-columns: 346px 13px 57px 20px 215px;
+
+  align-items: center;
+
+  width: 661px;
+  height: 22px;
+  margin: 0;
+}
+
+.sheet-ship-weapon input:nth-child(1),
+.sheet-ship-ammo input:nth-child(1) {
+  grid-column: 1;
+}
+
+.sheet-ship-weapon input:nth-child(2),
+.sheet-ship-ammo input:nth-child(2) {
+  grid-column: 3;
+}
+
+.sheet-ship-weapon input:nth-child(3),
+.sheet-ship-ammo input:nth-child(3) {
+  grid-column: 5;
+}
+
+.sheet-ship-weapon input,
+.sheet-ship-ammo input {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  height: 22px !important;
+
+  margin: 0 !important;
+  padding: 0 3px !important;
+
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  font-size: 11px;
+  line-height: 22px;
+}
+
+.sheet-ship-weapon-1 {
+  top: 52px;
+}
+
+.sheet-ship-weapon-2 {
+  top: 70px;
+}
+
+.sheet-ship-ammo {
+  top: 115px;
+}
+
+.sheet-ship-weapon input[type="number"],
+.sheet-ship-ammo input[type="number"] {
+  padding: 0 !important;
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.sheet-ship-weapon input[type="number"]::-webkit-inner-spin-button,
+.sheet-ship-weapon input[type="number"]::-webkit-outer-spin-button,
+.sheet-ship-ammo input[type="number"]::-webkit-inner-spin-button,
+.sheet-ship-ammo input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
 
 /* PNJ ----------------------------------------------------------------- */
+
 .sheet-ea-npc {
   position: relative;
   width: 764px;
   min-height: 1043px;
   padding: 24px;
+  border: 4px double #176b9d;
   color: #172737;
   font-family: Georgia, "Times New Roman", serif;
   background:
-    linear-gradient(rgba(244,249,250,.9),rgba(225,240,246,.94)),
-    repeating-linear-gradient(0deg, rgba(23,107,157,.025) 0 2px, transparent 2px 5px);
-  border: 4px double #176b9d;
+    linear-gradient(
+      rgba(244,249,250,.9),
+      rgba(225,240,246,.94)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(23,107,157,.025) 0 2px,
+      transparent 2px 5px
+    );
 }
-.sheet-ea-npc * { box-sizing: border-box; }
-.sheet-ea-npc input, .sheet-ea-npc textarea {
+
+.sheet-ea-npc * {
+  box-sizing: border-box;
+}
+
+.sheet-ea-npc input,
+.sheet-ea-npc textarea {
   width: 100%;
   margin: 0;
   padding: 4px 6px;
@@ -319,10 +1795,28 @@
   box-shadow: none;
   font-family: Georgia, "Times New Roman", serif;
 }
-.sheet-ea-npc textarea { resize: none; }
-.sheet-npc-header { text-align: center; }
-.sheet-npc-header input { height: 55px; border: 0; text-align: center; font-family: "Trade Winds", Georgia, serif; font-size: 38px; }
-.sheet-npc-header textarea { height: 77px; text-align: center; }
+
+.sheet-ea-npc textarea {
+  resize: none;
+}
+
+.sheet-npc-header {
+  text-align: center;
+}
+
+.sheet-npc-header input {
+  height: 55px;
+  border: 0;
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif;
+  font-size: 38px;
+}
+
+.sheet-npc-header textarea {
+  height: 77px;
+  text-align: center;
+}
+
 .sheet-npc-repeat-heading {
   margin: 16px 0 8px;
   color: #718e38;
@@ -330,6 +1824,7 @@
   font-family: "Trade Winds", Georgia, serif;
   font-size: 22px;
 }
+
 .sheet-npc-repeat-block {
   margin: 0 0 12px;
   padding: 12px 14px 14px;
@@ -337,6 +1832,7 @@
   border-radius: 7px;
   background: rgba(255,255,255,.72);
 }
+
 .sheet-ea-npc .sheet-npc-repeat-title {
   height: 34px;
   margin-bottom: 7px;
@@ -347,17 +1843,36 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+
 .sheet-ea-npc .sheet-npc-repeat-text {
-  min-height: 118px;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 46px;
+  max-height: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
   border: 0;
   color: #172737;
   background: transparent;
   font-size: 14px;
   line-height: 1.35;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  field-sizing: content;
+  resize: vertical;
 }
+
+@supports (field-sizing: content) {
+  .sheet-ea-npc .sheet-npc-repeat-text {
+    resize: none;
+  }
+}
+
 .sheet-ea-npc .repcontrol {
   margin: 8px 0 18px;
 }
+
 .sheet-ea-npc .repcontrol button {
   border: 1px solid #718e38;
   color: #fff;
@@ -365,4 +1880,48 @@
   text-shadow: none;
   box-shadow: none;
 }
-.sheet-npc-reminder { margin: 8px 0 0; color: #6e3040; text-align: center; font-style: italic; }
+
+.sheet-npc-reminder {
+  margin: 8px 0 0;
+  color: #6e3040;
+  text-align: center;
+  font-style: italic;
+}
+
+
+/* MODO DE AJUSTE -------------------------------------------------------
+   Estas reglas solamente se aplican cuando se activa
+   «Mostrar marcos de ajuste».
+------------------------------------------------------------------------ */
+
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-panel,
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-ship-panel,
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-ship-values,
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-npc-header,
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-npc-repeat-block {
+  outline: 1px dashed rgba(23,107,157,.9) !important;
+  outline-offset: -1px;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-page input[type="text"],
+.sheet-adjust-toggle:checked ~ .sheet-page input[type="number"],
+.sheet-adjust-toggle:checked ~ .sheet-page select,
+.sheet-adjust-toggle:checked ~ .sheet-page textarea {
+  outline: 1px solid #e10073 !important;
+  outline-offset: -1px;
+  background-color: rgba(255,0,125,.10) !important;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-page input[type="checkbox"],
+.sheet-adjust-toggle:checked ~ .sheet-page input[type="radio"] {
+  outline: 2px solid #ff8a00 !important;
+  outline-offset: -1px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.8) !important;
+}
+
+.sheet-adjust-toggle:checked ~ .sheet-page button[type="action"],
+.sheet-adjust-toggle:checked ~ .sheet-page .sheet-help-hotspot {
+  outline: 2px solid #00a6d6 !important;
+  outline-offset: -2px;
+  background-color: rgba(0,166,214,.12) !important;
+}

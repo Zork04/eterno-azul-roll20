@@ -2,6 +2,15 @@
   <input id="sheet-tab-pj" class="sheet-tab-radio sheet-tab-pj" type="radio" name="attr_sheet_tab" value="pj" checked>
   <input id="sheet-tab-ship" class="sheet-tab-radio sheet-tab-ship" type="radio" name="attr_sheet_tab" value="ship">
   <input id="sheet-tab-npc" class="sheet-tab-radio sheet-tab-npc" type="radio" name="attr_sheet_tab" value="npc">
+  <input id="sheet-adjust-toggle" class="sheet-adjust-toggle" type="checkbox" name="attr_mostrar_marcos_ajuste" value="1">
+  <div class="sheet-adjust-bar">
+    <label for="sheet-adjust-toggle">
+      <span class="sheet-adjust-switch" aria-hidden="true"></span>
+      Mostrar marcos de ajuste
+      <span class="sheet-adjust-active">ACTIVO</span>
+    </label>
+    <span class="sheet-adjust-legend">Rosa: campos · Naranja: casillas · Azul: botones · Línea discontinua: bloques</span>
+  </div>
   <div class="sheet-tab-bar">
     <label for="sheet-tab-pj" class="sheet-tab-label-pj">PERSONAJE JUGADOR</label>
     <label for="sheet-tab-ship" class="sheet-tab-label-ship">NAVÍO</label>
@@ -10,7 +19,7 @@
 
 <div class="sheet-page sheet-page-pj">
 <div class="sheet-ea">
-  <input type="hidden" name="attr_sheet_version" value="1.0.0">
+  <input type="hidden" name="attr_sheet_version" value="1.0.1">
 
   <div class="sheet-panel sheet-identidad">
     <input class="sheet-nombre" type="text" name="attr_character_name" placeholder="NOMBRE">
@@ -18,92 +27,127 @@
   </div>
 
   <div class="sheet-panel sheet-rasgos">
-    <h2>RASGOS</h2>
-    <label>Origen <input type="text" name="attr_origen"></label>
-    <label>Arquetipo <input type="text" name="attr_arquetipo"></label>
-    <textarea name="attr_notas_rasgos" placeholder="Notas de origen y arquetipo"></textarea>
+    <button class="sheet-help-hotspot sheet-help-origen" type="button" aria-label="Ayuda sobre Origen" title="El origen del personaje es la cultura en la que se crio. Esto no determina su aspecto físico, pero sí marcará su visión más esencial del mundo, incluyendo su relación con la religión y su opinión sobre otras culturas."></button>
+    <button class="sheet-help-hotspot sheet-help-arquetipo" type="button" aria-label="Ayuda sobre Arquetipo" title="El arquetipo es la clase de personaje que vas a interpretar, aquello a lo que te dedicabas antes de convertirte en un buscador (o lo que sigues haciendo pese a ello). El origen y el arquetipo suelen otorgar unas capacidades especiales a tu personaje."></button>
+    <input class="sheet-rasgo-input sheet-rasgo-origen" type="text" name="attr_origen" aria-label="Origen">
+    <input class="sheet-rasgo-input sheet-rasgo-arquetipo" type="text" name="attr_arquetipo" aria-label="Arquetipo">
   </div>
 
   <div class="sheet-panel sheet-acciones">
     <h2>ACCIONES</h2>
     <div class="sheet-action-grid">
-      <div class="sheet-action-row"><button type="action" name="act_desafio_armonizar">Armonizar</button><div class="sheet-die-radios"><input type="radio" name="attr_armonizar" value="6" checked><input type="radio" name="attr_armonizar" value="8"><input type="radio" name="attr_armonizar" value="10"><input type="radio" name="attr_armonizar" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_navegar">Navegar</button><div class="sheet-die-radios"><input type="radio" name="attr_navegar" value="6" checked><input type="radio" name="attr_navegar" value="8"><input type="radio" name="attr_navegar" value="10"><input type="radio" name="attr_navegar" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_combatir">Combatir</button><div class="sheet-die-radios"><input type="radio" name="attr_combatir" value="6" checked><input type="radio" name="attr_combatir" value="8"><input type="radio" name="attr_combatir" value="10"><input type="radio" name="attr_combatir" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_picardear">Picardear</button><div class="sheet-die-radios"><input type="radio" name="attr_picardear" value="6" checked><input type="radio" name="attr_picardear" value="8"><input type="radio" name="attr_picardear" value="10"><input type="radio" name="attr_picardear" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_explorar">Explorar</button><div class="sheet-die-radios"><input type="radio" name="attr_explorar" value="6" checked><input type="radio" name="attr_explorar" value="8"><input type="radio" name="attr_explorar" value="10"><input type="radio" name="attr_explorar" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_resistir">Resistir</button><div class="sheet-die-radios"><input type="radio" name="attr_resistir" value="6" checked><input type="radio" name="attr_resistir" value="8"><input type="radio" name="attr_resistir" value="10"><input type="radio" name="attr_resistir" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_influir">Influir</button><div class="sheet-die-radios"><input type="radio" name="attr_influir" value="6" checked><input type="radio" name="attr_influir" value="8"><input type="radio" name="attr_influir" value="10"><input type="radio" name="attr_influir" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_saber">Saber</button><div class="sheet-die-radios"><input type="radio" name="attr_saber" value="6" checked><input type="radio" name="attr_saber" value="8"><input type="radio" name="attr_saber" value="10"><input type="radio" name="attr_saber" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_maniobrar">Maniobrar</button><div class="sheet-die-radios"><input type="radio" name="attr_maniobrar" value="6" checked><input type="radio" name="attr_maniobrar" value="8"><input type="radio" name="attr_maniobrar" value="10"><input type="radio" name="attr_maniobrar" value="12"></div></div>
-      <div class="sheet-action-row"><button type="action" name="act_desafio_trastear">Trastear</button><div class="sheet-die-radios"><input type="radio" name="attr_trastear" value="6" checked><input type="radio" name="attr_trastear" value="8"><input type="radio" name="attr_trastear" value="10"><input type="radio" name="attr_trastear" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_armonizar" title="Tu capacidad para sentir el ciclo de la esencia mágica, fluir con él y manipularlo a tu antojo. Esta Acción se empleará para usar poderes mágicos de cualquier tipo y manipular objetos arcanos." aria-label="Tirar Desafío de Armonizar">Armonizar</button><div class="sheet-die-radios"><input type="radio" name="attr_armonizar" value="6" checked><input type="radio" name="attr_armonizar" value="8"><input type="radio" name="attr_armonizar" value="10"><input type="radio" name="attr_armonizar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_navegar" title="Tu entrenamiento a bordo de un navío. Navegar incluye un conjunto de competencias, desde manejar los aparejos del barco hasta trazar rumbos y guiarlo, pasando por todas las pequeñas tareas y vivencias de la vida a bordo." aria-label="Tirar Desafío de Navegar">Navegar</button><div class="sheet-die-radios"><input type="radio" name="attr_navegar" value="6" checked><input type="radio" name="attr_navegar" value="8"><input type="radio" name="attr_navegar" value="10"><input type="radio" name="attr_navegar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_combatir" title="Tu experiencia en el campo de batalla, tanto tu competencia en el uso de las armas como tu capacidad para pensar bajo presión y desarrollar tácticas estando bajo ataque." aria-label="Tirar Desafío de Combatir">Combatir</button><div class="sheet-die-radios"><input type="radio" name="attr_combatir" value="6" checked><input type="radio" name="attr_combatir" value="8"><input type="radio" name="attr_combatir" value="10"><input type="radio" name="attr_combatir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_picardear" title="Tu capacidad para pasar desapercibido mientras haces cosas que no deberían verte haciendo. Cuando recurres a Picardear, haces uso del sigilo y el subterfugio para lograr tus objetivos: esconderte, escabullirte, hurtar y sobrepasar obstáculos como cerraduras y cierres sencillos (mecanismos más complejos pueden entrar dentro de la Acción Trastear)." aria-label="Tirar Desafío de Picardear">Picardear</button><div class="sheet-die-radios"><input type="radio" name="attr_picardear" value="6" checked><input type="radio" name="attr_picardear" value="8"><input type="radio" name="attr_picardear" value="10"><input type="radio" name="attr_picardear" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_explorar" title="Tu capacidad de prestar atención al entorno y sacar conclusiones y ventajas de él. La Acción Explorar no indica tanto qué percibes (puesto que no es necesario hacer esfuerzos para percibir), sino qué sacas de aquello que percibes." aria-label="Tirar Desafío de Explorar">Explorar</button><div class="sheet-die-radios"><input type="radio" name="attr_explorar" value="6" checked><input type="radio" name="attr_explorar" value="8"><input type="radio" name="attr_explorar" value="10"><input type="radio" name="attr_explorar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_resistir" title="Tu tesón, tenacidad y resistencia física y mental. Es tu fibra y voluntad, tu capacidad para sobreponerte a situaciones y agresiones que no puedes esquivar y no puedes detener con una simple armadura." aria-label="Tirar Desafío de Resistir">Resistir</button><div class="sheet-die-radios"><input type="radio" name="attr_resistir" value="6" checked><input type="radio" name="attr_resistir" value="8"><input type="radio" name="attr_resistir" value="10"><input type="radio" name="attr_resistir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_influir" title="Cómo de efectivo eres a la hora de transmitir tus ideas a otros seres inteligentes y lograr que varíen su conducta de acuerdo a tus intereses, así como tu astucia y percepción de sutilezas y engaños." aria-label="Tirar Desafío de Influir">Influir</button><div class="sheet-die-radios"><input type="radio" name="attr_influir" value="6" checked><input type="radio" name="attr_influir" value="8"><input type="radio" name="attr_influir" value="10"><input type="radio" name="attr_influir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_saber" title="El conjunto de conocimientos que has acumulado en tu vida, tu cultura general y memoria, ya que también influencia tu capacidad para recordar hechos e información necesaria y útil en el momento adecuado." aria-label="Tirar Desafío de Saber">Saber</button><div class="sheet-die-radios"><input type="radio" name="attr_saber" value="6" checked><input type="radio" name="attr_saber" value="8"><input type="radio" name="attr_saber" value="10"><input type="radio" name="attr_saber" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_maniobrar" title="Tu capacidad para esforzarte y sacar el mejor rendimiento a tu físico. Las acciones corporales vigorosas y atléticas entran en el campo de Maniobrar, desde moverse con energía (correr, saltar, nadar, trepar…) hasta realizar proezas de fuerza bruta (levantar, lanzar, empujar, arrastrar, romper…)." aria-label="Tirar Desafío de Maniobrar">Maniobrar</button><div class="sheet-die-radios"><input type="radio" name="attr_maniobrar" value="6" checked><input type="radio" name="attr_maniobrar" value="8"><input type="radio" name="attr_maniobrar" value="10"><input type="radio" name="attr_maniobrar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_trastear" title="Tu pericia técnica y mecánica, tu habilidad para manipular, comprender, construir y desbaratar máquinas, mecanismos y otro tipo de objetos." aria-label="Tirar Desafío de Trastear">Trastear</button><div class="sheet-die-radios"><input type="radio" name="attr_trastear" value="6" checked><input type="radio" name="attr_trastear" value="8"><input type="radio" name="attr_trastear" value="10"><input type="radio" name="attr_trastear" value="12"></div></div>
     </div>
   </div>
 
   <div class="sheet-panel sheet-senas">
     <h2>SEÑAS</h2>
     <p>Si ninguna Seña es aplicable, la reserva recibe 1d6.</p>
-    <div class="sheet-list-row"><input type="text" name="attr_sena1_nombre" placeholder="Seña 1"><div class="sheet-sign-radios"><input type="radio" name="attr_sena1_dado" value="8" checked><input type="radio" name="attr_sena1_dado" value="10"><input type="radio" name="attr_sena1_dado" value="12"></div></div>
-    <div class="sheet-list-row"><input type="text" name="attr_sena2_nombre" placeholder="Seña 2"><div class="sheet-sign-radios"><input type="radio" name="attr_sena2_dado" value="8" checked><input type="radio" name="attr_sena2_dado" value="10"><input type="radio" name="attr_sena2_dado" value="12"></div></div>
-    <div class="sheet-list-row"><input type="text" name="attr_sena3_nombre" placeholder="Seña de Arquetipo"><div class="sheet-sign-radios"><input type="radio" name="attr_sena3_dado" value="8" checked><input type="radio" name="attr_sena3_dado" value="10"><input type="radio" name="attr_sena3_dado" value="12"></div></div>
-    <div class="sheet-list-row"><input type="text" name="attr_sena4_nombre" placeholder="Seña adicional"><div class="sheet-sign-radios"><input type="radio" name="attr_sena4_dado" value="8" checked><input type="radio" name="attr_sena4_dado" value="10"><input type="radio" name="attr_sena4_dado" value="12"></div></div>
+    <button class="sheet-help-hotspot sheet-help-senas" type="button" aria-label="Ayuda sobre Señas" title="Así como tus Acciones representan tu entrenamiento, tus Señas hablan de ti, de tu identidad, tu pasado y las cosas que te distinguen de los demás. Algunas serán útiles en ciertas circunstancias y mejorarán tus oportunidades de salirte con la tuya. Cada Seña tiene un dado de d8 a d12: un tamaño mayor representa un aspecto más relevante, importante o desarrollado en tu personaje."></button>
+    <input class="sheet-sena-name sheet-sena-name-1" type="text" name="attr_sena1_nombre" placeholder="Seña 1">
+    <input class="sheet-sena-name sheet-sena-name-2" type="text" name="attr_sena2_nombre" placeholder="Seña 2">
+    <input class="sheet-sena-name sheet-sena-name-3" type="text" name="attr_sena3_nombre" placeholder="Seña de Arquetipo">
+    <input class="sheet-sena-name sheet-sena-name-4" type="text" name="attr_sena4_nombre" placeholder="Seña adicional">
+    <div class="sheet-sign-radios sheet-sena-dice sheet-sena-dice-1"><input type="radio" name="attr_sena1_dado" value="8" checked><input type="radio" name="attr_sena1_dado" value="10"><input type="radio" name="attr_sena1_dado" value="12"></div>
+    <div class="sheet-sign-radios sheet-sena-dice sheet-sena-dice-2"><input type="radio" name="attr_sena2_dado" value="8" checked><input type="radio" name="attr_sena2_dado" value="10"><input type="radio" name="attr_sena2_dado" value="12"></div>
+    <div class="sheet-sign-radios sheet-sena-dice sheet-sena-dice-3"><input type="radio" name="attr_sena3_dado" value="8" checked><input type="radio" name="attr_sena3_dado" value="10"><input type="radio" name="attr_sena3_dado" value="12"></div>
+    <div class="sheet-sign-radios sheet-sena-dice sheet-sena-dice-4"><input type="radio" name="attr_sena4_dado" value="8" checked><input type="radio" name="attr_sena4_dado" value="10"><input type="radio" name="attr_sena4_dado" value="12"></div>
   </div>
 
   <div class="sheet-panel sheet-aptitudes">
     <h2>APTITUDES</h2>
+    <button class="sheet-help-hotspot sheet-help-aptitudes" type="button" aria-label="Ayuda sobre Aptitudes" title="Las Aptitudes son especializaciones de tu personaje y reflejan qué cosas se le dan realmente bien: en qué profesión destaca, cómo pelea, de qué forma obra su magia, qué recursos tiene o alguna otra capacidad especial. Cada Aptitud establece su propio efecto; algunas pueden conceder Ventaja o añadir dados en determinados Desafíos."></button>
     <p class="sheet-help">Configura el efecto mecánico para que la pregunta de Desafío pueda aplicarlo.</p>
-    <div class="sheet-aptitud"><input type="text" name="attr_aptitud1_nombre" placeholder="Aptitud de Origen"><select name="attr_aptitud1_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud1_texto"></textarea></div>
-    <div class="sheet-aptitud"><input type="text" name="attr_aptitud2_nombre" placeholder="Aptitud de Arquetipo"><select name="attr_aptitud2_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud2_texto"></textarea></div>
-    <div class="sheet-aptitud"><input type="text" name="attr_aptitud3_nombre" placeholder="Otra Aptitud"><select name="attr_aptitud3_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud3_texto"></textarea></div>
+    <div class="sheet-aptitude-list">
+      <fieldset class="repeating_aptitudes">
+        <div class="sheet-aptitud">
+          <div class="sheet-aptitud-heading">
+            <select name="attr_aptitud_efecto" title="Efecto de esta Aptitud en la tirada" aria-label="Efecto de la Aptitud"><option value="0">Sin dado</option><option value="ventaja">+1 Vent.</option><option value="accion">+1 Acción</option></select>
+            <input type="text" name="attr_aptitud_nombre" placeholder="Nombre de la Aptitud" aria-label="Nombre de la Aptitud">
+          </div>
+          <textarea name="attr_aptitud_texto" placeholder="Descripción, condiciones, coste y efectos de la Aptitud" aria-label="Descripción de la Aptitud"></textarea>
+        </div>
+      </fieldset>
+    </div>
   </div>
 
   <div class="sheet-panel sheet-vinculos">
     <h2>VÍNCULOS</h2>
-    <div class="sheet-list-row"><input type="text" name="attr_vinculo1"><label>Agotado <input type="checkbox" name="attr_vinculo1_agotado" value="1"></label></div>
-    <div class="sheet-list-row"><input type="text" name="attr_vinculo2"><label>Agotado <input type="checkbox" name="attr_vinculo2_agotado" value="1"></label></div>
-    <div class="sheet-list-row"><input type="text" name="attr_vinculo3"><label>Agotado <input type="checkbox" name="attr_vinculo3_agotado" value="1"></label></div>
+    <button class="sheet-help-hotspot sheet-help-vinculos" type="button" aria-label="Ayuda sobre Vínculos" title="Los Vínculos describen tus relaciones, expectativas, opiniones o experiencias vividas con los demás personajes jugadores. Cuando un personaje con el que tengas un Vínculo afronte un Desafío y el contenido del Vínculo sea aplicable, puedes agotarlo para que obtenga +1 éxito adicional."></button>
+    <input class="sheet-vinculo-name sheet-vinculo-name-1" type="text" name="attr_vinculo1" aria-label="Vínculo 1">
+    <input class="sheet-vinculo-name sheet-vinculo-name-2" type="text" name="attr_vinculo2" aria-label="Vínculo 2">
+    <input class="sheet-vinculo-name sheet-vinculo-name-3" type="text" name="attr_vinculo3" aria-label="Vínculo 3">
+    <input class="sheet-vinculo-name sheet-vinculo-name-4" type="text" name="attr_vinculo4" aria-label="Vínculo 4">
+    <input class="sheet-vinculo-check sheet-vinculo-check-1" type="checkbox" name="attr_vinculo1_agotado" value="1" aria-label="Vínculo 1 agotado">
+    <input class="sheet-vinculo-check sheet-vinculo-check-2" type="checkbox" name="attr_vinculo2_agotado" value="1" aria-label="Vínculo 2 agotado">
+    <input class="sheet-vinculo-check sheet-vinculo-check-3" type="checkbox" name="attr_vinculo3_agotado" value="1" aria-label="Vínculo 3 agotado">
+    <input class="sheet-vinculo-check sheet-vinculo-check-4" type="checkbox" name="attr_vinculo4_agotado" value="1" aria-label="Vínculo 4 agotado">
   </div>
 
   <div class="sheet-panel sheet-brios">
     <h2>BRÍOS</h2>
-    <div class="sheet-pips"><input type="checkbox" name="attr_brio1" value="1" checked><input type="checkbox" name="attr_brio2" value="1" checked><input type="checkbox" name="attr_brio3" value="1" checked><input type="checkbox" name="attr_brio4" value="1"><input type="checkbox" name="attr_brio5" value="1"></div>
+    <button class="sheet-help-hotspot sheet-help-brios" type="button" aria-label="Ayuda sobre Bríos" title="Los Bríos se usan para gestionar la capacidad de acción e influencia de los personajes dentro del juego y tienen diversos usos. Cada jugador comienza a jugar con tres Bríos."></button>
+    <div class="sheet-pips"><input type="checkbox" name="attr_brio1" value="1" checked><input type="checkbox" name="attr_brio2" value="1" checked><input type="checkbox" name="attr_brio3" value="1" checked><input type="checkbox" name="attr_brio4" value="1"><input type="checkbox" name="attr_brio5" value="1"><input type="checkbox" name="attr_brio6" value="1"></div>
   </div>
 
   <div class="sheet-panel sheet-pertrechos">
     <h2>PERTRECHOS</h2>
-    <div class="sheet-gear-head"><span>Nombre</span><span>Bultos</span><span>Usos</span></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho1_nombre"><input type="number" name="attr_pertrecho1_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho1_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho2_nombre"><input type="number" name="attr_pertrecho2_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho2_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho3_nombre"><input type="number" name="attr_pertrecho3_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho3_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho4_nombre"><input type="number" name="attr_pertrecho4_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho4_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho5_nombre"><input type="number" name="attr_pertrecho5_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho5_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho6_nombre"><input type="number" name="attr_pertrecho6_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho6_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho7_nombre"><input type="number" name="attr_pertrecho7_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho7_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho8_nombre"><input type="number" name="attr_pertrecho8_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho8_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho9_nombre"><input type="number" name="attr_pertrecho9_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho9_usos" min="0"></div>
-    <div class="sheet-gear"><input type="text" name="attr_pertrecho10_nombre"><input type="number" name="attr_pertrecho10_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho10_usos" min="0"></div>
+    <button class="sheet-help-hotspot sheet-help-pertrechos" type="button" aria-label="Ayuda sobre Pertrechos" title="Los Pertrechos son los objetos que tu personaje podrá utilizar durante sus aventuras. Tu arquetipo te proporcionará algunos de inicio y otros los encontrarás o adquirirás por el camino. Dispones de 10 espacios o bultos, que representan tu capacidad de carga. Cuando los diez estén llenos no podrás llevar nada más encima. Los objetos ligeros ocupan medio bulto."></button>
+    <div class="sheet-gear-head"><span>Nombre</span><span>Usos</span></div>
+    <div class="sheet-gear sheet-gear-1"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho1_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho1_usos" min="0" aria-label="Usos del Pertrecho 1"></div>
+    <div class="sheet-gear sheet-gear-2"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho2_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho2_usos" min="0" aria-label="Usos del Pertrecho 2"></div>
+    <div class="sheet-gear sheet-gear-3"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho3_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho3_usos" min="0" aria-label="Usos del Pertrecho 3"></div>
+    <div class="sheet-gear sheet-gear-4"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho4_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho4_usos" min="0" aria-label="Usos del Pertrecho 4"></div>
+    <div class="sheet-gear sheet-gear-5"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho5_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho5_usos" min="0" aria-label="Usos del Pertrecho 5"></div>
+    <div class="sheet-gear sheet-gear-6"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho6_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho6_usos" min="0" aria-label="Usos del Pertrecho 6"></div>
+    <div class="sheet-gear sheet-gear-7"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho7_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho7_usos" min="0" aria-label="Usos del Pertrecho 7"></div>
+    <div class="sheet-gear sheet-gear-8"><input class="sheet-gear-name-full" type="text" name="attr_pertrecho8_nombre"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho8_usos" min="0" aria-label="Usos del Pertrecho 8"></div>
+    <div class="sheet-gear sheet-gear-9"><input class="sheet-gear-name-left" type="text" name="attr_pertrecho9_nombre" aria-label="Pertrecho corto 9"><input class="sheet-gear-uses-middle" type="number" name="attr_pertrecho9_usos" min="0" aria-label="Usos del Pertrecho 9"><input class="sheet-gear-name-right" type="text" name="attr_pertrecho11_nombre" aria-label="Pertrecho corto 11"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho11_usos" min="0" aria-label="Usos del Pertrecho 11"></div>
+    <div class="sheet-gear sheet-gear-10"><input class="sheet-gear-name-left" type="text" name="attr_pertrecho10_nombre" aria-label="Pertrecho corto 10"><input class="sheet-gear-uses-middle" type="number" name="attr_pertrecho10_usos" min="0" aria-label="Usos del Pertrecho 10"><input class="sheet-gear-name-right" type="text" name="attr_pertrecho12_nombre" aria-label="Pertrecho corto 12"><input class="sheet-gear-uses-right" type="number" name="attr_pertrecho12_usos" min="0" aria-label="Usos del Pertrecho 12"></div>
 
-    <div class="sheet-equipo"><strong>Equipo de buscador</strong><input type="checkbox" name="attr_equipo1" value="1"><input type="checkbox" name="attr_equipo2" value="1"><input type="checkbox" name="attr_equipo3" value="1"><input type="checkbox" name="attr_equipo4" value="1"><input type="checkbox" name="attr_equipo5" value="1"></div>
+    <div class="sheet-equipo">
+      <strong>Equipo de buscador</strong>
+      <button class="sheet-help-hotspot sheet-help-equipo" type="button" aria-label="Ayuda sobre Equipo de buscador" title="Las cinco casillas de Equipo de buscador representan de forma abstracta herramientas y objetos mundanos que pueden ser útiles. Cuando necesites uno, tacha una casilla y anótalo en los Pertrechos según los bultos que ocupe. Necesitas una casilla sin tachar, suficiente espacio en los bultos y el visto bueno de la DJ."></button>
+      <input type="checkbox" name="attr_equipo1" value="1" aria-label="Primera casilla de Equipo de buscador">
+      <input type="checkbox" name="attr_equipo2" value="1" aria-label="Segunda casilla de Equipo de buscador">
+      <input type="checkbox" name="attr_equipo3" value="1" aria-label="Tercera casilla de Equipo de buscador">
+      <input type="checkbox" name="attr_equipo4" value="1" aria-label="Cuarta casilla de Equipo de buscador">
+      <input type="checkbox" name="attr_equipo5" value="1" aria-label="Quinta casilla de Equipo de buscador">
+    </div>
 
     <h3>ARMAS</h3>
-    <div class="sheet-combat-row"><input type="text" name="attr_arma1_nombre" placeholder="Arma"><label>Daño <input type="number" name="attr_arma1_dano" min="0"></label><input type="text" name="attr_arma1_notas" placeholder="Notas"></div>
-    <div class="sheet-combat-row"><input type="text" name="attr_arma2_nombre" placeholder="Arma"><label>Daño <input type="number" name="attr_arma2_dano" min="0"></label><input type="text" name="attr_arma2_notas" placeholder="Notas"></div>
+    <div class="sheet-combat-row sheet-weapon-row sheet-weapon-row-1"><input class="sheet-combat-name" type="text" name="attr_arma1_nombre" aria-label="Arma 1"><input class="sheet-combat-value" type="number" name="attr_arma1_dano" min="0" aria-label="Daño del arma 1"><input class="sheet-combat-notes" type="text" name="attr_arma1_notas" aria-label="Notas del arma 1"></div>
+    <div class="sheet-combat-row sheet-weapon-row sheet-weapon-row-2"><input class="sheet-combat-name" type="text" name="attr_arma2_nombre" aria-label="Arma 2"><input class="sheet-combat-value" type="number" name="attr_arma2_dano" min="0" aria-label="Daño del arma 2"><input class="sheet-combat-notes" type="text" name="attr_arma2_notas" aria-label="Notas del arma 2"></div>
+    <div class="sheet-combat-row sheet-weapon-row sheet-weapon-row-3"><input class="sheet-combat-name" type="text" name="attr_arma3_nombre" aria-label="Arma 3"><input class="sheet-combat-value" type="number" name="attr_arma3_dano" min="0" aria-label="Daño del arma 3"><input class="sheet-combat-notes" type="text" name="attr_arma3_notas" aria-label="Notas del arma 3"></div>
+    <div class="sheet-combat-row sheet-weapon-row sheet-weapon-row-4"><input class="sheet-combat-name" type="text" name="attr_arma4_nombre" aria-label="Arma 4"><input class="sheet-combat-value" type="number" name="attr_arma4_dano" min="0" aria-label="Daño del arma 4"><input class="sheet-combat-notes" type="text" name="attr_arma4_notas" aria-label="Notas del arma 4"></div>
 
     <h3>ARMADURAS Y ESCUDOS</h3>
-    <div class="sheet-combat-row"><input type="text" name="attr_armadura1_nombre" placeholder="Armadura o escudo"><label>Defensa <input type="number" name="attr_armadura1_defensa" min="0"></label><input type="text" name="attr_armadura1_notas" placeholder="Notas"></div>
-    <div class="sheet-combat-row"><input type="text" name="attr_armadura2_nombre" placeholder="Armadura o escudo"><label>Defensa <input type="number" name="attr_armadura2_defensa" min="0"></label><input type="text" name="attr_armadura2_notas" placeholder="Notas"></div>
+    <div class="sheet-combat-row sheet-armor-row sheet-armor-row-1"><input class="sheet-combat-name" type="text" name="attr_armadura1_nombre" aria-label="Armadura o escudo 1"><input class="sheet-combat-value" type="number" name="attr_armadura1_defensa" min="0" aria-label="Defensa de la armadura o escudo 1"><input class="sheet-combat-notes" type="text" name="attr_armadura1_notas" aria-label="Notas de la armadura o escudo 1"></div>
+    <div class="sheet-combat-row sheet-armor-row sheet-armor-row-2"><input class="sheet-combat-name" type="text" name="attr_armadura2_nombre" aria-label="Armadura o escudo 2"><input class="sheet-combat-value" type="number" name="attr_armadura2_defensa" min="0" aria-label="Defensa de la armadura o escudo 2"><input class="sheet-combat-notes" type="text" name="attr_armadura2_notas" aria-label="Notas de la armadura o escudo 2"></div>
+    <div class="sheet-combat-row sheet-armor-row sheet-armor-row-3"><input class="sheet-combat-name" type="text" name="attr_armadura3_nombre" aria-label="Armadura o escudo 3"><input class="sheet-combat-value" type="number" name="attr_armadura3_defensa" min="0" aria-label="Defensa de la armadura o escudo 3"><input class="sheet-combat-notes" type="text" name="attr_armadura3_notas" aria-label="Notas de la armadura o escudo 3"></div>
   </div>
 
   <div class="sheet-panel sheet-defensa">
     <h2>DEFENSA</h2>
-    <label>Total <input type="number" name="attr_defensa_total" min="0"></label>
-    <label>Actual <input type="number" name="attr_defensa_actual" min="0"></label>
+    <button class="sheet-help-hotspot sheet-help-defensa" type="button" aria-label="Ayuda sobre Defensa" title="La Defensa representa la protección de tus armaduras y escudos. Puedes gastar 1 nivel de Defensa para reducir a la mitad la mayoría de las fuentes de Daño físico provenientes de armas manufacturadas o naturales. Un respiro o un descanso recuperan todos tus niveles de Defensa."></button>
+    <input class="sheet-defense-value sheet-defense-total" type="number" name="attr_defensa_total" min="0" aria-label="Defensa total">
+    <input class="sheet-defense-value sheet-defense-current" type="number" name="attr_defensa_actual" min="0" aria-label="Defensa actual">
   </div>
 
   <div class="sheet-panel sheet-aguante">
     <h2>AGUANTE</h2>
-    <label>Aguante <input type="number" name="attr_aguante" value="10" min="0"></label>
-    <label>Daño acumulado <input type="number" name="attr_dano_acumulado" value="0" min="0"></label>
+    <button class="sheet-help-hotspot sheet-help-aguante" type="button" aria-label="Ayuda sobre Aguante" title="El Aguante representa la cantidad de Daño que eres capaz de soportar antes de caer fuera de combate. Para la enorme mayoría de las personas tiene un valor de 10. Si el Daño acumulado supera tu Aguante, quedas fuera de combate."></button>
+    <input class="sheet-endurance-value sheet-endurance-total" type="number" name="attr_aguante" value="10" min="0" aria-label="Aguante">
+    <input class="sheet-endurance-value sheet-endurance-damage" type="number" name="attr_dano_acumulado" value="0" min="0" aria-label="Daño acumulado">
   </div>
 
   <div class="sheet-panel sheet-heridas">
@@ -123,12 +167,14 @@
 <div class="sheet-page sheet-page-ship">
   <div class="sheet-ea-ship">
     <div class="sheet-ship-values">
-      <input type="number" name="attr_navio_maniobra" min="0">
-      <input type="number" name="attr_navio_vela" min="0">
-      <input type="number" name="attr_navio_potencia" min="0">
-      <input type="number" name="attr_navio_bodega" min="0">
-      <input type="number" name="attr_navio_casco" min="0">
-      <input type="number" name="attr_navio_corazon" min="0">
+      <input class="sheet-ship-value sheet-ship-value-maniobra" type="number" name="attr_navio_maniobra" min="0" aria-label="Maniobra">
+      <input class="sheet-ship-value sheet-ship-value-vela" type="number" name="attr_navio_vela" min="0" aria-label="Vela">
+      <input class="sheet-ship-value sheet-ship-value-potencia" type="number" name="attr_navio_potencia" min="0" aria-label="Potencia">
+      <input class="sheet-ship-value sheet-ship-value-bodega" type="number" name="attr_navio_bodega" min="0" aria-label="Bodega">
+      <input class="sheet-ship-value sheet-ship-value-casco-maximo" type="number" name="attr_navio_casco" min="0" aria-label="Casco máximo">
+      <input class="sheet-ship-value sheet-ship-value-casco-actual" type="number" name="attr_navio_casco_actual" min="0" aria-label="Casco actual">
+      <input class="sheet-ship-value sheet-ship-value-corazon-maximo" type="number" name="attr_navio_corazon" min="0" aria-label="Corazón máximo">
+      <input class="sheet-ship-value sheet-ship-value-corazon-actual" type="number" name="attr_navio_corazon_actual" min="0" aria-label="Corazón actual">
     </div>
 
     <div class="sheet-ship-panel sheet-ship-class">
@@ -160,12 +206,17 @@
     </div>
 
     <div class="sheet-ship-panel sheet-ship-cargo">
-      <textarea name="attr_navio_carga"></textarea>
+      <input class="sheet-ship-cargo-municion-1" type="text" name="attr_navio_carga_municion" aria-label="Munición, primera línea">
+      <input class="sheet-ship-cargo-municion-2" type="text" name="attr_navio_carga_municion2" aria-label="Munición, segunda línea">
+      <input class="sheet-ship-cargo-viveres-1" type="text" name="attr_navio_carga_viveres" aria-label="Víveres, primera línea">
+      <input class="sheet-ship-cargo-viveres-2" type="text" name="attr_navio_carga_viveres2" aria-label="Víveres, segunda línea">
+      <input class="sheet-ship-cargo-viajeros-1" type="text" name="attr_navio_carga_viajeros" aria-label="Viajeros, primera línea">
+      <input class="sheet-ship-cargo-viajeros-2" type="text" name="attr_navio_carga_viajeros2" aria-label="Viajeros, segunda línea">
     </div>
 
     <div class="sheet-ship-panel sheet-ship-armament">
-      <div class="sheet-ship-weapon"><input type="text" name="attr_navio_bateria1"><input type="number" name="attr_navio_bateria1_dano" min="0"><input type="text" name="attr_navio_bateria1_notas"></div>
-      <div class="sheet-ship-weapon"><input type="text" name="attr_navio_bateria2"><input type="number" name="attr_navio_bateria2_dano" min="0"><input type="text" name="attr_navio_bateria2_notas"></div>
+      <div class="sheet-ship-weapon sheet-ship-weapon-1"><input type="text" name="attr_navio_bateria1" aria-label="Primera batería"><input type="number" name="attr_navio_bateria1_dano" min="0" aria-label="Daño de la primera batería"><input type="text" name="attr_navio_bateria1_notas" aria-label="Notas de la primera batería"></div>
+      <div class="sheet-ship-weapon sheet-ship-weapon-2"><input type="text" name="attr_navio_bateria2" aria-label="Segunda batería"><input type="number" name="attr_navio_bateria2_dano" min="0" aria-label="Daño de la segunda batería"><input type="text" name="attr_navio_bateria2_notas" aria-label="Notas de la segunda batería"></div>
       <div class="sheet-ship-ammo"><input type="text" name="attr_navio_municion"><input type="number" name="attr_navio_municion_cantidad" min="0"><input type="text" name="attr_navio_municion_notas"></div>
     </div>
   </div>
@@ -216,8 +267,7 @@
   const EA_BASE_ATTRS = ["character_name"]
     .concat(EA_ACTIONS)
     .concat([1,2,3,4].flatMap(i => [`sena${i}_nombre`, `sena${i}_dado`]))
-    .concat([1,2,3].flatMap(i => [`aptitud${i}_nombre`, `aptitud${i}_efecto`]))
-    .concat([1,2,3,4,5,6,7,8,9,10].map(i => `pertrecho${i}_nombre`));
+    .concat([1,2,3,4,5,6,7,8,9,10,11,12].map(i => `pertrecho${i}_nombre`));
 
   const eaInt = (value, fallback = 0) => {
     const number = parseInt(value, 10);
@@ -241,7 +291,13 @@
   const eaSuccesses = (roll) => eaDice(roll).reduce((total, die) => total + (die >= 8 ? 2 : die >= 4 ? 1 : 0), 0);
 
   const eaRollChallenge = (action) => {
-    getAttrs(EA_BASE_ATTRS, values => {
+    getSectionIDs("repeating_aptitudes", aptitudeIds => {
+      const aptitudeAttrs = aptitudeIds.flatMap(id => [
+        `repeating_aptitudes_${id}_aptitud_nombre`,
+        `repeating_aptitudes_${id}_aptitud_efecto`
+      ]);
+
+      getAttrs(EA_BASE_ATTRS.concat(aptitudeAttrs), values => {
       const actionDie = [6,8,10,12].includes(eaInt(values[action])) ? eaInt(values[action]) : 6;
       const actionName = action.charAt(0).toUpperCase() + action.slice(1);
 
@@ -252,16 +308,17 @@
       });
 
       const aptitudeOptions = [{ label: "Ninguna", value: "0" }];
-      [1,2,3].forEach(i => {
-        const name = values[`aptitud${i}_nombre`];
+      aptitudeIds.forEach(id => {
+        const prefix = `repeating_aptitudes_${id}`;
+        const name = values[`${prefix}_aptitud_nombre`];
         if (!name) return;
-        const effect = values[`aptitud${i}_efecto`];
+        const effect = values[`${prefix}_aptitud_efecto`];
         const expression = effect === "accion" ? `1d${actionDie}` : effect === "ventaja" ? "1d6" : "0";
         aptitudeOptions.push({ label: name, value: expression });
       });
 
       const gearOptions = [{ label: "Ninguno", value: "0" }];
-      [1,2,3,4,5,6,7,8,9,10].forEach(i => {
+      [1,2,3,4,5,6,7,8,9,10,11,12].forEach(i => {
         const name = values[`pertrecho${i}_nombre`];
         if (name) gearOptions.push({ label: name, value: "1d6" });
       });
@@ -319,12 +376,43 @@
           margen: marginText
         });
       });
+      });
     });
   };
 
   EA_ACTIONS.forEach(action => on(`clicked:desafio_${action}`, () => eaRollChallenge(action)));
 
+  const eaMigrateLegacyAptitudes = () => {
+    const legacyAttrs = ["aptitudes_repeating_migrated"]
+      .concat([1,2,3].flatMap(i => [`aptitud${i}_nombre`, `aptitud${i}_efecto`, `aptitud${i}_texto`]));
+
+    getAttrs(legacyAttrs, values => {
+      if (values.aptitudes_repeating_migrated === "1") return;
+
+      getSectionIDs("repeating_aptitudes", aptitudeIds => {
+        const updates = { aptitudes_repeating_migrated: "1" };
+
+        if (!aptitudeIds.length) {
+          [1,2,3].forEach(i => {
+            const name = String(values[`aptitud${i}_nombre`] || "").trim();
+            const text = String(values[`aptitud${i}_texto`] || "").trim();
+            if (!name && !text) return;
+
+            const rowId = generateRowID();
+            const prefix = `repeating_aptitudes_${rowId}`;
+            updates[`${prefix}_aptitud_nombre`] = name || "Aptitud";
+            updates[`${prefix}_aptitud_efecto`] = values[`aptitud${i}_efecto`] || "0";
+            updates[`${prefix}_aptitud_texto`] = text;
+          });
+        }
+
+        setAttrs(updates, { silent: true });
+      });
+    });
+  };
+
   on("sheet:opened", () => {
+    eaMigrateLegacyAptitudes();
     getAttrs(EA_ACTIONS.concat(["aguante", "dano_acumulado", "sheet_version"]), values => {
       const defaults = {};
       EA_ACTIONS.forEach(action => { if (!values[action]) defaults[action] = 6; });
