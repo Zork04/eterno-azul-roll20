@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Trade Winds";
   src: local("Trade Winds"),
+       url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/TradeWinds-Regular.ttf") format("truetype"),
        url("https://raw.githubusercontent.com/google/fonts/main/ofl/tradewinds/TradeWinds-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
@@ -213,7 +214,7 @@
 
 .sheet-ea h2::before,
 .sheet-ea h2::after {
-  content: " — ";
+  content: " - ";
 }
 
 .sheet-ea p {
@@ -311,7 +312,7 @@
 
 .sheet-rasgos .sheet-rasgo-input {
   position: absolute;
-  top: 70px;
+  top: 61px;
   height: 27px;
   min-height: 27px;
   max-height: 27px;
@@ -476,7 +477,7 @@
 }
 
 
-/* SEÑAS --------------------------------------------------------------- */
+/* SENAS --------------------------------------------------------------- */
 
 .sheet-sign-radios {
   display: grid;
@@ -758,7 +759,7 @@
 }
 
 
-/* VÍNCULOS ------------------------------------------------------------ */
+/* VINCULOS ------------------------------------------------------------ */
 
 .sheet-vinculos {
   left: 18px;
@@ -806,7 +807,7 @@
 .sheet-vinculo-check-4 { top: 101px; }
 
 
-/* BRÍOS --------------------------------------------------------------- */
+/* BRIOS --------------------------------------------------------------- */
 
 .sheet-brios {
   left: 18px;
@@ -1275,88 +1276,154 @@
 
 /* PLANTILLA DE TIRADAS ------------------------------------------------ */
 
+.sheet-rolltemplate-eternoazul {
+  margin-left: -8px;
+  margin-right: -2px;
+}
+
 .sheet-rolltemplate-eternoazul .sheet-ea-roll {
   position: relative;
+  box-sizing: border-box;
   overflow: hidden;
-  min-height: 260px;
-  padding: 12px 11px 14px;
+  width: 100%;
+  min-height: 430px;
+  padding: 30px 28px 34px;
   border: 0;
-  border-radius: 2px;
+  border-radius: 3px;
   color: #172737;
   background-color: #eef8fb;
-  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/eterno-azul-roll-template-compacta.png");
+  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/eterno-azul-roll-template.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Trade Winds", Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  line-height: 1.3;
   box-shadow: 0 2px 7px rgba(0,0,0,.25);
 }
 
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-title {
-  padding: 7px 9px 2px;
-  color: #fff;
-  background: rgba(23,107,157,.93);
+  padding: 2px 8px 5px;
+  border-bottom: 1px solid rgba(23,107,157,.45);
+  color: #607d8d;
   text-align: center;
-  font-family: "Trade Winds", Georgia, serif;
-  font-size: 19px;
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-action {
-  padding: 6px 8px;
+  padding: 7px 5px 8px;
   color: #07598e;
   text-align: center;
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-risk {
-  text-align: center;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-dice {
-  margin: 7px 9px;
-  padding: 5px 7px;
-  border: 1px solid #8eb1c4;
-  background: rgba(255,255,255,.78);
+  margin: 4px 0 10px;
+  padding: 7px 9px 8px;
+  border-top: 1px solid rgba(23,107,157,.55);
+  border-bottom: 1px solid rgba(23,107,157,.55);
+  background: rgba(255,255,255,.58);
 }
 
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice > div {
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice-title {
+  padding: 0 0 4px;
+  color: #07598e;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-die {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   padding: 2px 0;
 }
 
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-successes {
-  margin: 8px 9px 3px;
-  padding: 7px;
-  color: #fff;
-  background: rgba(113,142,56,.92);
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-die b {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-right: 6px;
+  color: #07598e;
+  font-weight: 400;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-summary {
+  display: table;
+  width: 100%;
+  margin: 8px 0 10px;
+  table-layout: fixed;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-summary > div {
+  display: table-cell;
+  width: 50%;
+  padding: 7px 4px;
   text-align: center;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-successes {
+  color: #355f27;
+  background: rgba(214,231,176,.78);
+  border: 1px solid rgba(85,119,50,.55);
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-risk {
+  color: #76363f;
+  background: rgba(244,218,211,.78);
+  border: 1px solid rgba(133,67,75,.55);
+  border-left: 0;
 }
 
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-result {
-  padding: 6px 10px 3px;
+  padding: 7px 9px 9px;
+  border: 1px solid rgba(23,107,157,.5);
+  background: rgba(255,255,255,.66);
   text-align: center;
-  font-weight: 700;
+  font-weight: 400;
 }
 
-.sheet-rolltemplate-eternoazul .sheet-ea-roll-margin {
-  padding: 2px 10px 9px;
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result-title,
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result-text {
+  display: block;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result-title {
+  margin-bottom: 4px;
   color: #07598e;
-  text-align: center;
-  font-style: italic;
+  font-size: 14px;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result-text {
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .sheet-rolltemplate-eternoazul .inlinerollresult {
-  padding: 0 2px;
-  border: 0 !important;
-  background: transparent !important;
-  font-weight: 700;
+  display: inline-block;
+  min-width: 20px;
+  margin-left: 2px;
+  padding: 1px 4px;
+  border: 1px solid #176b9d !important;
+  border-radius: 3px;
+  color: #172737;
+  background: rgba(255,249,207,.8) !important;
+  font-family: "Trade Winds", Georgia, serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-die > .inlinerollresult {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 
-/* NAVÍO --------------------------------------------------------------- */
+/* NAVIO --------------------------------------------------------------- */
 
 .sheet-ea-ship {
   position: relative;
@@ -1397,7 +1464,7 @@
 }
 
 
-/* VALORES DEL NAVÍO --------------------------------------------------- */
+/* VALORES DEL NAVIO --------------------------------------------------- */
 
 .sheet-ship-values {
   position: absolute;
@@ -1475,14 +1542,14 @@
 }
 
 
-/* PANELES DEL NAVÍO --------------------------------------------------- */
+/* PANELES DEL NAVIO --------------------------------------------------- */
 
 .sheet-ship-panel {
   position: absolute;
 }
 
 
-/* CLASE DE NAVÍO ------------------------------------------------------ */
+/* CLASE DE NAVIO ------------------------------------------------------ */
 
 .sheet-ship-class {
   left: 35px;
@@ -1555,7 +1622,7 @@
 }
 
 
-/* TRIPULACIÓN --------------------------------------------------------- */
+/* TRIPULACION --------------------------------------------------------- */
 
 .sheet-ship-crew {
   left: 431px;
@@ -1681,7 +1748,7 @@
   display: grid;
 
   /*
-   * Nombre | separación | Daño/Cantidad | separación | Notas
+   * Nombre | separacion | Dano/Cantidad | separacion | Notas
    */
 
   grid-template-columns: 346px 13px 57px 20px 215px;
@@ -1891,7 +1958,7 @@
 
 /* MODO DE AJUSTE -------------------------------------------------------
    Estas reglas solamente se aplican cuando se activa
-   «Mostrar marcos de ajuste».
+   "Mostrar marcos de ajuste".
 ------------------------------------------------------------------------ */
 
 .sheet-adjust-toggle:checked ~ .sheet-page .sheet-panel,

@@ -65,13 +65,13 @@
 
   <div class="sheet-panel sheet-aptitudes">
     <h2>APTITUDES</h2>
-    <button class="sheet-help-hotspot sheet-help-aptitudes" type="button" aria-label="Ayuda sobre Aptitudes" title="Las Aptitudes son especializaciones de tu personaje y reflejan qué cosas se le dan realmente bien: en qué profesión destaca, cómo pelea, de qué forma obra su magia, qué recursos tiene o alguna otra capacidad especial. Cada Aptitud establece su propio efecto; algunas pueden conceder Ventaja o añadir dados en determinados Desafíos."></button>
+    <button class="sheet-help-hotspot sheet-help-aptitudes" type="button" aria-label="Ayuda sobre Aptitudes" title="Las Aptitudes son especializaciones de tu personaje y reflejan qué cosas se le dan realmente bien: en qué profesión destaca, cómo pelea, de qué forma obra su magia, qué recursos tiene o alguna otra capacidad especial. Cada Aptitud establece su propio efecto: puede no añadir dado, conceder una Ventaja o añadir uno o dos dados del mismo tipo que el dado de Acción en determinados Desafíos."></button>
     <p class="sheet-help">Configura el efecto mecánico para que la pregunta de Desafío pueda aplicarlo.</p>
     <div class="sheet-aptitude-list">
       <fieldset class="repeating_aptitudes">
         <div class="sheet-aptitud">
           <div class="sheet-aptitud-heading">
-            <select name="attr_aptitud_efecto" title="Efecto de esta Aptitud en la tirada" aria-label="Efecto de la Aptitud"><option value="0">Sin dado</option><option value="ventaja">+1 Vent.</option><option value="accion">+1 Acción</option></select>
+            <select name="attr_aptitud_efecto" title="Efecto de esta Aptitud en la tirada" aria-label="Efecto de la Aptitud"><option value="0">Sin dado</option><option value="ventaja">+1 Vent.</option><option value="accion">+1 Acción</option><option value="accion2">+2 Acción</option></select>
             <input type="text" name="attr_aptitud_nombre" placeholder="Nombre de la Aptitud" aria-label="Nombre de la Aptitud">
           </div>
           <textarea name="attr_aptitud_texto" placeholder="Descripción, condiciones, coste y efectos de la Aptitud" aria-label="Descripción de la Aptitud"></textarea>
@@ -243,21 +243,26 @@
 <rolltemplate class="sheet-rolltemplate-eternoazul">
   <div class="sheet-ea-roll">
     <div class="sheet-ea-roll-title">{{personaje}}</div>
-    <div class="sheet-ea-roll-action">DESAFÍO DE {{accion_nombre}}</div>
-    <div class="sheet-ea-roll-risk">Riesgo {{riesgo}}</div>
+    <div class="sheet-ea-roll-action">Desafío de: {{accion_nombre}}</div>
     <div class="sheet-ea-roll-dice">
-      <div><b>Acción:</b> {{accion}}</div>
-      <div><b>Seña o dado básico:</b> {{sena}}</div>
-      {{#rollGreater() bravata 0}}<div><b>Bravata:</b> {{bravata}}</div>{{/rollGreater() bravata 0}}
-      {{#rollGreater() aptitud 0}}<div><b>Aptitud:</b> {{aptitud}}</div>{{/rollGreater() aptitud 0}}
-      {{#rollGreater() pertrecho 0}}<div><b>Pertrecho:</b> {{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
-      {{#rollGreater() condicion 0}}<div><b>Condición:</b> {{condicion}}</div>{{/rollGreater() condicion 0}}
-      {{#rollGreater() apoyo 0}}<div><b>Apoyo:</b> {{apoyo}}</div>{{/rollGreater() apoyo 0}}
-      {{#rollGreater() ventaja_dj 0}}<div><b>Ventaja de la DJ:</b> {{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
+      <div class="sheet-ea-roll-dice-title">Dados</div>
+      <div class="sheet-ea-roll-die"><b>{{computed::accion_fuente}}:</b> {{accion}}</div>
+      <div class="sheet-ea-roll-die"><b>{{computed::sena_fuente}}:</b> {{sena}}</div>
+      {{#rollGreater() bravata 0}}<div class="sheet-ea-roll-die"><b>{{computed::bravata_fuente}}:</b> {{bravata}}</div>{{/rollGreater() bravata 0}}
+      {{#rollGreater() aptitud 0}}<div class="sheet-ea-roll-die"><b>{{computed::aptitud_fuente}}:</b> {{aptitud}}</div>{{/rollGreater() aptitud 0}}
+      {{#rollGreater() pertrecho 0}}<div class="sheet-ea-roll-die"><b>{{computed::pertrecho_fuente}}:</b> {{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
+      {{#rollGreater() condicion 0}}<div class="sheet-ea-roll-die"><b>{{computed::condicion_fuente}}:</b> {{condicion}}</div>{{/rollGreater() condicion 0}}
+      {{#rollGreater() apoyo 0}}<div class="sheet-ea-roll-die"><b>{{computed::apoyo_fuente}}:</b> {{apoyo}}</div>{{/rollGreater() apoyo 0}}
+      {{#rollGreater() ventaja_dj 0}}<div class="sheet-ea-roll-die"><b>{{computed::ventaja_dj_fuente}}:</b> {{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
     </div>
-    <div class="sheet-ea-roll-successes">Éxitos: {{computed::exitos}}</div>
-    <div class="sheet-ea-roll-result">{{computed::resultado}}</div>
-    <div class="sheet-ea-roll-margin">{{computed::margen}}</div>
+    <div class="sheet-ea-roll-summary">
+      <div class="sheet-ea-roll-successes">Éxitos: {{computed::exitos}}</div>
+      <div class="sheet-ea-roll-risk">Riesgo: {{riesgo}}</div>
+    </div>
+    <div class="sheet-ea-roll-result">
+      <span class="sheet-ea-roll-result-title">Resultado</span>
+      <span class="sheet-ea-roll-result-text">{{computed::resultado}}</span>
+    </div>
   </div>
 </rolltemplate>
 
@@ -279,6 +284,10 @@
     return clean || fallback;
   };
 
+  const eaRollLabel = (value, fallback) => {
+    return eaSafe(value, fallback).replace(/[\[\]]/g, " ");
+  };
+
   const eaQuery = (question, options) => {
     return `?{${question}|${options.map(option => `${eaSafe(option.label, "Opción")},${option.value}`).join("|")}}`;
   };
@@ -289,6 +298,14 @@
   };
 
   const eaSuccesses = (roll) => eaDice(roll).reduce((total, die) => total + (die >= 8 ? 2 : die >= 4 ? 1 : 0), 0);
+
+  const eaRollSource = (roll, fallback) => {
+    const expression = String((roll && roll.expression) || "");
+    const labelMatch = expression.match(/\[([^\]]+)\]/);
+    const diceMatch = expression.match(/(\d+d(?:4|6|8|10|12))/i);
+    const label = labelMatch ? labelMatch[1] : fallback;
+    return diceMatch ? `${label} (${diceMatch[1].toLowerCase()})` : label;
+  };
 
   const eaRollChallenge = (action) => {
     getSectionIDs("repeating_aptitudes", aptitudeIds => {
@@ -301,10 +318,15 @@
       const actionDie = [6,8,10,12].includes(eaInt(values[action])) ? eaInt(values[action]) : 6;
       const actionName = action.charAt(0).toUpperCase() + action.slice(1);
 
-      const signOptions = [{ label: "Ninguna (añade 1d6)", value: 6 }];
+      const signOptions = [{ label: "Ninguna (añade 1d6)", value: "1d6[Dado básico sin Seña]" }];
       [1,2,3,4].forEach(i => {
         const name = values[`sena${i}_nombre`];
-        if (name) signOptions.push({ label: `${name} (d${eaInt(values[`sena${i}_dado`], 8)})`, value: eaInt(values[`sena${i}_dado`], 8) });
+        if (!name) return;
+        const signDie = eaInt(values[`sena${i}_dado`], 8);
+        signOptions.push({
+          label: `${name} (d${signDie})`,
+          value: `1d${signDie}[Seña: ${eaRollLabel(name, "Seña")}]`
+        });
       });
 
       const aptitudeOptions = [{ label: "Ninguna", value: "0" }];
@@ -313,38 +335,54 @@
         const name = values[`${prefix}_aptitud_nombre`];
         if (!name) return;
         const effect = values[`${prefix}_aptitud_efecto`];
-        const expression = effect === "accion" ? `1d${actionDie}` : effect === "ventaja" ? "1d6" : "0";
+        const aptitudeName = eaRollLabel(name, "Aptitud");
+        const expression = effect === "accion2"
+          ? `2d${actionDie}[Aptitud: ${aptitudeName} - dos dados de Acción]`
+          : effect === "accion"
+            ? `1d${actionDie}[Aptitud: ${aptitudeName} - dado de Acción]`
+            : effect === "ventaja"
+              ? `1d6[Aptitud: ${aptitudeName} - Ventaja]`
+              : "0";
         aptitudeOptions.push({ label: name, value: expression });
       });
 
       const gearOptions = [{ label: "Ninguno", value: "0" }];
       [1,2,3,4,5,6,7,8,9,10,11,12].forEach(i => {
         const name = values[`pertrecho${i}_nombre`];
-        if (name) gearOptions.push({ label: name, value: "1d6" });
+        if (name) gearOptions.push({ label: name, value: `1d6[Pertrecho: ${eaRollLabel(name, "Pertrecho")}]` });
       });
 
-      const bravataQuery = eaQuery("¿Es una Bravata?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
+      const bravataQuery = eaQuery("¿Es una Bravata?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Bravata]"}]);
       const signQuery = eaQuery("Seña autorizada por la DJ", signOptions);
       const aptitudeQuery = eaQuery("Aptitud aplicable autorizada", aptitudeOptions);
       const gearQuery = eaQuery("Pertrecho aplicable autorizado", gearOptions);
-      const conditionQuery = eaQuery("¿Aprovechas una Condición favorable autorizada?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
-      const supportQuery = eaQuery("¿Recibes apoyo de un aliado?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
+      const conditionQuery = eaQuery("¿Aprovechas una Condición favorable autorizada?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Condición favorable]"}]);
+      const supportQuery = eaQuery("¿Recibes apoyo de un aliado?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Apoyo de un aliado]"}]);
       const extraQuery = "?{Ventajas adicionales concedidas por la DJ (cantidad de d6)|0}";
-      const riskQuery = "?{Riesgo total del Desafío|1}";
+      const riskQuery = "?{Riesgo indicado por la DJ|1}";
 
       const roll = `&{template:eternoazul}`
         + ` {{personaje=${eaSafe(values.character_name, "Buscador")}}}`
         + ` {{accion_nombre=${actionName}}}`
-        + ` {{accion=[[1d${actionDie}]]}}`
+        + ` {{accion=[[1d${actionDie}[Acción: ${eaRollLabel(actionName, "Acción")}]]]}}`
         + ` {{bravata=[[${bravataQuery}]]}}`
-        + ` {{sena=[[1d${signQuery}]]}}`
+        + ` {{sena=[[${signQuery}]]}}`
         + ` {{aptitud=[[${aptitudeQuery}]]}}`
         + ` {{pertrecho=[[${gearQuery}]]}}`
         + ` {{condicion=[[${conditionQuery}]]}}`
         + ` {{apoyo=[[${supportQuery}]]}}`
-        + ` {{ventaja_dj=[[${extraQuery}d6]]}}`
+        + ` {{ventaja_dj=[[${extraQuery}d6[Ventajas adicionales]]]}}`
         + ` {{riesgo=[[${riskQuery}]]}}`
-        + ` {{exitos=[[0]]}} {{resultado=[[0]]}} {{margen=[[0]]}}`;
+        + ` {{exitos=[[0]]}}`
+        + ` {{resultado=[[0]]}}`
+        + ` {{accion_fuente=[[0]]}}`
+        + ` {{sena_fuente=[[0]]}}`
+        + ` {{bravata_fuente=[[0]]}}`
+        + ` {{aptitud_fuente=[[0]]}}`
+        + ` {{pertrecho_fuente=[[0]]}}`
+        + ` {{condicion_fuente=[[0]]}}`
+        + ` {{apoyo_fuente=[[0]]}}`
+        + ` {{ventaja_dj_fuente=[[0]]}}`;
 
       startRoll(roll, results => {
         const rolled = results.results || {};
@@ -354,16 +392,12 @@
         const isBravata = eaDice(rolled.bravata).length > 0;
 
         let resultText;
-        let marginText;
         if (successes === 0) {
           resultText = "La DJ determina el resultado e impone una consecuencia.";
-          marginText = `Margen de consecuencia: ${risk}`;
         } else if (successes <= risk) {
           resultText = "Consigues lo que querías, pero la DJ impone una consecuencia.";
-          marginText = `Margen de consecuencia: ${risk - successes}`;
         } else {
           resultText = "Consigues lo que querías sin consecuencias.";
-          marginText = `Margen de éxito: ${successes - risk}`;
         }
 
         if (isBravata && successes <= risk) {
@@ -373,7 +407,14 @@
         finishRoll(results.rollId, {
           exitos: successes,
           resultado: resultText,
-          margen: marginText
+          accion_fuente: eaRollSource(rolled.accion, `Acción: ${actionName}`),
+          sena_fuente: eaRollSource(rolled.sena, "Seña o dado básico"),
+          bravata_fuente: eaRollSource(rolled.bravata, "Ventaja: Bravata"),
+          aptitud_fuente: eaRollSource(rolled.aptitud, "Aptitud"),
+          pertrecho_fuente: eaRollSource(rolled.pertrecho, "Pertrecho"),
+          condicion_fuente: eaRollSource(rolled.condicion, "Ventaja: Condición favorable"),
+          apoyo_fuente: eaRollSource(rolled.apoyo, "Ventaja: Apoyo de un aliado"),
+          ventaja_dj_fuente: eaRollSource(rolled.ventaja_dj, "Ventajas adicionales")
         });
       });
       });
