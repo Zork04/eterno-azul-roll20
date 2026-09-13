@@ -54,8 +54,7 @@
   color: var(--ea-ink);
   font-family: Georgia, "Times New Roman", serif;
   background-color: #eef6f8;
-  /* Sustituye la URL de abajo por la URL pública de ea-ficha-pj.jpg. */
-  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/ea-ficha-pj.jpg");
+  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/ea-ficha-pj.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -202,8 +201,7 @@
   border-radius: 2px;
   color: #172737;
   background-color: #eef8fb;
-  /* Sustituye la URL por la URL pública de eterno-azul-roll-template-compacta.png. */
-  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/eterno-azul-roll-template-compacta.png");
+  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/eterno-azul-roll-template-compacta.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -234,7 +232,7 @@
   height: 1043px;
   color: #07598e;
   font-family: Georgia, "Times New Roman", serif;
-  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/ea-navio.png");
+  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/ea-navio.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
