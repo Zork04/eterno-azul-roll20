@@ -1,0 +1,337 @@
+<div class="sheet-ea-shell">
+  <input id="sheet-tab-pj" class="sheet-tab-radio sheet-tab-pj" type="radio" name="attr_sheet_tab" value="pj" checked>
+  <input id="sheet-tab-ship" class="sheet-tab-radio sheet-tab-ship" type="radio" name="attr_sheet_tab" value="ship">
+  <input id="sheet-tab-npc" class="sheet-tab-radio sheet-tab-npc" type="radio" name="attr_sheet_tab" value="npc">
+  <div class="sheet-tab-bar">
+    <label for="sheet-tab-pj" class="sheet-tab-label-pj">PERSONAJE JUGADOR</label>
+    <label for="sheet-tab-ship" class="sheet-tab-label-ship">NAVÍO</label>
+    <label for="sheet-tab-npc" class="sheet-tab-label-npc">PNJ</label>
+  </div>
+
+<div class="sheet-page sheet-page-pj">
+<div class="sheet-ea">
+  <input type="hidden" name="attr_sheet_version" value="1.0.0">
+
+  <div class="sheet-panel sheet-identidad">
+    <input class="sheet-nombre" type="text" name="attr_character_name" placeholder="NOMBRE">
+    <textarea class="sheet-lema" name="attr_lema" placeholder="Lema o cita"></textarea>
+  </div>
+
+  <div class="sheet-panel sheet-rasgos">
+    <h2>RASGOS</h2>
+    <label>Origen <input type="text" name="attr_origen"></label>
+    <label>Arquetipo <input type="text" name="attr_arquetipo"></label>
+    <textarea name="attr_notas_rasgos" placeholder="Notas de origen y arquetipo"></textarea>
+  </div>
+
+  <div class="sheet-panel sheet-acciones">
+    <h2>ACCIONES</h2>
+    <div class="sheet-action-grid">
+      <div class="sheet-action-row"><button type="action" name="act_desafio_armonizar">Armonizar</button><div class="sheet-die-radios"><input type="radio" name="attr_armonizar" value="6" checked><input type="radio" name="attr_armonizar" value="8"><input type="radio" name="attr_armonizar" value="10"><input type="radio" name="attr_armonizar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_navegar">Navegar</button><div class="sheet-die-radios"><input type="radio" name="attr_navegar" value="6" checked><input type="radio" name="attr_navegar" value="8"><input type="radio" name="attr_navegar" value="10"><input type="radio" name="attr_navegar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_combatir">Combatir</button><div class="sheet-die-radios"><input type="radio" name="attr_combatir" value="6" checked><input type="radio" name="attr_combatir" value="8"><input type="radio" name="attr_combatir" value="10"><input type="radio" name="attr_combatir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_picardear">Picardear</button><div class="sheet-die-radios"><input type="radio" name="attr_picardear" value="6" checked><input type="radio" name="attr_picardear" value="8"><input type="radio" name="attr_picardear" value="10"><input type="radio" name="attr_picardear" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_explorar">Explorar</button><div class="sheet-die-radios"><input type="radio" name="attr_explorar" value="6" checked><input type="radio" name="attr_explorar" value="8"><input type="radio" name="attr_explorar" value="10"><input type="radio" name="attr_explorar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_resistir">Resistir</button><div class="sheet-die-radios"><input type="radio" name="attr_resistir" value="6" checked><input type="radio" name="attr_resistir" value="8"><input type="radio" name="attr_resistir" value="10"><input type="radio" name="attr_resistir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_influir">Influir</button><div class="sheet-die-radios"><input type="radio" name="attr_influir" value="6" checked><input type="radio" name="attr_influir" value="8"><input type="radio" name="attr_influir" value="10"><input type="radio" name="attr_influir" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_saber">Saber</button><div class="sheet-die-radios"><input type="radio" name="attr_saber" value="6" checked><input type="radio" name="attr_saber" value="8"><input type="radio" name="attr_saber" value="10"><input type="radio" name="attr_saber" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_maniobrar">Maniobrar</button><div class="sheet-die-radios"><input type="radio" name="attr_maniobrar" value="6" checked><input type="radio" name="attr_maniobrar" value="8"><input type="radio" name="attr_maniobrar" value="10"><input type="radio" name="attr_maniobrar" value="12"></div></div>
+      <div class="sheet-action-row"><button type="action" name="act_desafio_trastear">Trastear</button><div class="sheet-die-radios"><input type="radio" name="attr_trastear" value="6" checked><input type="radio" name="attr_trastear" value="8"><input type="radio" name="attr_trastear" value="10"><input type="radio" name="attr_trastear" value="12"></div></div>
+    </div>
+  </div>
+
+  <div class="sheet-panel sheet-senas">
+    <h2>SEÑAS</h2>
+    <p>Si ninguna Seña es aplicable, la reserva recibe 1d6.</p>
+    <div class="sheet-list-row"><input type="text" name="attr_sena1_nombre" placeholder="Seña 1"><div class="sheet-sign-radios"><input type="radio" name="attr_sena1_dado" value="8" checked><input type="radio" name="attr_sena1_dado" value="10"><input type="radio" name="attr_sena1_dado" value="12"></div></div>
+    <div class="sheet-list-row"><input type="text" name="attr_sena2_nombre" placeholder="Seña 2"><div class="sheet-sign-radios"><input type="radio" name="attr_sena2_dado" value="8" checked><input type="radio" name="attr_sena2_dado" value="10"><input type="radio" name="attr_sena2_dado" value="12"></div></div>
+    <div class="sheet-list-row"><input type="text" name="attr_sena3_nombre" placeholder="Seña de Arquetipo"><div class="sheet-sign-radios"><input type="radio" name="attr_sena3_dado" value="8" checked><input type="radio" name="attr_sena3_dado" value="10"><input type="radio" name="attr_sena3_dado" value="12"></div></div>
+    <div class="sheet-list-row"><input type="text" name="attr_sena4_nombre" placeholder="Seña adicional"><div class="sheet-sign-radios"><input type="radio" name="attr_sena4_dado" value="8" checked><input type="radio" name="attr_sena4_dado" value="10"><input type="radio" name="attr_sena4_dado" value="12"></div></div>
+  </div>
+
+  <div class="sheet-panel sheet-aptitudes">
+    <h2>APTITUDES</h2>
+    <p class="sheet-help">Configura el efecto mecánico para que la pregunta de Desafío pueda aplicarlo.</p>
+    <div class="sheet-aptitud"><input type="text" name="attr_aptitud1_nombre" placeholder="Aptitud de Origen"><select name="attr_aptitud1_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud1_texto"></textarea></div>
+    <div class="sheet-aptitud"><input type="text" name="attr_aptitud2_nombre" placeholder="Aptitud de Arquetipo"><select name="attr_aptitud2_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud2_texto"></textarea></div>
+    <div class="sheet-aptitud"><input type="text" name="attr_aptitud3_nombre" placeholder="Otra Aptitud"><select name="attr_aptitud3_efecto"><option value="0">Sin dado</option><option value="ventaja">+1 Ventaja</option><option value="accion">+1 dado de Acción</option></select><textarea name="attr_aptitud3_texto"></textarea></div>
+  </div>
+
+  <div class="sheet-panel sheet-vinculos">
+    <h2>VÍNCULOS</h2>
+    <div class="sheet-list-row"><input type="text" name="attr_vinculo1"><label>Agotado <input type="checkbox" name="attr_vinculo1_agotado" value="1"></label></div>
+    <div class="sheet-list-row"><input type="text" name="attr_vinculo2"><label>Agotado <input type="checkbox" name="attr_vinculo2_agotado" value="1"></label></div>
+    <div class="sheet-list-row"><input type="text" name="attr_vinculo3"><label>Agotado <input type="checkbox" name="attr_vinculo3_agotado" value="1"></label></div>
+  </div>
+
+  <div class="sheet-panel sheet-brios">
+    <h2>BRÍOS</h2>
+    <div class="sheet-pips"><input type="checkbox" name="attr_brio1" value="1" checked><input type="checkbox" name="attr_brio2" value="1" checked><input type="checkbox" name="attr_brio3" value="1" checked><input type="checkbox" name="attr_brio4" value="1"><input type="checkbox" name="attr_brio5" value="1"></div>
+  </div>
+
+  <div class="sheet-panel sheet-pertrechos">
+    <h2>PERTRECHOS</h2>
+    <div class="sheet-gear-head"><span>Nombre</span><span>Bultos</span><span>Usos</span></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho1_nombre"><input type="number" name="attr_pertrecho1_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho1_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho2_nombre"><input type="number" name="attr_pertrecho2_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho2_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho3_nombre"><input type="number" name="attr_pertrecho3_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho3_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho4_nombre"><input type="number" name="attr_pertrecho4_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho4_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho5_nombre"><input type="number" name="attr_pertrecho5_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho5_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho6_nombre"><input type="number" name="attr_pertrecho6_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho6_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho7_nombre"><input type="number" name="attr_pertrecho7_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho7_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho8_nombre"><input type="number" name="attr_pertrecho8_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho8_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho9_nombre"><input type="number" name="attr_pertrecho9_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho9_usos" min="0"></div>
+    <div class="sheet-gear"><input type="text" name="attr_pertrecho10_nombre"><input type="number" name="attr_pertrecho10_bultos" step="0.5" min="0"><input type="number" name="attr_pertrecho10_usos" min="0"></div>
+
+    <div class="sheet-equipo"><strong>Equipo de buscador</strong><input type="checkbox" name="attr_equipo1" value="1"><input type="checkbox" name="attr_equipo2" value="1"><input type="checkbox" name="attr_equipo3" value="1"><input type="checkbox" name="attr_equipo4" value="1"><input type="checkbox" name="attr_equipo5" value="1"></div>
+
+    <h3>ARMAS</h3>
+    <div class="sheet-combat-row"><input type="text" name="attr_arma1_nombre" placeholder="Arma"><label>Daño <input type="number" name="attr_arma1_dano" min="0"></label><input type="text" name="attr_arma1_notas" placeholder="Notas"></div>
+    <div class="sheet-combat-row"><input type="text" name="attr_arma2_nombre" placeholder="Arma"><label>Daño <input type="number" name="attr_arma2_dano" min="0"></label><input type="text" name="attr_arma2_notas" placeholder="Notas"></div>
+
+    <h3>ARMADURAS Y ESCUDOS</h3>
+    <div class="sheet-combat-row"><input type="text" name="attr_armadura1_nombre" placeholder="Armadura o escudo"><label>Defensa <input type="number" name="attr_armadura1_defensa" min="0"></label><input type="text" name="attr_armadura1_notas" placeholder="Notas"></div>
+    <div class="sheet-combat-row"><input type="text" name="attr_armadura2_nombre" placeholder="Armadura o escudo"><label>Defensa <input type="number" name="attr_armadura2_defensa" min="0"></label><input type="text" name="attr_armadura2_notas" placeholder="Notas"></div>
+  </div>
+
+  <div class="sheet-panel sheet-defensa">
+    <h2>DEFENSA</h2>
+    <label>Total <input type="number" name="attr_defensa_total" min="0"></label>
+    <label>Actual <input type="number" name="attr_defensa_actual" min="0"></label>
+  </div>
+
+  <div class="sheet-panel sheet-aguante">
+    <h2>AGUANTE</h2>
+    <label>Aguante <input type="number" name="attr_aguante" value="10" min="0"></label>
+    <label>Daño acumulado <input type="number" name="attr_dano_acumulado" value="0" min="0"></label>
+  </div>
+
+  <div class="sheet-panel sheet-heridas">
+    <h2>HERIDAS</h2>
+    <div class="sheet-wound"><input type="checkbox" name="attr_herida1_activa" value="1"><input type="text" name="attr_herida1_nombre"><label>Gravedad <input type="number" name="attr_herida1_gravedad" min="0"></label></div>
+    <div class="sheet-wound"><input type="checkbox" name="attr_herida2_activa" value="1"><input type="text" name="attr_herida2_nombre"><label>Gravedad <input type="number" name="attr_herida2_gravedad" min="0"></label></div>
+    <div class="sheet-wound"><input type="checkbox" name="attr_herida3_activa" value="1"><input type="text" name="attr_herida3_nombre"><label>Gravedad <input type="number" name="attr_herida3_gravedad" min="0"></label></div>
+  </div>
+
+  <div class="sheet-panel sheet-magia">
+    <h2>MAGIA</h2>
+    <textarea name="attr_magia" placeholder="Rituales, capacidades y notas de magia"></textarea>
+  </div>
+</div>
+</div>
+
+<div class="sheet-page sheet-page-ship">
+  <div class="sheet-ea-ship">
+    <div class="sheet-ship-values">
+      <input type="number" name="attr_navio_maniobra" min="0">
+      <input type="number" name="attr_navio_vela" min="0">
+      <input type="number" name="attr_navio_potencia" min="0">
+      <input type="number" name="attr_navio_bodega" min="0">
+      <input type="number" name="attr_navio_casco" min="0">
+      <input type="number" name="attr_navio_corazon" min="0">
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-class">
+      <input type="text" name="attr_navio_clase" placeholder="Clase de navío">
+      <textarea name="attr_navio_clase_descripcion"></textarea>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-seekers">
+      <div><input type="checkbox" name="attr_navio_buscador1_presente" value="1"><input type="text" name="attr_navio_buscador1"></div>
+      <div><input type="checkbox" name="attr_navio_buscador2_presente" value="1"><input type="text" name="attr_navio_buscador2"></div>
+      <div><input type="checkbox" name="attr_navio_buscador3_presente" value="1"><input type="text" name="attr_navio_buscador3"></div>
+      <div><input type="checkbox" name="attr_navio_buscador4_presente" value="1"><input type="text" name="attr_navio_buscador4"></div>
+      <div><input type="checkbox" name="attr_navio_buscador5_presente" value="1"><input type="text" name="attr_navio_buscador5"></div>
+      <div><input type="checkbox" name="attr_navio_buscador6_presente" value="1"><input type="text" name="attr_navio_buscador6"></div>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-upgrades">
+      <textarea name="attr_navio_mejoras"></textarea>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-crew">
+      <textarea name="attr_navio_tripulacion"></textarea>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-faults">
+      <div><input type="checkbox" name="attr_navio_desperfecto1_activo" value="1"><input type="text" name="attr_navio_desperfecto1"><input type="number" name="attr_navio_desperfecto1_gravedad" min="0"></div>
+      <div><input type="checkbox" name="attr_navio_desperfecto2_activo" value="1"><input type="text" name="attr_navio_desperfecto2"><input type="number" name="attr_navio_desperfecto2_gravedad" min="0"></div>
+      <div><input type="checkbox" name="attr_navio_desperfecto3_activo" value="1"><input type="text" name="attr_navio_desperfecto3"><input type="number" name="attr_navio_desperfecto3_gravedad" min="0"></div>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-cargo">
+      <textarea name="attr_navio_carga"></textarea>
+    </div>
+
+    <div class="sheet-ship-panel sheet-ship-armament">
+      <div class="sheet-ship-weapon"><input type="text" name="attr_navio_bateria1"><input type="number" name="attr_navio_bateria1_dano" min="0"><input type="text" name="attr_navio_bateria1_notas"></div>
+      <div class="sheet-ship-weapon"><input type="text" name="attr_navio_bateria2"><input type="number" name="attr_navio_bateria2_dano" min="0"><input type="text" name="attr_navio_bateria2_notas"></div>
+      <div class="sheet-ship-ammo"><input type="text" name="attr_navio_municion"><input type="number" name="attr_navio_municion_cantidad" min="0"><input type="text" name="attr_navio_municion_notas"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet-page sheet-page-npc">
+  <div class="sheet-ea-npc">
+    <div class="sheet-npc-header">
+      <input type="text" name="attr_pnj_nombre" placeholder="NOMBRE DEL PNJ">
+      <textarea name="attr_pnj_concepto" placeholder="Descripción, aspecto y función en la historia"></textarea>
+    </div>
+    <div class="sheet-npc-repeat-heading">APARTADOS DEL PNJ</div>
+    <fieldset class="repeating_pnjsecciones">
+      <div class="sheet-npc-repeat-block">
+        <input class="sheet-npc-repeat-title" type="text" name="attr_seccion_titulo" placeholder="TÍTULO DEL APARTADO">
+        <textarea class="sheet-npc-repeat-text" name="attr_seccion_texto" placeholder="Escribe aquí los rasgos, ataques, resistencias, movimientos o capacidades del PNJ."></textarea>
+      </div>
+    </fieldset>
+    <p class="sheet-npc-reminder">La DJ no tira dados. La Amenaza establece normalmente el Riesgo de los Desafíos que afectan al adversario.</p>
+  </div>
+</div>
+</div>
+
+<rolltemplate class="sheet-rolltemplate-eternoazul">
+  <div class="sheet-ea-roll">
+    <div class="sheet-ea-roll-title">{{personaje}}</div>
+    <div class="sheet-ea-roll-action">DESAFÍO DE {{accion_nombre}}</div>
+    <div class="sheet-ea-roll-risk">Riesgo {{riesgo}}</div>
+    <div class="sheet-ea-roll-dice">
+      <div><b>Acción:</b> {{accion}}</div>
+      <div><b>Seña o dado básico:</b> {{sena}}</div>
+      {{#rollGreater() bravata 0}}<div><b>Bravata:</b> {{bravata}}</div>{{/rollGreater() bravata 0}}
+      {{#rollGreater() aptitud 0}}<div><b>Aptitud:</b> {{aptitud}}</div>{{/rollGreater() aptitud 0}}
+      {{#rollGreater() pertrecho 0}}<div><b>Pertrecho:</b> {{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
+      {{#rollGreater() condicion 0}}<div><b>Condición:</b> {{condicion}}</div>{{/rollGreater() condicion 0}}
+      {{#rollGreater() apoyo 0}}<div><b>Apoyo:</b> {{apoyo}}</div>{{/rollGreater() apoyo 0}}
+      {{#rollGreater() ventaja_dj 0}}<div><b>Ventaja de la DJ:</b> {{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
+    </div>
+    <div class="sheet-ea-roll-successes">Éxitos: {{computed::exitos}}</div>
+    <div class="sheet-ea-roll-result">{{computed::resultado}}</div>
+    <div class="sheet-ea-roll-margin">{{computed::margen}}</div>
+  </div>
+</rolltemplate>
+
+<script type="text/worker">
+  const EA_ACTIONS = ["armonizar", "navegar", "combatir", "picardear", "explorar", "resistir", "influir", "saber", "maniobrar", "trastear"];
+
+  const EA_BASE_ATTRS = ["character_name"]
+    .concat(EA_ACTIONS)
+    .concat([1,2,3,4].flatMap(i => [`sena${i}_nombre`, `sena${i}_dado`]))
+    .concat([1,2,3].flatMap(i => [`aptitud${i}_nombre`, `aptitud${i}_efecto`]))
+    .concat([1,2,3,4,5,6,7,8,9,10].map(i => `pertrecho${i}_nombre`));
+
+  const eaInt = (value, fallback = 0) => {
+    const number = parseInt(value, 10);
+    return Number.isFinite(number) ? number : fallback;
+  };
+
+  const eaSafe = (value, fallback) => {
+    const clean = String(value || "").replace(/[|,}]/g, " ").trim();
+    return clean || fallback;
+  };
+
+  const eaQuery = (question, options) => {
+    return `?{${question}|${options.map(option => `${eaSafe(option.label, "Opción")},${option.value}`).join("|")}}`;
+  };
+
+  const eaDice = (roll) => {
+    if (!roll || !Array.isArray(roll.dice)) return [];
+    return roll.dice.map(eaInt);
+  };
+
+  const eaSuccesses = (roll) => eaDice(roll).reduce((total, die) => total + (die >= 8 ? 2 : die >= 4 ? 1 : 0), 0);
+
+  const eaRollChallenge = (action) => {
+    getAttrs(EA_BASE_ATTRS, values => {
+      const actionDie = [6,8,10,12].includes(eaInt(values[action])) ? eaInt(values[action]) : 6;
+      const actionName = action.charAt(0).toUpperCase() + action.slice(1);
+
+      const signOptions = [{ label: "Ninguna (añade 1d6)", value: 6 }];
+      [1,2,3,4].forEach(i => {
+        const name = values[`sena${i}_nombre`];
+        if (name) signOptions.push({ label: `${name} (d${eaInt(values[`sena${i}_dado`], 8)})`, value: eaInt(values[`sena${i}_dado`], 8) });
+      });
+
+      const aptitudeOptions = [{ label: "Ninguna", value: "0" }];
+      [1,2,3].forEach(i => {
+        const name = values[`aptitud${i}_nombre`];
+        if (!name) return;
+        const effect = values[`aptitud${i}_efecto`];
+        const expression = effect === "accion" ? `1d${actionDie}` : effect === "ventaja" ? "1d6" : "0";
+        aptitudeOptions.push({ label: name, value: expression });
+      });
+
+      const gearOptions = [{ label: "Ninguno", value: "0" }];
+      [1,2,3,4,5,6,7,8,9,10].forEach(i => {
+        const name = values[`pertrecho${i}_nombre`];
+        if (name) gearOptions.push({ label: name, value: "1d6" });
+      });
+
+      const bravataQuery = eaQuery("¿Es una Bravata?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
+      const signQuery = eaQuery("Seña autorizada por la DJ", signOptions);
+      const aptitudeQuery = eaQuery("Aptitud aplicable autorizada", aptitudeOptions);
+      const gearQuery = eaQuery("Pertrecho aplicable autorizado", gearOptions);
+      const conditionQuery = eaQuery("¿Aprovechas una Condición favorable autorizada?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
+      const supportQuery = eaQuery("¿Recibes apoyo de un aliado?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6"}]);
+      const extraQuery = "?{Ventajas adicionales concedidas por la DJ (cantidad de d6)|0}";
+      const riskQuery = "?{Riesgo total del Desafío|1}";
+
+      const roll = `&{template:eternoazul}`
+        + ` {{personaje=${eaSafe(values.character_name, "Buscador")}}}`
+        + ` {{accion_nombre=${actionName}}}`
+        + ` {{accion=[[1d${actionDie}]]}}`
+        + ` {{bravata=[[${bravataQuery}]]}}`
+        + ` {{sena=[[1d${signQuery}]]}}`
+        + ` {{aptitud=[[${aptitudeQuery}]]}}`
+        + ` {{pertrecho=[[${gearQuery}]]}}`
+        + ` {{condicion=[[${conditionQuery}]]}}`
+        + ` {{apoyo=[[${supportQuery}]]}}`
+        + ` {{ventaja_dj=[[${extraQuery}d6]]}}`
+        + ` {{riesgo=[[${riskQuery}]]}}`
+        + ` {{exitos=[[0]]}} {{resultado=[[0]]}} {{margen=[[0]]}}`;
+
+      startRoll(roll, results => {
+        const rolled = results.results || {};
+        const sources = ["accion", "sena", "bravata", "aptitud", "pertrecho", "condicion", "apoyo", "ventaja_dj"];
+        const successes = sources.reduce((total, source) => total + eaSuccesses(rolled[source]), 0);
+        const risk = rolled.riesgo ? eaInt(rolled.riesgo.result, 1) : 1;
+        const isBravata = eaDice(rolled.bravata).length > 0;
+
+        let resultText;
+        let marginText;
+        if (successes === 0) {
+          resultText = "La DJ determina el resultado e impone una consecuencia.";
+          marginText = `Margen de consecuencia: ${risk}`;
+        } else if (successes <= risk) {
+          resultText = "Consigues lo que querías, pero la DJ impone una consecuencia.";
+          marginText = `Margen de consecuencia: ${risk - successes}`;
+        } else {
+          resultText = "Consigues lo que querías sin consecuencias.";
+          marginText = `Margen de éxito: ${successes - risk}`;
+        }
+
+        if (isBravata && successes <= risk) {
+          resultText += " La Bravata añade además la consecuencia especial aceptada.";
+        }
+
+        finishRoll(results.rollId, {
+          exitos: successes,
+          resultado: resultText,
+          margen: marginText
+        });
+      });
+    });
+  };
+
+  EA_ACTIONS.forEach(action => on(`clicked:desafio_${action}`, () => eaRollChallenge(action)));
+
+  on("sheet:opened", () => {
+    getAttrs(EA_ACTIONS.concat(["aguante", "dano_acumulado", "sheet_version"]), values => {
+      const defaults = {};
+      EA_ACTIONS.forEach(action => { if (!values[action]) defaults[action] = 6; });
+      if (!values.aguante) defaults.aguante = 10;
+      if (!values.dano_acumulado) defaults.dano_acumulado = 0;
+      if (!values.sheet_version) defaults.sheet_version = "1.0.0";
+      if (Object.keys(defaults).length) setAttrs(defaults);
+    });
+  });
+</script>

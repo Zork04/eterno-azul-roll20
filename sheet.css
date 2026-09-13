@@ -1,0 +1,370 @@
+@font-face {
+  font-family: "Trade Winds";
+  src: local("Trade Winds"),
+       url("https://raw.githubusercontent.com/google/fonts/main/ofl/tradewinds/TradeWinds-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.charsheet {
+  background: #dcecf3;
+}
+
+.sheet-ea-shell { width: 764px; margin: 0 auto; }
+.sheet-tab-radio { position: absolute; left: -9999px; }
+.sheet-tab-bar {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 5px;
+  width: 764px;
+  margin: 0 auto 8px;
+}
+.sheet-tab-bar label {
+  margin: 0;
+  padding: 9px 7px 7px;
+  border: 2px solid #176b9d;
+  border-radius: 5px 5px 0 0;
+  color: #174e70;
+  background: rgba(244,249,250,.92);
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+.sheet-page { display: none; width: 764px; }
+.sheet-tab-pj:checked ~ .sheet-page-pj,
+.sheet-tab-ship:checked ~ .sheet-page-ship,
+.sheet-tab-npc:checked ~ .sheet-page-npc { display: block; }
+.sheet-tab-pj:checked ~ .sheet-tab-bar .sheet-tab-label-pj,
+.sheet-tab-ship:checked ~ .sheet-tab-bar .sheet-tab-label-ship,
+.sheet-tab-npc:checked ~ .sheet-tab-bar .sheet-tab-label-npc {
+  color: #fff;
+  background: #176b9d;
+}
+
+.sheet-ea {
+  --ea-blue: #176b9d;
+  --ea-green: #718e38;
+  --ea-ink: #172737;
+  position: relative;
+  width: 764px;
+  height: 1043px;
+  margin: 0 auto;
+  color: var(--ea-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #eef6f8;
+  /* Sustituye la URL de abajo por la URL pública de ea-ficha-pj.jpg. */
+  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/ea-ficha-pj.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.sheet-ea * { box-sizing: border-box; }
+.sheet-ea input, .sheet-ea select, .sheet-ea textarea, .sheet-ea button {
+  font: inherit;
+  color: #064f87;
+}
+.sheet-ea input[type="text"], .sheet-ea input[type="number"], .sheet-ea select, .sheet-ea textarea {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(20,35,45,.48);
+  border-radius: 0;
+  background: rgba(255,255,255,.16);
+  box-shadow: none;
+  line-height: 1.15;
+}
+.sheet-ea textarea { resize: none; }
+.sheet-ea h2, .sheet-ea h3 {
+  margin: 0;
+  text-align: center;
+  color: #101820;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: .08em;
+}
+.sheet-ea h2 { font-size: 17px; line-height: 24px; }
+.sheet-ea h3 { font-size: 12px; line-height: 17px; margin-top: 4px; }
+.sheet-ea h2::before, .sheet-ea h2::after { content: " — "; }
+.sheet-ea p { margin: 0; font-size: 9px; text-align: center; font-style: italic; }
+.sheet-ea h2, .sheet-ea h3, .sheet-ea p { visibility: hidden; }
+.sheet-ea input::placeholder, .sheet-ea textarea::placeholder { color: transparent; }
+.sheet-panel { position: absolute; padding: 8px 12px; }
+
+.sheet-identidad { display: none; }
+.sheet-nombre {
+  width: 100%; height: 80px; border: 0 !important; background: transparent !important;
+  text-align: center; font-family: "Trade Winds", Georgia, serif !important; font-size: 62px !important; color: #ee6545 !important;
+}
+.sheet-lema { width: 75%; height: 52px; text-align: center; font-style: italic; background: transparent !important; border: 0 !important; }
+
+.sheet-rasgos { left: 18px; top: 9px; width: 357px; height: 111px; padding: 5px 16px; }
+.sheet-rasgos label { display: inline-block; width: 48%; margin: 0; font-size: 0; }
+.sheet-rasgos input { width: 100%; height: 20px; }
+.sheet-rasgos textarea { width: 100%; height: 27px; font-size: 9px; }
+
+.sheet-acciones { left: 18px; top: 128px; width: 357px; height: 180px; padding: 5px 16px; }
+.sheet-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px 13px; padding-top: 3px; }
+.sheet-action-row { display: grid; grid-template-columns: 1fr 62px; align-items: center; height: 25px; }
+.sheet-action-row button[type="action"] {
+  width: 100%; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none;
+  text-align: left; font-weight: 700; font-size: 12px; color: transparent; cursor: pointer;
+}
+.sheet-action-row button[type="action"]::before { content: ""; }
+.sheet-action-row button[type="action"]:hover { color: transparent; background: rgba(23,107,157,.08); }
+.sheet-die-radios { display: grid; grid-template-columns: repeat(4, 14px); gap: 1px; width: 59px; }
+.sheet-die-radios input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.sheet-die-radios input[type="radio"]:checked {
+  background:
+    linear-gradient(45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%),
+    linear-gradient(-45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%);
+}
+.sheet-sign-radios { display: grid; grid-template-columns: repeat(3, 15px); gap: 3px; width: 51px; }
+.sheet-sign-radios input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.sheet-sign-radios input[type="radio"]:checked {
+  background:
+    linear-gradient(45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%),
+    linear-gradient(-45deg, transparent 43%, #176b9d 44%, #176b9d 56%, transparent 57%);
+}
+
+.sheet-senas { left: 18px; top: 316px; width: 357px; height: 150px; padding: 4px 16px; }
+.sheet-list-row { display: flex; align-items: center; gap: 6px; min-height: 20px; }
+.sheet-list-row > input[type="text"] { flex: 1; min-width: 0; height: 20px; }
+.sheet-list-row select { width: 56px; height: 20px; padding: 0; }
+.sheet-list-row label { width: auto; margin: 0; font-size: 8px; display: flex; align-items: center; gap: 2px; }
+
+.sheet-aptitudes { left: 19px; top: 475px; width: 355px; height: 328px; padding: 5px 16px; }
+.sheet-help { line-height: 11px; }
+.sheet-aptitud { display: grid; grid-template-columns: 1fr 95px; grid-template-rows: 22px 61px; gap: 1px 5px; margin-top: 3px; }
+.sheet-aptitud input, .sheet-aptitud select { height: 21px; font-size: 10px; }
+.sheet-aptitud textarea { grid-column: 1 / 3; width: 100%; height: 60px; font-size: 10px; line-height: 13px; }
+
+.sheet-vinculos { left: 18px; top: 812px; width: 357px; height: 131px; padding: 5px 16px; }
+.sheet-vinculos .sheet-list-row { height: 22px; }
+.sheet-brios { left: 18px; top: 950px; width: 357px; height: 68px; padding-top: 4px; }
+.sheet-pips { display: flex; justify-content: center; gap: 12px; padding-top: 10px; }
+.sheet-pips input { width: 19px; height: 19px; }
+
+.sheet-pertrechos { left: 389px; top: 9px; width: 358px; height: 605px; padding: 5px 15px; }
+.sheet-gear-head, .sheet-gear { display: grid; grid-template-columns: 1fr 42px 42px; gap: 4px; align-items: center; }
+.sheet-gear-head { font-size: 8px; text-align: center; height: 14px; }
+.sheet-gear-head { visibility: hidden; }
+.sheet-gear { height: 20px; }
+.sheet-gear input { width: 100%; height: 19px; padding: 0 2px; font-size: 9px; }
+.sheet-equipo { display: flex; align-items: center; gap: 6px; height: 29px; font-size: 10px; }
+.sheet-equipo strong { flex: 1; visibility: hidden; }
+.sheet-equipo input { width: 16px; height: 16px; }
+.sheet-combat-row { display: grid; grid-template-columns: 1fr 57px 82px; gap: 4px; align-items: end; height: 35px; }
+.sheet-combat-row input { width: 100%; height: 21px; padding: 0 2px; font-size: 9px; }
+.sheet-combat-row label { margin: 0; font-size: 0; text-align: center; }
+.sheet-combat-row label input { font-size: 9px; }
+
+.sheet-defensa { left: 389px; top: 622px; width: 175px; height: 140px; padding-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.sheet-defensa h2, .sheet-aguante h2 { grid-column: 1 / 3; }
+.sheet-defensa label, .sheet-aguante label { margin: 0; font-size: 0; text-align: center; }
+.sheet-defensa input, .sheet-aguante input { display: block; width: 52px; height: 52px; margin: 5px auto 0; border: 1px solid #27333b; text-align: center; font-size: 23px; }
+.sheet-aguante { left: 570px; top: 622px; width: 177px; height: 140px; padding-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+
+.sheet-heridas { left: 389px; top: 770px; width: 358px; height: 121px; padding: 5px 16px; }
+.sheet-wound { display: grid; grid-template-columns: 17px 1fr 55px; gap: 4px; align-items: center; height: 23px; }
+.sheet-wound input[type="text"] { width: 100%; height: 20px; }
+.sheet-wound label { margin: 0; font-size: 0; text-align: center; }
+.sheet-wound label input { width: 100%; height: 18px; }
+
+.sheet-magia { left: 389px; top: 899px; width: 358px; height: 121px; padding: 6px 16px; }
+.sheet-magia textarea { width: 100%; height: 83px; font-size: 10px; }
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  padding: 12px 11px 14px;
+  border: 0;
+  border-radius: 2px;
+  color: #172737;
+  background-color: #eef8fb;
+  /* Sustituye la URL por la URL pública de eterno-azul-roll-template-compacta.png. */
+  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/eterno-azul-roll-template-compacta.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  font-family: Georgia, "Times New Roman", serif;
+  box-shadow: 0 2px 7px rgba(0,0,0,.25);
+}
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-title {
+  padding: 7px 9px 2px;
+  color: #fff;
+  background: rgba(23,107,157,.93);
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif;
+  font-size: 19px;
+}
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-action { padding: 6px 8px; text-align: center; color: #07598e; font-size: 17px; font-weight: 700; }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-risk { text-align: center; font-weight: 700; }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice { margin: 7px 9px; padding: 5px 7px; border: 1px solid #8eb1c4; background: rgba(255,255,255,.78); }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-dice > div { padding: 2px 0; }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-successes { margin: 8px 9px 3px; padding: 7px; text-align: center; color: #fff; background: rgba(113,142,56,.92); font-size: 18px; font-weight: 700; }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-result { padding: 6px 10px 3px; font-weight: 700; text-align: center; }
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-margin { padding: 2px 10px 9px; color: #07598e; text-align: center; font-style: italic; }
+.sheet-rolltemplate-eternoazul .inlinerollresult { border: 0 !important; background: transparent !important; padding: 0 2px; font-weight: 700; }
+
+/* NAVÍO --------------------------------------------------------------- */
+.sheet-ea-ship {
+  position: relative;
+  width: 764px;
+  height: 1043px;
+  color: #07598e;
+  font-family: Georgia, "Times New Roman", serif;
+  background-image: url("https://REEMPLAZAR-CON-URL-PUBLICA/ea-navio.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.sheet-ea-ship * { box-sizing: border-box; }
+.sheet-ea-ship input, .sheet-ea-ship textarea {
+  margin: 0;
+  padding: 1px 3px;
+  border: 0;
+  border-bottom: 1px solid rgba(80,76,69,.55);
+  border-radius: 0;
+  color: #07598e;
+  background: rgba(255,255,255,.12);
+  box-shadow: none;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.sheet-ea-ship textarea { resize: none; }
+.sheet-ea-ship input::placeholder, .sheet-ea-ship textarea::placeholder { color: transparent; }
+.sheet-ship-values { position: absolute; inset: 0; }
+.sheet-ship-values input {
+  position: absolute;
+  top: 170px;
+  width: 40px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font-size: 20px;
+}
+.sheet-ship-values input:nth-child(1) { left: 88px; }
+.sheet-ship-values input:nth-child(2) { left: 198px; }
+.sheet-ship-values input:nth-child(3) { left: 309px; }
+.sheet-ship-values input:nth-child(4) { left: 417px; }
+.sheet-ship-values input:nth-child(5) { left: 525px; }
+.sheet-ship-values input:nth-child(6) { left: 634px; }
+.sheet-ship-panel { position: absolute; }
+.sheet-ship-class { left: 35px; top: 235px; width: 385px; height: 192px; padding: 35px 20px 12px; }
+.sheet-ship-class input { width: 100%; height: 29px; text-align: center; font-weight: 700; text-transform: uppercase; }
+.sheet-ship-class textarea { width: 100%; height: 47px; margin-top: 4px; font-size: 10px; }
+.sheet-ship-seekers { left: 431px; top: 231px; width: 302px; height: 182px; padding: 48px 18px 10px; }
+.sheet-ship-seekers > div { display: grid; grid-template-columns: 20px 1fr; gap: 6px; height: 21px; align-items: center; }
+.sheet-ship-seekers input[type="checkbox"] { width: 17px; height: 17px; }
+.sheet-ship-seekers input[type="text"] { width: 100%; height: 20px; }
+.sheet-ship-upgrades { left: 35px; top: 439px; width: 385px; height: 165px; padding: 48px 21px 15px; }
+.sheet-ship-upgrades textarea { width: 100%; height: 100%; font-size: 11px; line-height: 14px; }
+.sheet-ship-crew { left: 431px; top: 419px; width: 302px; height: 180px; padding: 48px 18px 72px; }
+.sheet-ship-crew textarea { width: 100%; height: 58px; font-size: 11px; }
+.sheet-ship-faults { left: 35px; top: 617px; width: 385px; height: 205px; padding: 67px 18px 20px; }
+.sheet-ship-faults > div { display: grid; grid-template-columns: 23px 1fr 66px; gap: 7px; height: 29px; align-items: center; }
+.sheet-ship-faults input[type="checkbox"] { width: 19px; height: 19px; }
+.sheet-ship-faults input[type="text"] { width: 100%; height: 23px; }
+.sheet-ship-faults input[type="number"] { width: 62px; height: 23px; text-align: center; }
+.sheet-ship-cargo { left: 431px; top: 608px; width: 302px; height: 214px; padding: 47px 17px 79px; }
+.sheet-ship-cargo textarea { width: 100%; height: 88px; font-size: 11px; line-height: 25px; }
+.sheet-ship-armament { left: 35px; top: 833px; width: 697px; height: 195px; padding: 54px 19px 46px; }
+.sheet-ship-weapon, .sheet-ship-ammo { display: grid; grid-template-columns: 1fr 70px 215px; gap: 12px; height: 25px; align-items: center; }
+.sheet-ship-weapon input, .sheet-ship-ammo input { width: 100%; height: 22px; }
+.sheet-ship-ammo { margin-top: 24px; }
+
+/* PNJ ----------------------------------------------------------------- */
+.sheet-ea-npc {
+  position: relative;
+  width: 764px;
+  min-height: 1043px;
+  padding: 24px;
+  color: #172737;
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    linear-gradient(rgba(244,249,250,.9),rgba(225,240,246,.94)),
+    repeating-linear-gradient(0deg, rgba(23,107,157,.025) 0 2px, transparent 2px 5px);
+  border: 4px double #176b9d;
+}
+.sheet-ea-npc * { box-sizing: border-box; }
+.sheet-ea-npc input, .sheet-ea-npc textarea {
+  width: 100%;
+  margin: 0;
+  padding: 4px 6px;
+  border: 0;
+  border-bottom: 1px solid #7c8b92;
+  border-radius: 0;
+  color: #07598e;
+  background: rgba(255,255,255,.48);
+  box-shadow: none;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.sheet-ea-npc textarea { resize: none; }
+.sheet-npc-header { text-align: center; }
+.sheet-npc-header input { height: 55px; border: 0; text-align: center; font-family: "Trade Winds", Georgia, serif; font-size: 38px; }
+.sheet-npc-header textarea { height: 77px; text-align: center; }
+.sheet-npc-repeat-heading {
+  margin: 16px 0 8px;
+  color: #718e38;
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif;
+  font-size: 22px;
+}
+.sheet-npc-repeat-block {
+  margin: 0 0 12px;
+  padding: 12px 14px 14px;
+  border: 2px solid #718e38;
+  border-radius: 7px;
+  background: rgba(255,255,255,.72);
+}
+.sheet-ea-npc .sheet-npc-repeat-title {
+  height: 34px;
+  margin-bottom: 7px;
+  border-bottom: 2px solid #718e38;
+  color: #172737;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.sheet-ea-npc .sheet-npc-repeat-text {
+  min-height: 118px;
+  border: 0;
+  color: #172737;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.sheet-ea-npc .repcontrol {
+  margin: 8px 0 18px;
+}
+.sheet-ea-npc .repcontrol button {
+  border: 1px solid #718e38;
+  color: #fff;
+  background: #718e38;
+  text-shadow: none;
+  box-shadow: none;
+}
+.sheet-npc-reminder { margin: 8px 0 0; color: #6e3040; text-align: center; font-style: italic; }
