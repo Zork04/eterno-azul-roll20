@@ -1,4 +1,5 @@
 <div class="sheet-ea-shell">
+  <!-- MODO DE AJUSTE OCULTO. Para mostrar la barra y los marcos, cambia la línea anterior por: <div class="sheet-ea-shell sheet-adjust-tools-on"> -->
   <input id="sheet-tab-pj" class="sheet-tab-radio sheet-tab-pj" type="radio" name="attr_sheet_tab" value="pj" checked>
   <input id="sheet-tab-ship" class="sheet-tab-radio sheet-tab-ship" type="radio" name="attr_sheet_tab" value="ship">
   <input id="sheet-tab-npc" class="sheet-tab-radio sheet-tab-npc" type="radio" name="attr_sheet_tab" value="npc">
@@ -19,7 +20,7 @@
 
 <div class="sheet-page sheet-page-pj">
 <div class="sheet-ea">
-  <input type="hidden" name="attr_sheet_version" value="1.0.1">
+  <input type="hidden" name="attr_sheet_version" value="1.0.5">
 
   <div class="sheet-panel sheet-identidad">
     <input class="sheet-nombre" type="text" name="attr_character_name" placeholder="NOMBRE">
@@ -161,6 +162,11 @@
     <h2>MAGIA</h2>
     <textarea name="attr_magia" placeholder="Rituales, capacidades y notas de magia"></textarea>
   </div>
+
+  <div class="sheet-panel sheet-notas">
+    <h2>NOTAS</h2>
+    <textarea name="attr_notas" placeholder="Notas del personaje"></textarea>
+  </div>
 </div>
 </div>
 
@@ -218,6 +224,7 @@
       <div class="sheet-ship-weapon sheet-ship-weapon-1"><input type="text" name="attr_navio_bateria1" aria-label="Primera batería"><input type="number" name="attr_navio_bateria1_dano" min="0" aria-label="Daño de la primera batería"><input type="text" name="attr_navio_bateria1_notas" aria-label="Notas de la primera batería"></div>
       <div class="sheet-ship-weapon sheet-ship-weapon-2"><input type="text" name="attr_navio_bateria2" aria-label="Segunda batería"><input type="number" name="attr_navio_bateria2_dano" min="0" aria-label="Daño de la segunda batería"><input type="text" name="attr_navio_bateria2_notas" aria-label="Notas de la segunda batería"></div>
       <div class="sheet-ship-ammo"><input type="text" name="attr_navio_municion"><input type="number" name="attr_navio_municion_cantidad" min="0"><input type="text" name="attr_navio_municion_notas"></div>
+      <textarea class="sheet-ship-armament-notes" name="attr_navio_armamento_notas" aria-label="Notas adicionales de armamento"></textarea>
     </div>
   </div>
 </div>
@@ -225,8 +232,8 @@
 <div class="sheet-page sheet-page-npc">
   <div class="sheet-ea-npc">
     <div class="sheet-npc-header">
-      <input type="text" name="attr_pnj_nombre" placeholder="NOMBRE DEL PNJ">
-      <textarea name="attr_pnj_concepto" placeholder="Descripción, aspecto y función en la historia"></textarea>
+      <input type="text" name="attr_character_name" placeholder="NOMBRE DEL PNJ">
+      <textarea class="sheet-npc-description" name="attr_pnj_concepto" placeholder="Descripción, aspecto y función en la historia"></textarea>
     </div>
     <div class="sheet-npc-repeat-heading">APARTADOS DEL PNJ</div>
     <fieldset class="repeating_pnjsecciones">
@@ -246,14 +253,14 @@
     <div class="sheet-ea-roll-action">Desafío de: {{accion_nombre}}</div>
     <div class="sheet-ea-roll-dice">
       <div class="sheet-ea-roll-dice-title">Dados</div>
-      <div class="sheet-ea-roll-die"><b>{{computed::accion_fuente}}:</b> {{accion}}</div>
-      <div class="sheet-ea-roll-die"><b>{{computed::sena_fuente}}:</b> {{sena}}</div>
-      {{#rollGreater() bravata 0}}<div class="sheet-ea-roll-die"><b>{{computed::bravata_fuente}}:</b> {{bravata}}</div>{{/rollGreater() bravata 0}}
-      {{#rollGreater() aptitud 0}}<div class="sheet-ea-roll-die"><b>{{computed::aptitud_fuente}}:</b> {{aptitud}}</div>{{/rollGreater() aptitud 0}}
-      {{#rollGreater() pertrecho 0}}<div class="sheet-ea-roll-die"><b>{{computed::pertrecho_fuente}}:</b> {{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
-      {{#rollGreater() condicion 0}}<div class="sheet-ea-roll-die"><b>{{computed::condicion_fuente}}:</b> {{condicion}}</div>{{/rollGreater() condicion 0}}
-      {{#rollGreater() apoyo 0}}<div class="sheet-ea-roll-die"><b>{{computed::apoyo_fuente}}:</b> {{apoyo}}</div>{{/rollGreater() apoyo 0}}
-      {{#rollGreater() ventaja_dj 0}}<div class="sheet-ea-roll-die"><b>{{computed::ventaja_dj_fuente}}:</b> {{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
+      <div class="sheet-ea-roll-die"><b>{{computed::accion_fuente}}</b>{{accion}}</div>
+      <div class="sheet-ea-roll-die"><b>{{computed::sena_fuente}}</b>{{sena}}</div>
+      {{#rollGreater() bravata 0}}<div class="sheet-ea-roll-die"><b>{{computed::bravata_fuente}}</b>{{bravata}}</div>{{/rollGreater() bravata 0}}
+      {{#rollGreater() aptitud 0}}<div class="sheet-ea-roll-die"><b>{{computed::aptitud_fuente}}</b>{{aptitud}}</div>{{/rollGreater() aptitud 0}}
+      {{#rollGreater() pertrecho 0}}<div class="sheet-ea-roll-die"><b>{{computed::pertrecho_fuente}}</b>{{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
+      {{#rollGreater() condicion 0}}<div class="sheet-ea-roll-die"><b>{{computed::condicion_fuente}}</b>{{condicion}}</div>{{/rollGreater() condicion 0}}
+      {{#rollGreater() apoyo 0}}<div class="sheet-ea-roll-die"><b>{{computed::apoyo_fuente}}</b>{{apoyo}}</div>{{/rollGreater() apoyo 0}}
+      {{#rollGreater() ventaja_dj 0}}<div class="sheet-ea-roll-die"><b>{{computed::ventaja_dj_fuente}}</b>{{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
     </div>
     <div class="sheet-ea-roll-summary">
       <div class="sheet-ea-roll-successes">Éxitos: {{computed::exitos}}</div>
@@ -452,8 +459,22 @@
     });
   };
 
+  const eaMigrateLegacyNpcName = () => {
+    getAttrs(["pnj_nombre", "character_name", "pnj_character_name_migrated"], values => {
+      if (values.pnj_character_name_migrated === "1") return;
+
+      const legacyNpcName = String(values.pnj_nombre || "").trim();
+      const updates = { pnj_character_name_migrated: "1" };
+      if (legacyNpcName && legacyNpcName !== String(values.character_name || "").trim()) {
+        updates.character_name = legacyNpcName;
+      }
+      setAttrs(updates);
+    });
+  };
+
   on("sheet:opened", () => {
     eaMigrateLegacyAptitudes();
+    eaMigrateLegacyNpcName();
     getAttrs(EA_ACTIONS.concat(["aguante", "dano_acumulado", "sheet_version"]), values => {
       const defaults = {};
       EA_ACTIONS.forEach(action => { if (!values[action]) defaults[action] = 6; });
