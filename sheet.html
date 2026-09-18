@@ -1,5 +1,5 @@
 <div class="sheet-ea-shell">
-  <!-- MODO DE AJUSTE OCULTO. Para mostrar la barra y los marcos, cambia la línea anterior por: <div class="sheet-ea-shell sheet-adjust-tools-on"> -->
+  <!-- MODO DE AJUSTE OCULTO. Para mostrar la barra y los marcos, cambiar la línea anterior por: <div class="sheet-ea-shell sheet-adjust-tools-on"> -->
   <input id="sheet-tab-pj" class="sheet-tab-radio sheet-tab-pj" type="radio" name="attr_sheet_tab" value="pj" checked>
   <input id="sheet-tab-ship" class="sheet-tab-radio sheet-tab-ship" type="radio" name="attr_sheet_tab" value="ship">
   <input id="sheet-tab-npc" class="sheet-tab-radio sheet-tab-npc" type="radio" name="attr_sheet_tab" value="npc">
@@ -20,7 +20,7 @@
 
 <div class="sheet-page sheet-page-pj">
 <div class="sheet-ea">
-  <input type="hidden" name="attr_sheet_version" value="1.0.5">
+  <input type="hidden" name="attr_sheet_version" value="1.0.8">
 
   <div class="sheet-panel sheet-identidad">
     <input class="sheet-nombre" type="text" name="attr_character_name" placeholder="NOMBRE">
@@ -245,6 +245,7 @@
     <p class="sheet-npc-reminder">La DJ no tira dados. La Amenaza establece normalmente el Riesgo de los Desafíos que afectan al adversario.</p>
   </div>
 </div>
+<p class="sheet-credits">Ficha de Eterno Azul adaptada a Roll20 por Dantés Jr para ShadowLands</p>
 </div>
 
 <rolltemplate class="sheet-rolltemplate-eternoazul">
@@ -299,6 +300,11 @@
     return `?{${question}|${options.map(option => `${eaSafe(option.label, "Opción")},${option.value}`).join("|")}}`;
   };
 
+  const eaNestedQuery = (query) => query
+    .replace(/\|/g, "&#124;")
+    .replace(/,/g, "&#44;")
+    .replace(/}/g, "&#125;");
+
   const eaDice = (roll) => {
     if (!roll || !Array.isArray(roll.dice)) return [];
     return roll.dice.map(eaInt);
@@ -309,9 +315,22 @@
   const eaRollSource = (roll, fallback) => {
     const expression = String((roll && roll.expression) || "");
     const labelMatch = expression.match(/\[([^\]]+)\]/);
-    const diceMatch = expression.match(/(\d+d(?:4|6|8|10|12))/i);
     const label = labelMatch ? labelMatch[1] : fallback;
-    return diceMatch ? `${label} (${diceMatch[1].toLowerCase()})` : label;
+    const diceTotals = {};
+    const diceOrder = [];
+    const dicePattern = /(\d+)d(4|6|8|10|12)/gi;
+    let diceMatch;
+    while ((diceMatch = dicePattern.exec(expression)) !== null) {
+      const count = eaInt(diceMatch[1]);
+      const sides = diceMatch[2];
+      if (!diceTotals[sides]) {
+        diceTotals[sides] = 0;
+        diceOrder.push(sides);
+      }
+      diceTotals[sides] += count;
+    }
+    const diceText = diceOrder.map(sides => `${diceTotals[sides]}d${sides}`).join(" + ");
+    return diceText ? `${label} (${diceText})` : label;
   };
 
   const eaRollChallenge = (action) => {
@@ -324,6 +343,19 @@
       getAttrs(EA_BASE_ATTRS.concat(aptitudeAttrs), values => {
       const actionDie = [6,8,10,12].includes(eaInt(values[action])) ? eaInt(values[action]) : 6;
       const actionName = action.charAt(0).toUpperCase() + action.slice(1);
+      const dieScale = [4,6,8,10,12];
+      const actionDieIndex = dieScale.indexOf(actionDie);
+      const increasedActionDie = dieScale[Math.min(actionDieIndex + 1, dieScale.length - 1)];
+      const reducedActionDie = dieScale[Math.max(actionDieIndex - 1, 0)];
+      const normalActionExpression = `1d${actionDie}`;
+      const increasedActionExpression = actionDie === 12 ? "1d12 + 1d6" : `1d${increasedActionDie}`;
+      const reducedActionExpression = `1d${reducedActionDie}`;
+      const actionAdjustmentQuery = eaQuery("¿Tienes aumento o reducción?", [
+        { label: "No", value: normalActionExpression },
+        { label: "Aumento", value: increasedActionExpression },
+        { label: "Reducción", value: reducedActionExpression }
+      ]);
+      const nestedActionAdjustmentQuery = eaNestedQuery(actionAdjustmentQuery);
 
       const signOptions = [{ label: "Ninguna (añade 1d6)", value: "1d6[Dado básico sin Seña]" }];
       [1,2,3,4].forEach(i => {
@@ -344,9 +376,9 @@
         const effect = values[`${prefix}_aptitud_efecto`];
         const aptitudeName = eaRollLabel(name, "Aptitud");
         const expression = effect === "accion2"
-          ? `2d${actionDie}[Aptitud: ${aptitudeName} - dos dados de Acción]`
+          ? `${nestedActionAdjustmentQuery} + ${nestedActionAdjustmentQuery}[Aptitud: ${aptitudeName} - dos dados de Acción]`
           : effect === "accion"
-            ? `1d${actionDie}[Aptitud: ${aptitudeName} - dado de Acción]`
+            ? `${nestedActionAdjustmentQuery}[Aptitud: ${aptitudeName} - dado de Acción]`
             : effect === "ventaja"
               ? `1d6[Aptitud: ${aptitudeName} - Ventaja]`
               : "0";
@@ -371,8 +403,8 @@
       const roll = `&{template:eternoazul}`
         + ` {{personaje=${eaSafe(values.character_name, "Buscador")}}}`
         + ` {{accion_nombre=${actionName}}}`
-        + ` {{accion=[[1d${actionDie}[Acción: ${eaRollLabel(actionName, "Acción")}]]]}}`
         + ` {{bravata=[[${bravataQuery}]]}}`
+        + ` {{accion=[[${actionAdjustmentQuery}[Acción: ${eaRollLabel(actionName, "Acción")}]]]}}`
         + ` {{sena=[[${signQuery}]]}}`
         + ` {{aptitud=[[${aptitudeQuery}]]}}`
         + ` {{pertrecho=[[${gearQuery}]]}}`

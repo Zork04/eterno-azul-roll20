@@ -143,6 +143,15 @@
   background: #176b9d;
 }
 
+.sheet-credits {
+  width: 764px;
+  margin: 7px auto 0;
+  color: #176b9d;
+  font: 10px/1.3 Georgia, "Times New Roman", serif;
+  text-align: center;
+  opacity: .82;
+}
+
 
 /* PERSONAJE JUGADOR --------------------------------------------------- */
 
@@ -481,7 +490,7 @@
 }
 
 
-/* SENAS --------------------------------------------------------------- */
+/* SEÑAS --------------------------------------------------------------- */
 
 .sheet-sign-radios {
   display: grid;
@@ -1775,7 +1784,7 @@
   display: grid;
 
   /*
-   * Nombre | separacion | Dano/Cantidad | separacion | Notas
+   * Nombre | separacion | Daño/Cantidad | separacion | Notas
    */
 
   grid-template-columns: 346px 13px 57px 20px 215px;
