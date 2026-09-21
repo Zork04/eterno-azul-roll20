@@ -1,6 +1,7 @@
 <div class="sheet-ea-shell">
-  <!-- MODO DE AJUSTE OCULTO. Para mostrar la barra y los marcos, cambiar la línea anterior por: <div class="sheet-ea-shell sheet-adjust-tools-on"> -->
+  <!-- MODO DE AJUSTE OCULTO. Para mostrar la barra y los marcos, cambia la línea anterior por: <div class="sheet-ea-shell sheet-adjust-tools-on"> -->
   <input id="sheet-tab-pj" class="sheet-tab-radio sheet-tab-pj" type="radio" name="attr_sheet_tab" value="pj" checked>
+  <input id="sheet-tab-dice" class="sheet-tab-radio sheet-tab-dice" type="radio" name="attr_sheet_tab" value="dice">
   <input id="sheet-tab-ship" class="sheet-tab-radio sheet-tab-ship" type="radio" name="attr_sheet_tab" value="ship">
   <input id="sheet-tab-npc" class="sheet-tab-radio sheet-tab-npc" type="radio" name="attr_sheet_tab" value="npc">
   <input id="sheet-adjust-toggle" class="sheet-adjust-toggle" type="checkbox" name="attr_mostrar_marcos_ajuste" value="1">
@@ -14,13 +15,14 @@
   </div>
   <div class="sheet-tab-bar">
     <label for="sheet-tab-pj" class="sheet-tab-label-pj">PERSONAJE JUGADOR</label>
+    <label for="sheet-tab-dice" class="sheet-tab-label-dice">DADOS</label>
     <label for="sheet-tab-ship" class="sheet-tab-label-ship">NAVÍO</label>
     <label for="sheet-tab-npc" class="sheet-tab-label-npc">PNJ</label>
   </div>
 
 <div class="sheet-page sheet-page-pj">
 <div class="sheet-ea">
-  <input type="hidden" name="attr_sheet_version" value="1.0.8">
+  <input type="hidden" name="attr_sheet_version" value="1.1.0">
 
   <div class="sheet-panel sheet-identidad">
     <input class="sheet-nombre" type="text" name="attr_character_name" placeholder="NOMBRE">
@@ -66,13 +68,13 @@
 
   <div class="sheet-panel sheet-aptitudes">
     <h2>APTITUDES</h2>
-    <button class="sheet-help-hotspot sheet-help-aptitudes" type="button" aria-label="Ayuda sobre Aptitudes" title="Las Aptitudes son especializaciones de tu personaje y reflejan qué cosas se le dan realmente bien: en qué profesión destaca, cómo pelea, de qué forma obra su magia, qué recursos tiene o alguna otra capacidad especial. Cada Aptitud establece su propio efecto: puede no añadir dado, conceder una Ventaja o añadir uno o dos dados del mismo tipo que el dado de Acción en determinados Desafíos."></button>
+    <button class="sheet-help-hotspot sheet-help-aptitudes" type="button" aria-label="Ayuda sobre Aptitudes" title="Las Aptitudes son especializaciones de tu personaje y reflejan qué cosas se le dan realmente bien: en qué profesión destaca, cómo pelea, de qué forma obra su magia, qué recursos tiene o alguna otra capacidad especial. Cada Aptitud establece su propio efecto: puede no añadir dado, conceder una Ventaja, añadir uno o dos dados del mismo tipo que el dado de Acción o permitir repetir los resultados de 1 en determinados Desafíos."></button>
     <p class="sheet-help">Configura el efecto mecánico para que la pregunta de Desafío pueda aplicarlo.</p>
     <div class="sheet-aptitude-list">
       <fieldset class="repeating_aptitudes">
         <div class="sheet-aptitud">
           <div class="sheet-aptitud-heading">
-            <select name="attr_aptitud_efecto" title="Efecto de esta Aptitud en la tirada" aria-label="Efecto de la Aptitud"><option value="0">Sin dado</option><option value="ventaja">+1 Vent.</option><option value="accion">+1 Acción</option><option value="accion2">+2 Acción</option></select>
+            <select name="attr_aptitud_efecto" title="Efecto de esta Aptitud en la tirada" aria-label="Efecto de la Aptitud"><option value="0">Sin dado</option><option value="ventaja">+1 Vent.</option><option value="accion">+1 Acción</option><option value="accion2">+2 Acción</option><option value="repetir1">Repite los 1</option></select>
             <input type="text" name="attr_aptitud_nombre" placeholder="Nombre de la Aptitud" aria-label="Nombre de la Aptitud">
           </div>
           <textarea name="attr_aptitud_texto" placeholder="Descripción, condiciones, coste y efectos de la Aptitud" aria-label="Descripción de la Aptitud"></textarea>
@@ -170,6 +172,94 @@
 </div>
 </div>
 
+<div class="sheet-page sheet-page-dice">
+  <div class="sheet-ea-dice">
+    <header class="sheet-dice-header">
+      <div class="sheet-dice-character" name="attr_character_name">Buscador</div>
+      <div class="sheet-dice-actions">
+        <button type="action" name="act_dados_lanzar">TIRAR DADOS</button>
+      </div>
+    </header>
+
+    <section class="sheet-dice-pool" aria-label="Reserva manual de dados">
+      <h2>RESERVA DE DADOS</h2>
+      <p>Cada casilla marcada añade un dado de ese tipo.</p>
+
+      <div class="sheet-dice-pool-row">
+        <div class="sheet-dice-poly sheet-dice-d4"><span>d4</span></div>
+        <strong>d4</strong>
+        <div class="sheet-dice-boxes">
+          <input type="checkbox" name="attr_dados_d4_1" value="1" aria-label="Primer d4"><input type="checkbox" name="attr_dados_d4_2" value="1" aria-label="Segundo d4"><input type="checkbox" name="attr_dados_d4_3" value="1" aria-label="Tercer d4"><input type="checkbox" name="attr_dados_d4_4" value="1" aria-label="Cuarto d4"><input type="checkbox" name="attr_dados_d4_5" value="1" aria-label="Quinto d4"><input type="checkbox" name="attr_dados_d4_6" value="1" aria-label="Sexto d4"><input type="checkbox" name="attr_dados_d4_7" value="1" aria-label="Séptimo d4"><input type="checkbox" name="attr_dados_d4_8" value="1" aria-label="Octavo d4">
+        </div>
+      </div>
+
+      <div class="sheet-dice-pool-row">
+        <div class="sheet-dice-poly sheet-dice-d6"><span>d6</span></div>
+        <strong>d6</strong>
+        <div class="sheet-dice-boxes">
+          <input type="checkbox" name="attr_dados_d6_1" value="1" aria-label="Primer d6"><input type="checkbox" name="attr_dados_d6_2" value="1" aria-label="Segundo d6"><input type="checkbox" name="attr_dados_d6_3" value="1" aria-label="Tercer d6"><input type="checkbox" name="attr_dados_d6_4" value="1" aria-label="Cuarto d6"><input type="checkbox" name="attr_dados_d6_5" value="1" aria-label="Quinto d6"><input type="checkbox" name="attr_dados_d6_6" value="1" aria-label="Sexto d6"><input type="checkbox" name="attr_dados_d6_7" value="1" aria-label="Séptimo d6"><input type="checkbox" name="attr_dados_d6_8" value="1" aria-label="Octavo d6">
+        </div>
+      </div>
+
+      <div class="sheet-dice-pool-row">
+        <div class="sheet-dice-poly sheet-dice-d8"><span>d8</span></div>
+        <strong>d8</strong>
+        <div class="sheet-dice-boxes">
+          <input type="checkbox" name="attr_dados_d8_1" value="1" aria-label="Primer d8"><input type="checkbox" name="attr_dados_d8_2" value="1" aria-label="Segundo d8"><input type="checkbox" name="attr_dados_d8_3" value="1" aria-label="Tercer d8"><input type="checkbox" name="attr_dados_d8_4" value="1" aria-label="Cuarto d8"><input type="checkbox" name="attr_dados_d8_5" value="1" aria-label="Quinto d8"><input type="checkbox" name="attr_dados_d8_6" value="1" aria-label="Sexto d8"><input type="checkbox" name="attr_dados_d8_7" value="1" aria-label="Séptimo d8"><input type="checkbox" name="attr_dados_d8_8" value="1" aria-label="Octavo d8">
+        </div>
+      </div>
+
+      <div class="sheet-dice-pool-row">
+        <div class="sheet-dice-poly sheet-dice-d10"><span>d10</span></div>
+        <strong>d10</strong>
+        <div class="sheet-dice-boxes">
+          <input type="checkbox" name="attr_dados_d10_1" value="1" aria-label="Primer d10"><input type="checkbox" name="attr_dados_d10_2" value="1" aria-label="Segundo d10"><input type="checkbox" name="attr_dados_d10_3" value="1" aria-label="Tercer d10"><input type="checkbox" name="attr_dados_d10_4" value="1" aria-label="Cuarto d10"><input type="checkbox" name="attr_dados_d10_5" value="1" aria-label="Quinto d10"><input type="checkbox" name="attr_dados_d10_6" value="1" aria-label="Sexto d10"><input type="checkbox" name="attr_dados_d10_7" value="1" aria-label="Séptimo d10"><input type="checkbox" name="attr_dados_d10_8" value="1" aria-label="Octavo d10">
+        </div>
+      </div>
+
+      <div class="sheet-dice-pool-row">
+        <div class="sheet-dice-poly sheet-dice-d12"><span>d12</span></div>
+        <strong>d12</strong>
+        <div class="sheet-dice-boxes">
+          <input type="checkbox" name="attr_dados_d12_1" value="1" aria-label="Primer d12"><input type="checkbox" name="attr_dados_d12_2" value="1" aria-label="Segundo d12"><input type="checkbox" name="attr_dados_d12_3" value="1" aria-label="Tercer d12"><input type="checkbox" name="attr_dados_d12_4" value="1" aria-label="Cuarto d12"><input type="checkbox" name="attr_dados_d12_5" value="1" aria-label="Quinto d12"><input type="checkbox" name="attr_dados_d12_6" value="1" aria-label="Sexto d12"><input type="checkbox" name="attr_dados_d12_7" value="1" aria-label="Séptimo d12"><input type="checkbox" name="attr_dados_d12_8" value="1" aria-label="Octavo d12">
+        </div>
+      </div>
+    </section>
+
+    <aside class="sheet-dice-options">
+      <h2>AJUSTES</h2>
+      <div class="sheet-dice-field">
+        <span>¿Repetir los 1?</span>
+        <label><input type="radio" name="attr_dados_repetir_unos" value="0" checked> No</label>
+        <label><input type="radio" name="attr_dados_repetir_unos" value="1"> Sí</label>
+      </div>
+      <label class="sheet-dice-field sheet-dice-risk">
+        <span>Riesgo</span>
+        <input type="number" name="attr_dados_riesgo" value="1" min="0">
+      </label>
+
+      <div class="sheet-dice-assistant">
+        <h3>ASISTENTE DE RESERVA</h3>
+        <div class="sheet-dice-assistant-grid">
+          <label><span>Acción</span><select name="attr_dados_asistente_accion"><option value="armonizar" selected>Armonizar</option><option value="navegar">Navegar</option><option value="combatir">Combatir</option><option value="picardear">Picardear</option><option value="explorar">Explorar</option><option value="resistir">Resistir</option><option value="influir">Influir</option><option value="saber">Saber</option><option value="maniobrar">Maniobrar</option><option value="trastear">Trastear</option></select></label>
+          <label><span>Seña</span><select name="attr_dados_asistente_sena"><option value="0" selected>Sin Seña</option><option value="1">Seña 1</option><option value="2">Seña 2</option><option value="3">Seña 3</option><option value="4">Seña 4</option></select><small name="attr_dados_asistente_sena_etiqueta">Dado básico d6</small></label>
+          <label><span>Aptitud</span><select name="attr_dados_asistente_aptitud"><option value="0" selected>Ninguna</option><option value="1">Aptitud 1</option><option value="2">Aptitud 2</option><option value="3">Aptitud 3</option><option value="4">Aptitud 4</option><option value="5">Aptitud 5</option><option value="6">Aptitud 6</option><option value="7">Aptitud 7</option><option value="8">Aptitud 8</option><option value="9">Aptitud 9</option><option value="10">Aptitud 10</option><option value="11">Aptitud 11</option><option value="12">Aptitud 12</option></select><small name="attr_dados_asistente_aptitud_etiqueta">Sin Aptitud</small></label>
+          <label><span>Pertrecho</span><select name="attr_dados_asistente_pertrecho"><option value="0" selected>Ninguno</option><option value="1">Pertrecho 1</option><option value="2">Pertrecho 2</option><option value="3">Pertrecho 3</option><option value="4">Pertrecho 4</option><option value="5">Pertrecho 5</option><option value="6">Pertrecho 6</option><option value="7">Pertrecho 7</option><option value="8">Pertrecho 8</option><option value="9">Pertrecho 9</option><option value="10">Pertrecho 10</option><option value="11">Pertrecho 11</option><option value="12">Pertrecho 12</option></select><small name="attr_dados_asistente_pertrecho_etiqueta">Sin Pertrecho</small></label>
+          <label><span>Ventajas</span><select name="attr_dados_asistente_ventajas"><option value="0" selected>0d6</option><option value="1">1d6</option><option value="2">2d6</option><option value="3">3d6</option><option value="4">4d6</option><option value="5">5d6</option><option value="6">6d6</option><option value="7">7d6</option><option value="8">8d6</option></select></label>
+        </div>
+        <input type="hidden" name="attr_dados_tirada_nombre" value="Reserva manual">
+        <input type="hidden" name="attr_dados_fuentes" value="">
+        <div class="sheet-dice-assistant-buttons">
+          <button type="action" name="act_dados_preparar">PREPARAR CON ASISTENTE</button>
+          <button type="action" name="act_dados_vaciar">VACIAR RESERVA</button>
+        </div>
+      </div>
+    </aside>
+
+    <p class="sheet-dice-footnote">La reserva queda guardada en la ficha para repetirla o ajustarla antes de la siguiente tirada.</p>
+  </div>
+</div>
+
 <div class="sheet-page sheet-page-ship">
   <div class="sheet-ea-ship">
     <div class="sheet-ship-values">
@@ -254,18 +344,26 @@
     <div class="sheet-ea-roll-action">Desafío de: {{accion_nombre}}</div>
     <div class="sheet-ea-roll-dice">
       <div class="sheet-ea-roll-dice-title">Dados</div>
-      <div class="sheet-ea-roll-die"><b>{{computed::accion_fuente}}</b>{{accion}}</div>
-      <div class="sheet-ea-roll-die"><b>{{computed::sena_fuente}}</b>{{sena}}</div>
+      {{#rollGreater() accion 0}}<div class="sheet-ea-roll-die"><b>{{computed::accion_fuente}}</b>{{accion}}</div>{{/rollGreater() accion 0}}
+      {{#rollGreater() sena 0}}<div class="sheet-ea-roll-die"><b>{{computed::sena_fuente}}</b>{{sena}}</div>{{/rollGreater() sena 0}}
       {{#rollGreater() bravata 0}}<div class="sheet-ea-roll-die"><b>{{computed::bravata_fuente}}</b>{{bravata}}</div>{{/rollGreater() bravata 0}}
       {{#rollGreater() aptitud 0}}<div class="sheet-ea-roll-die"><b>{{computed::aptitud_fuente}}</b>{{aptitud}}</div>{{/rollGreater() aptitud 0}}
       {{#rollGreater() pertrecho 0}}<div class="sheet-ea-roll-die"><b>{{computed::pertrecho_fuente}}</b>{{pertrecho}}</div>{{/rollGreater() pertrecho 0}}
       {{#rollGreater() condicion 0}}<div class="sheet-ea-roll-die"><b>{{computed::condicion_fuente}}</b>{{condicion}}</div>{{/rollGreater() condicion 0}}
       {{#rollGreater() apoyo 0}}<div class="sheet-ea-roll-die"><b>{{computed::apoyo_fuente}}</b>{{apoyo}}</div>{{/rollGreater() apoyo 0}}
       {{#rollGreater() ventaja_dj 0}}<div class="sheet-ea-roll-die"><b>{{computed::ventaja_dj_fuente}}</b>{{ventaja_dj}}</div>{{/rollGreater() ventaja_dj 0}}
+      {{#rollGreater() dados_d4 0}}<div class="sheet-ea-roll-die"><b>{{computed::dados_d4_fuente}}</b>{{dados_d4}}</div>{{/rollGreater() dados_d4 0}}
+      {{#rollGreater() dados_d6 0}}<div class="sheet-ea-roll-die"><b>{{computed::dados_d6_fuente}}</b>{{dados_d6}}</div>{{/rollGreater() dados_d6 0}}
+      {{#rollGreater() dados_d8 0}}<div class="sheet-ea-roll-die"><b>{{computed::dados_d8_fuente}}</b>{{dados_d8}}</div>{{/rollGreater() dados_d8 0}}
+      {{#rollGreater() dados_d10 0}}<div class="sheet-ea-roll-die"><b>{{computed::dados_d10_fuente}}</b>{{dados_d10}}</div>{{/rollGreater() dados_d10 0}}
+      {{#rollGreater() dados_d12 0}}<div class="sheet-ea-roll-die"><b>{{computed::dados_d12_fuente}}</b>{{dados_d12}}</div>{{/rollGreater() dados_d12 0}}
     </div>
+    <div class="sheet-ea-roll-source-note">{{computed::fuentes_aviso}}</div>
+    <div class="sheet-ea-roll-aptitude-note">{{computed::aptitud_aviso}}</div>
+    <div class="sheet-ea-roll-adjustment-warning">{{computed::ajuste_aviso}}</div>
     <div class="sheet-ea-roll-summary">
       <div class="sheet-ea-roll-successes">Éxitos: {{computed::exitos}}</div>
-      <div class="sheet-ea-roll-risk">Riesgo: {{riesgo}}</div>
+      <div class="sheet-ea-roll-risk">Riesgo: {{computed::riesgo}}</div>
     </div>
     <div class="sheet-ea-roll-result">
       <span class="sheet-ea-roll-result-title">Resultado</span>
@@ -274,6 +372,8 @@
   </div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-eaconfig"></rolltemplate>
+
 <script type="text/worker">
   const EA_ACTIONS = ["armonizar", "navegar", "combatir", "picardear", "explorar", "resistir", "influir", "saber", "maniobrar", "trastear"];
 
@@ -281,6 +381,12 @@
     .concat(EA_ACTIONS)
     .concat([1,2,3,4].flatMap(i => [`sena${i}_nombre`, `sena${i}_dado`]))
     .concat([1,2,3,4,5,6,7,8,9,10,11,12].map(i => `pertrecho${i}_nombre`));
+
+  const EA_DICE_SIDES = [4,6,8,10,12];
+  const EA_DICE_BOXES = 8;
+  const EA_DICE_POOL_ATTRS = EA_DICE_SIDES.flatMap(sides =>
+    Array.from({ length: EA_DICE_BOXES }, (_, index) => `dados_d${sides}_${index + 1}`)
+  );
 
   const eaInt = (value, fallback = 0) => {
     const number = parseInt(value, 10);
@@ -312,26 +418,213 @@
 
   const eaSuccesses = (roll) => eaDice(roll).reduce((total, die) => total + (die >= 8 ? 2 : die >= 4 ? 1 : 0), 0);
 
-  const eaRollSource = (roll, fallback) => {
+  const eaRollSource = (roll, fallback, preferredPrefixes = []) => {
     const expression = String((roll && roll.expression) || "");
-    const labelMatch = expression.match(/\[([^\]]+)\]/);
-    const label = labelMatch ? labelMatch[1] : fallback;
+    const labels = [];
+    const labelPattern = /\[([^\]]+)\]/g;
+    let labelMatch;
+    while ((labelMatch = labelPattern.exec(expression)) !== null) labels.push(labelMatch[1]);
+    const label = preferredPrefixes
+      .map(prefix => labels.find(candidate => candidate.indexOf(prefix) === 0))
+      .find(Boolean) || labels.find(candidate => candidate.indexOf("Aptitud:") !== 0) || fallback;
     const diceTotals = {};
     const diceOrder = [];
-    const dicePattern = /(\d+)d(4|6|8|10|12)/gi;
-    let diceMatch;
-    while ((diceMatch = dicePattern.exec(expression)) !== null) {
-      const count = eaInt(diceMatch[1]);
-      const sides = diceMatch[2];
+    const addDice = (countValue, sidesValue) => {
+      const count = eaInt(countValue);
+      const sides = String(sidesValue);
+      if (count <= 0 || !["4","6","8","10","12"].includes(sides)) return;
       if (!diceTotals[sides]) {
         diceTotals[sides] = 0;
         diceOrder.push(sides);
       }
       diceTotals[sides] += count;
+    };
+
+    if (roll && Array.isArray(roll.rolls)) {
+      roll.rolls.forEach(part => addDice(part && part.dice, part && part.sides));
+    }
+
+    if (!diceOrder.length) {
+      const dicePattern = /(\d+)d(4|6|8|10|12)/gi;
+      let diceMatch;
+      while ((diceMatch = dicePattern.exec(expression)) !== null) addDice(diceMatch[1], diceMatch[2]);
     }
     const diceText = diceOrder.map(sides => `${diceTotals[sides]}d${sides}`).join(" + ");
     return diceText ? `${label} (${diceText})` : label;
   };
+
+  const eaLabelFromRoll = (roll, prefix, fallback) => {
+    const expression = String((roll && roll.expression) || "");
+    const labels = [];
+    const labelPattern = /\[([^\]]+)\]/g;
+    let match;
+    while ((match = labelPattern.exec(expression)) !== null) labels.push(match[1]);
+    return labels.find(label => label.indexOf(prefix) === 0) || fallback;
+  };
+
+  const eaEmptyDicePool = () => EA_DICE_SIDES.reduce((pool, sides) => {
+    pool[sides] = 0;
+    return pool;
+  }, {});
+
+  const eaAddDice = (pool, sidesValue, amountValue = 1) => {
+    const sides = eaInt(sidesValue);
+    const amount = Math.max(0, eaInt(amountValue));
+    if (EA_DICE_SIDES.includes(sides)) pool[sides] += amount;
+  };
+
+  const eaSetDicePool = (pool, extra = {}) => {
+    const updates = Object.assign({}, extra);
+    EA_DICE_SIDES.forEach(sides => {
+      const amount = Math.max(0, Math.min(EA_DICE_BOXES, eaInt(pool[sides])));
+      for (let index = 1; index <= EA_DICE_BOXES; index += 1) {
+        updates[`dados_d${sides}_${index}`] = index <= amount ? "1" : "0";
+      }
+    });
+    setAttrs(updates);
+  };
+
+  const eaReadDicePool = values => EA_DICE_SIDES.reduce((pool, sides) => {
+    pool[sides] = 0;
+    for (let index = 1; index <= EA_DICE_BOXES; index += 1) {
+      if (String(values[`dados_d${sides}_${index}`] || "0") === "1") pool[sides] += 1;
+    }
+    return pool;
+  }, {});
+
+  const eaOutcomeText = (successes, risk) => {
+    if (successes === 0) return "La DJ determina el resultado e impone una consecuencia.";
+    if (successes <= risk) return "Consigues lo que querías, pero la DJ impone una consecuencia.";
+    return "Consigues lo que querías sin consecuencias.";
+  };
+
+  const eaPrepareDicePool = () => {
+    getSectionIDs("repeating_aptitudes", aptitudeIds => {
+      const aptitudeAttrs = aptitudeIds.flatMap(id => [
+        `repeating_aptitudes_${id}_aptitud_nombre`,
+        `repeating_aptitudes_${id}_aptitud_efecto`
+      ]);
+
+      const assistantAttrs = [
+        "dados_asistente_accion", "dados_asistente_sena", "dados_asistente_aptitud",
+        "dados_asistente_pertrecho", "dados_asistente_ventajas"
+      ];
+
+      getAttrs(EA_BASE_ATTRS.concat(aptitudeAttrs, assistantAttrs), values => {
+        const action = EA_ACTIONS.includes(values.dados_asistente_accion)
+          ? values.dados_asistente_accion
+          : EA_ACTIONS[0];
+        const actionName = action.charAt(0).toUpperCase() + action.slice(1);
+        const actionSides = [6,8,10,12].includes(eaInt(values[action])) ? eaInt(values[action]) : 6;
+
+        const signIndex = Math.max(0, Math.min(4, eaInt(values.dados_asistente_sena)));
+        const signName = signIndex
+          ? String(values[`sena${signIndex}_nombre`] || `Seña ${signIndex}`).trim()
+          : "Dado básico d6";
+        const signSides = signIndex
+          ? ([8,10,12].includes(eaInt(values[`sena${signIndex}_dado`])) ? eaInt(values[`sena${signIndex}_dado`]) : 8)
+          : 6;
+
+        const aptitudeSlot = Math.max(0, Math.min(aptitudeIds.length, eaInt(values.dados_asistente_aptitud)));
+        const aptitudeId = aptitudeSlot ? aptitudeIds[aptitudeSlot - 1] : "";
+        const aptitudePrefix = aptitudeId ? `repeating_aptitudes_${aptitudeId}` : "";
+        const aptitudeName = aptitudePrefix
+          ? String(values[`${aptitudePrefix}_aptitud_nombre`] || `Aptitud ${aptitudeSlot}`).trim()
+          : "Sin Aptitud";
+        const aptitudeEffect = aptitudePrefix ? values[`${aptitudePrefix}_aptitud_efecto`] : "0";
+        const aptitudeAdvantageDice = aptitudeEffect === "ventaja" ? 1 : 0;
+        const aptitudeActionDice = aptitudeEffect === "accion2" ? 2 : aptitudeEffect === "accion" ? 1 : 0;
+        const rerollsOnes = aptitudeEffect === "repetir1";
+
+        const gearIndex = Math.max(0, Math.min(12, eaInt(values.dados_asistente_pertrecho)));
+        const gearName = gearIndex
+          ? String(values[`pertrecho${gearIndex}_nombre`] || `Pertrecho ${gearIndex}`).trim()
+          : "Sin Pertrecho";
+        const extraAdvantages = Math.max(0, Math.min(EA_DICE_BOXES, eaInt(values.dados_asistente_ventajas)));
+
+        const pool = eaEmptyDicePool();
+        eaAddDice(pool, actionSides, 1 + aptitudeActionDice);
+        eaAddDice(pool, signSides, 1);
+        const fixedAdvantageDice = aptitudeAdvantageDice + (gearIndex ? 1 : 0);
+        const availableAdvantageBoxes = Math.max(0, EA_DICE_BOXES - pool[6] - fixedAdvantageDice);
+        const appliedExtraAdvantages = Math.min(extraAdvantages, availableAdvantageBoxes);
+        eaAddDice(pool, 6, fixedAdvantageDice + appliedExtraAdvantages);
+
+        const sources = [`Acción: ${actionName}`];
+        sources.push(signIndex ? `Seña: ${signName}` : "Dado básico sin Seña");
+        if (aptitudeId) sources.push(`Aptitud: ${aptitudeName}`);
+        if (gearIndex) sources.push(`Pertrecho: ${gearName}`);
+        if (appliedExtraAdvantages) sources.push(`Ventajas adicionales: ${appliedExtraAdvantages}d6`);
+        if (extraAdvantages > appliedExtraAdvantages) {
+          sources.push(`La reserva admite hasta ${EA_DICE_BOXES} dados de cada tipo; ajusta las casillas si necesitas otra combinación`);
+        }
+
+        eaSetDicePool(pool, {
+          dados_tirada_nombre: actionName,
+          dados_repetir_unos: rerollsOnes ? "1" : "0",
+          dados_fuentes: sources.join(" · "),
+          dados_asistente_sena_etiqueta: signName,
+          dados_asistente_aptitud_etiqueta: aptitudeName,
+          dados_asistente_pertrecho_etiqueta: gearName
+        });
+      });
+    });
+  };
+
+  const eaRollDicePool = () => {
+    const attrs = ["character_name", "dados_tirada_nombre", "dados_repetir_unos", "dados_riesgo", "dados_fuentes"]
+      .concat(EA_DICE_POOL_ATTRS);
+    getAttrs(attrs, values => {
+      const pool = eaReadDicePool(values);
+      const totalDice = EA_DICE_SIDES.reduce((total, sides) => total + pool[sides], 0);
+      const reroll = String(values.dados_repetir_unos || "0") === "1";
+      const rerollSuffix = reroll ? "r1" : "";
+      const risk = Math.max(0, eaInt(values.dados_riesgo, 1));
+      const rollName = eaSafe(values.dados_tirada_nombre, "Reserva manual");
+
+      let roll = `&{template:eternoazul}`
+        + ` {{personaje=${eaSafe(values.character_name, "Buscador")}}}`
+        + ` {{accion_nombre=${rollName}}}`
+        + ` {{control=[[0]]}}`
+        + ` {{riesgo=[[${risk}]]}}`
+        + ` {{exitos=[[0]]}}`
+        + ` {{resultado=[[0]]}}`
+        + ` {{fuentes_aviso=[[0]]}}`
+        + ` {{ajuste_aviso=[[0]]}}`
+        + ` {{aptitud_aviso=[[0]]}}`;
+
+      EA_DICE_SIDES.forEach(sides => {
+        if (!pool[sides]) return;
+        roll += ` {{dados_d${sides}=[[${pool[sides]}d${sides}${rerollSuffix}[Reserva manual: d${sides}]]]}}`;
+        roll += ` {{dados_d${sides}_fuente=[[0]]}}`;
+      });
+
+      startRoll(roll, results => {
+        const rolled = results.results || {};
+        const successes = EA_DICE_SIDES.reduce((total, sides) =>
+          total + eaSuccesses(rolled[`dados_d${sides}`]), 0);
+        const updates = {
+          exitos: successes,
+          riesgo: risk,
+          resultado: totalDice ? eaOutcomeText(successes, risk) : "No hay dados seleccionados en la reserva.",
+          fuentes_aviso: eaSafe(values.dados_fuentes, ""),
+          ajuste_aviso: totalDice ? "" : "Marca al menos una casilla antes de tirar.",
+          aptitud_aviso: reroll ? "Se repiten automáticamente todos los resultados de 1." : ""
+        };
+        EA_DICE_SIDES.forEach(sides => {
+          if (pool[sides]) updates[`dados_d${sides}_fuente`] = `Reserva manual (${pool[sides]}d${sides})`;
+        });
+        finishRoll(results.rollId, updates);
+      });
+    });
+  };
+
+  const eaClearDicePool = () => eaSetDicePool(eaEmptyDicePool(), {
+    dados_tirada_nombre: "Reserva manual",
+    dados_repetir_unos: "0",
+    dados_riesgo: "1",
+    dados_fuentes: ""
+  });
 
   const eaRollChallenge = (action) => {
     getSectionIDs("repeating_aptitudes", aptitudeIds => {
@@ -345,75 +638,117 @@
       const actionName = action.charAt(0).toUpperCase() + action.slice(1);
       const dieScale = [4,6,8,10,12];
       const actionDieIndex = dieScale.indexOf(actionDie);
-      const increasedActionDie = dieScale[Math.min(actionDieIndex + 1, dieScale.length - 1)];
-      const reducedActionDie = dieScale[Math.max(actionDieIndex - 1, 0)];
-      const normalActionExpression = `1d${actionDie}`;
-      const increasedActionExpression = actionDie === 12 ? "1d12 + 1d6" : `1d${increasedActionDie}`;
-      const reducedActionExpression = `1d${reducedActionDie}`;
-      const actionAdjustmentQuery = eaQuery("¿Tienes aumento o reducción?", [
-        { label: "No", value: normalActionExpression },
-        { label: "Aumento", value: increasedActionExpression },
-        { label: "Reducción", value: reducedActionExpression }
-      ]);
-      const nestedActionAdjustmentQuery = eaNestedQuery(actionAdjustmentQuery);
 
-      const signOptions = [{ label: "Ninguna (añade 1d6)", value: "1d6[Dado básico sin Seña]" }];
+      const adjustmentQuestion = "¿Cuántos aumentos o reducciones tienes?";
+      const adjustmentReference = `?{${adjustmentQuestion}}`;
+      const adjustmentOptions = [];
+      const addAdjustmentOption = (label, steps) => {
+        const targetIndex = actionDieIndex + steps;
+        const finalIndex = Math.max(0, Math.min(dieScale.length - 1, targetIndex));
+        const sides = dieScale[finalIndex];
+        const advantageDice = Math.max(0, targetIndex - (dieScale.length - 1));
+        const riskIncrease = Math.max(0, -targetIndex);
+        const packedValue = (riskIncrease * 1000) + (advantageDice * 100) + sides;
+        const details = riskIncrease
+          ? `d${sides}; Riesgo +${riskIncrease}`
+          : advantageDice
+            ? `d${sides} + ${advantageDice}d6 de Ventaja por dado de Acción`
+            : `d${sides}`;
+        adjustmentOptions.push({ label: `${label} (${details})`, value: packedValue });
+      };
+
+      addAdjustmentOption("No", 0);
+      [1,2,3].forEach(amount => addAdjustmentOption(`${amount} aumento${amount === 1 ? "" : "s"}`, amount));
+      [1,2,3].forEach(amount => addAdjustmentOption(`${amount} ${amount === 1 ? "reducción" : "reducciones"}`, -amount));
+
+      const actionAdjustmentQuery = eaQuery(adjustmentQuestion, adjustmentOptions);
+      const adjustmentSides = `((${adjustmentReference})%100)`;
+      const adjustmentAdvantageDice = `floor(((${adjustmentReference})%1000)/100)`;
+
+      const aptitudeQuestion = "Aptitud aplicable autorizada";
+      const aptitudeReference = `?{${aptitudeQuestion}}`;
+      const rerollOnesFlag = `[[(${aptitudeReference})%10]]`;
+      const nestedRerollOnesFlag = eaNestedQuery(rerollOnesFlag);
+
+      const signOptions = [{ label: "Ninguna (añade 1d6)", value: `1d6r${nestedRerollOnesFlag}[Dado básico sin Seña]` }];
       [1,2,3,4].forEach(i => {
         const name = values[`sena${i}_nombre`];
         if (!name) return;
         const signDie = eaInt(values[`sena${i}_dado`], 8);
         signOptions.push({
           label: `${name} (d${signDie})`,
-          value: `1d${signDie}[Seña: ${eaRollLabel(name, "Seña")}]`
+          value: `1d${signDie}r${nestedRerollOnesFlag}[Seña: ${eaRollLabel(name, "Seña")}]`
         });
       });
 
-      const aptitudeOptions = [{ label: "Ninguna", value: "0" }];
+      const aptitudeOptions = [{ label: "Ninguna", value: "0 + 0[Aptitud: Ninguna]" }];
       aptitudeIds.forEach(id => {
         const prefix = `repeating_aptitudes_${id}`;
         const name = values[`${prefix}_aptitud_nombre`];
         if (!name) return;
         const effect = values[`${prefix}_aptitud_efecto`];
         const aptitudeName = eaRollLabel(name, "Aptitud");
-        const expression = effect === "accion2"
-          ? `${nestedActionAdjustmentQuery} + ${nestedActionAdjustmentQuery}[Aptitud: ${aptitudeName} - dos dados de Acción]`
-          : effect === "accion"
-            ? `${nestedActionAdjustmentQuery}[Aptitud: ${aptitudeName} - dado de Acción]`
-            : effect === "ventaja"
-              ? `1d6[Aptitud: ${aptitudeName} - Ventaja]`
-              : "0";
-        aptitudeOptions.push({ label: name, value: expression });
+        const effectCode = effect === "ventaja" ? 100
+          : effect === "accion" ? 10
+            : effect === "accion2" ? 20
+              : effect === "repetir1" ? 1
+                : 0;
+        const effectLabel = effect === "ventaja" ? " +1 Ventaja"
+          : effect === "accion" ? " +1 dado de Acción"
+            : effect === "accion2" ? " +2 dados de Acción"
+              : effect === "repetir1" ? " repite los 1"
+                : " sin dado";
+        aptitudeOptions.push({
+          label: name,
+          value: `${effectCode} + 0[Aptitud: ${aptitudeName} —${effectLabel}]`
+        });
       });
 
       const gearOptions = [{ label: "Ninguno", value: "0" }];
       [1,2,3,4,5,6,7,8,9,10,11,12].forEach(i => {
         const name = values[`pertrecho${i}_nombre`];
-        if (name) gearOptions.push({ label: name, value: `1d6[Pertrecho: ${eaRollLabel(name, "Pertrecho")}]` });
+        if (name) gearOptions.push({ label: name, value: `1d6r${nestedRerollOnesFlag}[Pertrecho: ${eaRollLabel(name, "Pertrecho")}]` });
       });
 
-      const bravataQuery = eaQuery("¿Es una Bravata?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Bravata]"}]);
+      const bravataQuestion = "¿Es una Bravata?";
+      const bravataQuery = eaQuery(bravataQuestion, [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1"}]);
+      const bravataReference = `?{${bravataQuestion}}`;
       const signQuery = eaQuery("Seña autorizada por la DJ", signOptions);
-      const aptitudeQuery = eaQuery("Aptitud aplicable autorizada", aptitudeOptions);
+      const aptitudeQuery = eaQuery(aptitudeQuestion, aptitudeOptions);
       const gearQuery = eaQuery("Pertrecho aplicable autorizado", gearOptions);
-      const conditionQuery = eaQuery("¿Aprovechas una Condición favorable autorizada?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Condición favorable]"}]);
-      const supportQuery = eaQuery("¿Recibes apoyo de un aliado?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:"1d6[Ventaja: Apoyo de un aliado]"}]);
+      const conditionQuery = eaQuery("¿Aprovechas una Condición favorable autorizada?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:`1d6r${nestedRerollOnesFlag}[Ventaja: Condición favorable]`}]);
+      const supportQuery = eaQuery("¿Recibes apoyo de un aliado?", [{label:"No", value:"0"}, {label:"Sí (+1d6)", value:`1d6r${nestedRerollOnesFlag}[Ventaja: Apoyo de un aliado]`}]);
       const extraQuery = "?{Ventajas adicionales concedidas por la DJ (cantidad de d6)|0}";
       const riskQuery = "?{Riesgo indicado por la DJ|1}";
+
+      const aptitudeActionDice = `floor(((${aptitudeReference})%100)/10)`;
+      const aptitudeAdvantageDice = `floor((${aptitudeReference})/100)`;
+      const actionExpression = `1d[[${adjustmentSides}]]r${rerollOnesFlag}[Acción: ${eaRollLabel(actionName, "Acción")}]`
+        + ` + [[${adjustmentAdvantageDice}]]d6r${rerollOnesFlag}[Ventaja: aumentos sobre d12]`;
+      const aptitudeExpression = `0 * (${aptitudeReference})`
+        + ` + [[${aptitudeAdvantageDice}]]d6r${rerollOnesFlag}[Ventaja de Aptitud]`
+        + ` + [[${aptitudeActionDice}]]d[[${adjustmentSides}]]r${rerollOnesFlag}[Dados de Acción de Aptitud]`
+        + ` + [[(${aptitudeActionDice})*(${adjustmentAdvantageDice})]]d6r${rerollOnesFlag}[Ventaja por aumentos sobre d12]`;
 
       const roll = `&{template:eternoazul}`
         + ` {{personaje=${eaSafe(values.character_name, "Buscador")}}}`
         + ` {{accion_nombre=${actionName}}}`
-        + ` {{bravata=[[${bravataQuery}]]}}`
-        + ` {{accion=[[${actionAdjustmentQuery}[Acción: ${eaRollLabel(actionName, "Acción")}]]]}}`
+        + ` {{bravata_control=[[${bravataQuery}]]}}`
+        + ` {{ajuste=[[${actionAdjustmentQuery}]]}}`
+        + ` {{aptitud_control=[[${aptitudeQuery}]]}}`
+        + ` {{bravata=[[${bravataReference}d6r${rerollOnesFlag}[Ventaja: Bravata]]]}}`
+        + ` {{accion=[[${actionExpression}]]}}`
         + ` {{sena=[[${signQuery}]]}}`
-        + ` {{aptitud=[[${aptitudeQuery}]]}}`
+        + ` {{aptitud=[[${aptitudeExpression}]]}}`
         + ` {{pertrecho=[[${gearQuery}]]}}`
         + ` {{condicion=[[${conditionQuery}]]}}`
         + ` {{apoyo=[[${supportQuery}]]}}`
-        + ` {{ventaja_dj=[[${extraQuery}d6[Ventajas adicionales]]]}}`
+        + ` {{ventaja_dj=[[${extraQuery}d6r${rerollOnesFlag}[Ventajas adicionales]]]}}`
         + ` {{riesgo=[[${riskQuery}]]}}`
         + ` {{exitos=[[0]]}}`
         + ` {{resultado=[[0]]}}`
+        + ` {{ajuste_aviso=[[0]]}}`
+        + ` {{aptitud_aviso=[[0]]}}`
         + ` {{accion_fuente=[[0]]}}`
         + ` {{sena_fuente=[[0]]}}`
         + ` {{bravata_fuente=[[0]]}}`
@@ -427,8 +762,20 @@
         const rolled = results.results || {};
         const sources = ["accion", "sena", "bravata", "aptitud", "pertrecho", "condicion", "apoyo", "ventaja_dj"];
         const successes = sources.reduce((total, source) => total + eaSuccesses(rolled[source]), 0);
-        const risk = rolled.riesgo ? eaInt(rolled.riesgo.result, 1) : 1;
-        const isBravata = eaDice(rolled.bravata).length > 0;
+        const baseRisk = rolled.riesgo ? eaInt(rolled.riesgo.result, 1) : 1;
+        const adjustmentCode = rolled.ajuste ? eaInt(rolled.ajuste.result) : actionDie;
+        const reductionRisk = Math.floor(adjustmentCode / 1000);
+        const risk = baseRisk + reductionRisk;
+        const aptitudeCode = rolled.aptitud_control ? eaInt(rolled.aptitud_control.result) : 0;
+        const rerollsOnes = aptitudeCode % 10 === 1;
+        const aptitudeLabel = eaLabelFromRoll(rolled.aptitud_control, "Aptitud:", "Aptitud");
+        const isBravata = rolled.bravata_control && eaInt(rolled.bravata_control.result) > 0;
+        const adjustmentWarning = reductionRisk
+          ? `Reducciones por debajo de d4: la dificultad aumenta en +${reductionRisk} Riesgo.`
+          : "";
+        const aptitudeWarning = rerollsOnes
+          ? `${aptitudeLabel}. Se repiten automáticamente todos los resultados de 1.`
+          : "";
 
         let resultText;
         if (successes === 0) {
@@ -445,15 +792,18 @@
 
         finishRoll(results.rollId, {
           exitos: successes,
+          riesgo: risk,
           resultado: resultText,
-          accion_fuente: eaRollSource(rolled.accion, `Acción: ${actionName}`),
-          sena_fuente: eaRollSource(rolled.sena, "Seña o dado básico"),
-          bravata_fuente: eaRollSource(rolled.bravata, "Ventaja: Bravata"),
-          aptitud_fuente: eaRollSource(rolled.aptitud, "Aptitud"),
-          pertrecho_fuente: eaRollSource(rolled.pertrecho, "Pertrecho"),
-          condicion_fuente: eaRollSource(rolled.condicion, "Ventaja: Condición favorable"),
-          apoyo_fuente: eaRollSource(rolled.apoyo, "Ventaja: Apoyo de un aliado"),
-          ventaja_dj_fuente: eaRollSource(rolled.ventaja_dj, "Ventajas adicionales")
+          ajuste_aviso: adjustmentWarning,
+          aptitud_aviso: aptitudeWarning,
+          accion_fuente: eaRollSource(rolled.accion, `Acción: ${actionName}`, ["Acción:"]),
+          sena_fuente: eaRollSource(rolled.sena, "Seña o dado básico", ["Seña:", "Dado básico"]),
+          bravata_fuente: eaRollSource(rolled.bravata, "Ventaja: Bravata", ["Ventaja: Bravata"]),
+          aptitud_fuente: eaRollSource(rolled.aptitud, "Aptitud", ["Aptitud:"]),
+          pertrecho_fuente: eaRollSource(rolled.pertrecho, "Pertrecho", ["Pertrecho:"]),
+          condicion_fuente: eaRollSource(rolled.condicion, "Ventaja: Condición favorable", ["Ventaja: Condición favorable"]),
+          apoyo_fuente: eaRollSource(rolled.apoyo, "Ventaja: Apoyo de un aliado", ["Ventaja: Apoyo de un aliado"]),
+          ventaja_dj_fuente: eaRollSource(rolled.ventaja_dj, "Ventajas adicionales", ["Ventajas adicionales"])
         });
       });
       });
@@ -461,6 +811,10 @@
   };
 
   EA_ACTIONS.forEach(action => on(`clicked:desafio_${action}`, () => eaRollChallenge(action)));
+  on("clicked:dados_preparar", eaPrepareDicePool);
+  on("change:dados_asistente_accion change:dados_asistente_sena change:dados_asistente_aptitud change:dados_asistente_pertrecho change:dados_asistente_ventajas", eaPrepareDicePool);
+  on("clicked:dados_lanzar", eaRollDicePool);
+  on("clicked:dados_vaciar", eaClearDicePool);
 
   const eaMigrateLegacyAptitudes = () => {
     const legacyAttrs = ["aptitudes_repeating_migrated"]
@@ -507,12 +861,20 @@
   on("sheet:opened", () => {
     eaMigrateLegacyAptitudes();
     eaMigrateLegacyNpcName();
-    getAttrs(EA_ACTIONS.concat(["aguante", "dano_acumulado", "sheet_version"]), values => {
+    getAttrs(EA_ACTIONS.concat(["aguante", "dano_acumulado", "sheet_version", "dados_riesgo", "dados_repetir_unos", "dados_tirada_nombre", "dados_asistente_accion", "dados_asistente_sena", "dados_asistente_aptitud", "dados_asistente_pertrecho", "dados_asistente_ventajas"]), values => {
       const defaults = {};
       EA_ACTIONS.forEach(action => { if (!values[action]) defaults[action] = 6; });
       if (!values.aguante) defaults.aguante = 10;
       if (!values.dano_acumulado) defaults.dano_acumulado = 0;
       if (!values.sheet_version) defaults.sheet_version = "1.0.0";
+      if (!values.dados_riesgo) defaults.dados_riesgo = 1;
+      if (!values.dados_repetir_unos) defaults.dados_repetir_unos = "0";
+      if (!values.dados_tirada_nombre) defaults.dados_tirada_nombre = "Reserva manual";
+      if (!values.dados_asistente_accion) defaults.dados_asistente_accion = "armonizar";
+      if (!values.dados_asistente_sena) defaults.dados_asistente_sena = "0";
+      if (!values.dados_asistente_aptitud) defaults.dados_asistente_aptitud = "0";
+      if (!values.dados_asistente_pertrecho) defaults.dados_asistente_pertrecho = "0";
+      if (!values.dados_asistente_ventajas) defaults.dados_asistente_ventajas = "0";
       if (Object.keys(defaults).length) setAttrs(defaults);
     });
   });

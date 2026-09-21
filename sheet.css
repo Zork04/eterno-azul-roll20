@@ -106,7 +106,7 @@
 
 .sheet-tab-bar {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-columns: 1.65fr .72fr 1fr .62fr;
   gap: 5px;
   width: 764px;
   margin: 0 auto 8px;
@@ -131,12 +131,14 @@
 }
 
 .sheet-tab-pj:checked ~ .sheet-page-pj,
+.sheet-tab-dice:checked ~ .sheet-page-dice,
 .sheet-tab-ship:checked ~ .sheet-page-ship,
 .sheet-tab-npc:checked ~ .sheet-page-npc {
   display: block;
 }
 
 .sheet-tab-pj:checked ~ .sheet-tab-bar .sheet-tab-label-pj,
+.sheet-tab-dice:checked ~ .sheet-tab-bar .sheet-tab-label-dice,
 .sheet-tab-ship:checked ~ .sheet-tab-bar .sheet-tab-label-ship,
 .sheet-tab-npc:checked ~ .sheet-tab-bar .sheet-tab-label-npc {
   color: #fff;
@@ -150,6 +152,569 @@
   font: 10px/1.3 Georgia, "Times New Roman", serif;
   text-align: center;
   opacity: .82;
+}
+
+
+/* DADOS --------------------------------------------------------------- */
+
+.sheet-ea-dice {
+  --dice-blue: #176b9d;
+  --dice-blue-dark: #164f73;
+  --dice-gold: #b5903f;
+  position: relative;
+  width: 764px;
+  height: 955px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: #17364b;
+  background-color: #eaf7fb;
+  background-image: url("https://raw.githubusercontent.com/Zork04/eterno-azul-roll20/main/ea-dados.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.sheet-ea-dice * {
+  box-sizing: border-box;
+}
+
+.sheet-dice-header {
+  position: absolute;
+  top: 37px;
+  left: 55px;
+  width: 654px;
+  text-align: center;
+}
+
+.sheet-dice-character {
+  min-height: 45px;
+  margin: 0 35px 15px;
+  padding: 2px 12px 7px;
+  border-bottom: 1px solid rgba(23,107,157,.46);
+  color: var(--dice-blue-dark);
+  font: 31px/1.15 "Trade Winds", Georgia, serif;
+  text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+
+.sheet-dice-character:empty::after {
+  content: "Buscador";
+  opacity: .62;
+}
+
+.sheet-dice-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.sheet-dice-actions button[type="action"] {
+  min-height: 35px;
+  margin: 0;
+  padding: 7px 14px 5px;
+  border: 2px solid var(--dice-blue);
+  border-radius: 7px;
+  color: #fff;
+  background: rgba(23,107,157,.92);
+  box-shadow: 0 2px 4px rgba(20,70,98,.2);
+  font: 15px/1.05 "Trade Winds", Georgia, serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+}
+
+.sheet-dice-actions button[type="action"]:hover {
+  color: #fff;
+  background: #125d89;
+}
+
+.sheet-dice-actions button[name="act_dados_preparar"] {
+  color: #174e70;
+  background: rgba(255,253,236,.92);
+  border-color: var(--dice-gold);
+  text-shadow: none;
+}
+
+.sheet-dice-actions button[name="act_dados_vaciar"] {
+  min-height: 29px;
+  padding: 5px 9px 3px;
+  border-width: 1px;
+  color: #31566c;
+  background: rgba(246,251,252,.8);
+  font-size: 12px;
+  text-shadow: none;
+}
+
+.sheet-dice-pool,
+.sheet-dice-options {
+  position: absolute;
+  top: 264px;
+  height: 434px;
+  padding: 20px 18px 16px;
+}
+
+.sheet-dice-pool {
+  left: 42px;
+  width: 460px;
+}
+
+.sheet-dice-options {
+  right: 40px;
+  width: 203px;
+}
+
+.sheet-dice-pool h2,
+.sheet-dice-options h2,
+.sheet-dice-assistant h3 {
+  margin: 0;
+  color: var(--dice-blue-dark);
+  text-align: center;
+  font-family: "Trade Winds", Georgia, serif;
+  font-weight: 400;
+}
+
+.sheet-dice-pool h2,
+.sheet-dice-options h2 {
+  font-size: 22px;
+}
+
+.sheet-dice-pool > p {
+  margin: 1px 0 7px;
+  color: #416679;
+  text-align: center;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.sheet-dice-pool-row {
+  display: grid;
+  grid-template-columns: 58px 38px 1fr;
+  align-items: center;
+  min-height: 69px;
+  border-top: 1px solid rgba(23,107,157,.17);
+}
+
+.sheet-dice-pool-row:first-of-type {
+  border-top: 0;
+}
+
+.sheet-dice-pool-row > strong {
+  color: var(--dice-blue-dark);
+  font: 18px/1 "Trade Winds", Georgia, serif;
+}
+
+.sheet-dice-poly {
+  position: relative;
+  width: 51px;
+  height: 51px;
+  background: var(--dice-blue);
+  filter: drop-shadow(0 1px 1px rgba(28,74,99,.25));
+}
+
+.sheet-dice-poly::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: rgba(238,250,253,.73);
+}
+
+.sheet-dice-poly::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  opacity: .32;
+  background: linear-gradient(35deg, transparent 47%, var(--dice-blue) 48%, var(--dice-blue) 52%, transparent 53%),
+              linear-gradient(145deg, transparent 47%, var(--dice-blue) 48%, var(--dice-blue) 52%, transparent 53%);
+}
+
+.sheet-dice-poly span {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 18px;
+  width: 100%;
+  color: var(--dice-blue-dark);
+  text-align: center;
+  font: 14px/1 "Trade Winds", Georgia, serif;
+}
+
+.sheet-dice-d4,
+.sheet-dice-d4::before {
+  clip-path: polygon(50% 2%, 98% 94%, 2% 94%);
+}
+
+.sheet-dice-d6,
+.sheet-dice-d6::before {
+  clip-path: polygon(25% 6%, 75% 6%, 98% 50%, 75% 94%, 25% 94%, 2% 50%);
+}
+
+.sheet-dice-d8,
+.sheet-dice-d8::before {
+  clip-path: polygon(50% 1%, 98% 50%, 50% 99%, 2% 50%);
+}
+
+.sheet-dice-d10,
+.sheet-dice-d10::before {
+  clip-path: polygon(50% 1%, 84% 14%, 99% 48%, 79% 87%, 50% 99%, 21% 87%, 1% 48%, 16% 14%);
+}
+
+.sheet-dice-d12,
+.sheet-dice-d12::before {
+  clip-path: polygon(35% 2%, 65% 2%, 91% 20%, 100% 50%, 91% 80%, 65% 98%, 35% 98%, 9% 80%, 0 50%, 9% 20%);
+}
+
+.sheet-dice-boxes {
+  display: grid;
+  grid-template-columns: repeat(5, 25px);
+  justify-content: end;
+  gap: 5px 6px;
+}
+
+.sheet-ea-dice .sheet-dice-boxes input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  border: 1.5px solid #347fa8;
+  border-radius: 4px;
+  background-color: rgba(255,255,255,.62);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.48);
+  cursor: pointer;
+}
+
+.sheet-ea-dice .sheet-dice-boxes input[type="checkbox"]:checked {
+  border-color: #155f8a;
+  background-color: rgba(194,230,242,.82);
+  background-image: linear-gradient(45deg, transparent 44%, #176b9d 45%, #176b9d 55%, transparent 56%),
+                    linear-gradient(-45deg, transparent 44%, #176b9d 45%, #176b9d 55%, transparent 56%);
+}
+
+.sheet-dice-field {
+  display: block;
+  margin: 12px 0 0;
+  color: #234e68;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sheet-dice-field > span {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sheet-ea-dice .sheet-dice-field input[type="text"],
+.sheet-ea-dice .sheet-dice-field input[type="number"],
+.sheet-ea-dice .sheet-dice-field textarea {
+  width: 100%;
+  margin: 0;
+  border: 1px solid rgba(23,107,157,.65);
+  border-radius: 4px;
+  color: #17364b;
+  background: rgba(255,255,255,.72);
+  font: 12px/1.25 Georgia, "Times New Roman", serif;
+}
+
+.sheet-ea-dice .sheet-dice-field input[type="text"] {
+  height: 29px;
+  padding: 3px 5px;
+}
+
+.sheet-ea-dice .sheet-dice-field input[type="number"] {
+  width: 54px;
+  height: 31px;
+  padding: 2px 4px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.sheet-ea-dice .sheet-dice-field label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0 12px 0 0;
+  font-weight: 400;
+}
+
+.sheet-ea-dice .sheet-dice-field input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.sheet-ea-dice .sheet-dice-sources textarea {
+  height: 74px;
+  padding: 5px;
+  resize: none;
+}
+
+.sheet-dice-assistant {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(23,107,157,.32);
+}
+
+.sheet-dice-assistant h3 {
+  font-size: 17px;
+}
+
+.sheet-dice-assistant p {
+  margin: 4px 0 0;
+  color: #355b71;
+  font-size: 10.5px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.sheet-dice-assistant p:first-of-type {
+  color: #176b9d;
+  font-weight: 700;
+}
+
+.sheet-dice-footnote {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  bottom: 89px;
+  margin: 0;
+  color: rgba(31,84,114,.78);
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Alineación con la lámina de dados de Eterno Azul. */
+.sheet-ea-dice {
+  height: 1146px;
+}
+
+.sheet-dice-header {
+  top: 0;
+  left: 0;
+  width: 764px;
+  height: 270px;
+}
+
+.sheet-dice-character {
+  position: absolute;
+  top: 75px;
+  left: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 648px;
+  height: 107px;
+  min-height: 0;
+  margin: 0;
+  padding: 0 22px;
+  border: 0;
+  font-size: 34px;
+}
+
+.sheet-dice-actions {
+  display: block;
+}
+
+.sheet-dice-actions button[type="action"] {
+  position: absolute;
+  top: 200px;
+  left: 172px;
+  width: 419px;
+  height: 78px;
+  min-height: 0;
+  padding: 7px 12px 4px;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 24px;
+}
+
+.sheet-dice-actions button[type="action"]:hover {
+  color: #fff;
+  background: rgba(11,79,118,.18);
+}
+
+.sheet-dice-pool {
+  top: 0;
+  left: 0;
+  width: 518px;
+  height: 815px;
+  padding: 0;
+}
+
+.sheet-dice-pool h2 {
+  position: absolute;
+  top: 286px;
+  left: 143px;
+  width: 295px;
+  font-size: 20px;
+}
+
+.sheet-dice-pool > p {
+  display: none;
+}
+
+.sheet-dice-pool-row {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 512px;
+  min-height: 0;
+  height: 28px;
+  border: 0;
+}
+
+.sheet-dice-pool-row:nth-of-type(1) { top: 325px; }
+.sheet-dice-pool-row:nth-of-type(2) { top: 425px; }
+.sheet-dice-pool-row:nth-of-type(3) { top: 524px; }
+.sheet-dice-pool-row:nth-of-type(4) { top: 620px; }
+.sheet-dice-pool-row:nth-of-type(5) { top: 715px; }
+
+.sheet-dice-poly {
+  display: none;
+}
+
+.sheet-dice-pool-row > strong {
+  position: absolute;
+  left: 77px;
+  top: 6px;
+  width: 39px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.sheet-dice-boxes {
+  position: absolute;
+  top: 0;
+  left: 160px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  width: auto;
+}
+
+.sheet-dice-boxes input:nth-child(5) {
+  margin-left: 28px !important;
+}
+
+.sheet-ea-dice .sheet-dice-boxes input[type="checkbox"] {
+  width: 34px;
+  height: 35px;
+  border-color: transparent;
+  border-radius: 2px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.sheet-ea-dice .sheet-dice-boxes input[type="checkbox"]:hover {
+  background-color: rgba(190,228,242,.38);
+}
+
+.sheet-ea-dice .sheet-dice-boxes input[type="checkbox"]:checked {
+  border-color: transparent;
+  background-color: rgba(213,239,247,.5);
+}
+
+.sheet-dice-options {
+  top: 299px;
+  right: 55px;
+  width: 146px;
+  height: 489px;
+  padding: 13px 10px;
+}
+
+.sheet-dice-options h2 {
+  font-size: 20px;
+}
+
+.sheet-dice-field {
+  margin-top: 24px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sheet-dice-assistant {
+  position: absolute;
+  top: 510px;
+  left: -507px;
+  width: 653px;
+  height: 279px;
+  margin: 0;
+  padding: 18px 28px 14px;
+  border: 0;
+}
+
+.sheet-dice-assistant h3 {
+  font-size: 22px;
+}
+
+.sheet-dice-assistant-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr 1fr .72fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sheet-dice-assistant-grid label {
+  min-width: 0;
+  color: #234e68;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.sheet-dice-assistant-grid label > span,
+.sheet-dice-assistant-grid label > small {
+  display: block;
+}
+
+.sheet-ea-dice .sheet-dice-assistant-grid select {
+  width: 100%;
+  height: 31px;
+  margin: 4px 0 0;
+  padding: 2px 4px;
+  border: 1px solid rgba(23,107,157,.72);
+  border-radius: 4px;
+  color: #17364b;
+  background: rgba(255,255,255,.78);
+  font: 11px/1.2 Georgia, "Times New Roman", serif;
+}
+
+.sheet-dice-assistant-grid small {
+  height: 24px;
+  margin-top: 3px;
+  overflow: hidden;
+  color: #55758a;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.sheet-dice-assistant-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 13px;
+}
+
+.sheet-dice-assistant-buttons button[type="action"] {
+  min-height: 36px;
+  margin: 0;
+  padding: 7px 15px 5px;
+  border: 2px solid #176b9d;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(23,107,157,.92);
+  font: 15px/1.05 "Trade Winds", Georgia, serif;
+}
+
+.sheet-dice-assistant-buttons button[name="act_dados_vaciar"] {
+  color: #234f68;
+  background: rgba(255,255,255,.68);
+}
+
+.sheet-dice-footnote {
+  bottom: 64px;
 }
 
 
@@ -490,7 +1055,7 @@
 }
 
 
-/* SEÑAS --------------------------------------------------------------- */
+/* SENAS --------------------------------------------------------------- */
 
 .sheet-sign-radios {
   display: grid;
@@ -1386,6 +1951,35 @@
   font-weight: 400;
 }
 
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-source-note,
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-aptitude-note,
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-adjustment-warning {
+  margin: 5px 0;
+  padding: 5px 7px;
+  border: 1px solid rgba(23,107,157,.45);
+  background: rgba(226,243,249,.78);
+  color: #07598e;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-adjustment-warning {
+  border-color: rgba(133,67,75,.5);
+  background: rgba(244,218,211,.72);
+  color: #76363f;
+}
+
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-source-note:empty,
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-aptitude-note:empty,
+.sheet-rolltemplate-eternoazul .sheet-ea-roll-adjustment-warning:empty {
+  display: none;
+}
+
+.sheet-rolltemplate-eaconfig {
+  display: none !important;
+}
+
 .sheet-rolltemplate-eternoazul .sheet-ea-roll-summary {
   display: table;
   width: 100%;
@@ -1784,7 +2378,7 @@
   display: grid;
 
   /*
-   * Nombre | separacion | Daño/Cantidad | separacion | Notas
+   * Nombre | separacion | Dano/Cantidad | separacion | Notas
    */
 
   grid-template-columns: 346px 13px 57px 20px 215px;
